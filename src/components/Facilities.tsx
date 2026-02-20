@@ -197,7 +197,7 @@ export default function Facilities() {
 
         {/* Full-width image strip */}
         <div
-          className={`mt-16 grid grid-cols-3 gap-3 transition-all duration-800 delay-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`mt-16 grid grid-cols-1 sm:grid-cols-3 gap-3 transition-all duration-800 delay-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           {[
             { src: "/assets/img/swimming_pool.webp", label: "Swimming Pool" },
@@ -207,7 +207,7 @@ export default function Facilities() {
             // <div key={i} className="gallery-item aspect-video overflow-hidden">
             <div
               key={i}
-              className="relative gallery-item aspect-video overflow-hidden"
+              className="relative w-full sm:flex-1 aspect-video overflow-hidden rounded-xl gallery-item"
             >
               <img
                 src={item.src}
