@@ -198,6 +198,7 @@ export default function Units() {
             <div className="grid grid-cols-4 gap-2">
               {unit.images.map((img, i) => (
                 <button
+                  id={`btnGalleryUnit-${i}`}
                   key={i}
                   onClick={() => setActiveImage(i)}
                   className={`aspect-[4/3] overflow-hidden border-2 transition-all duration-300 ${

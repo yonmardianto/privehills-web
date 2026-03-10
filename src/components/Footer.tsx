@@ -20,7 +20,7 @@ export default function Footer() {
                 </div>
               </div>
             </div>
-            <p className="text-white/40 text-sm font-light leading-relaxed">
+            <p className="text-white text-sm font-light leading-relaxed">
               Hunian minimalis modern di perbukitan eksklusif Pamulang,
               Tangerang Selatan. Hadirkan privasi, keamanan, dan kenyamanan
               terbaik.
@@ -62,7 +62,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-white/40 hover:text-[#c8a96e] text-sm font-light transition-colors"
+                    className="text-white hover:text-[#c8a96e] text-sm font-light transition-colors"
                   >
                     {link.label}
                   </a>
@@ -78,33 +78,33 @@ export default function Footer() {
             </div>
             <div className="space-y-4">
               <div>
-                <div className="text-white/30 text-xs tracking-widest uppercase mb-1">
+                <div className="text-white text-xs tracking-widest uppercase mb-1">
                   Alamat
                 </div>
-                <div className="text-white/60 text-sm font-light">
+                <div className="text-white text-sm font-light">
                   Pamulang, Tangerang Selatan,
                   <br />
                   Banten 15417
                 </div>
               </div>
               <div>
-                <div className="text-white/30 text-xs tracking-widest uppercase mb-1">
+                <div className="text-white text-xs tracking-widest uppercase mb-1">
                   WhatsApp
                 </div>
                 <a
                   href="https://wa.me/628111234567"
-                  className="text-white/60 text-sm font-light hover:text-[#c8a96e] transition-colors"
+                  className="text-white text-sm font-light hover:text-[#c8a96e] transition-colors"
                 >
                   +62 811-1234-567
                 </a>
               </div>
               <div>
-                <div className="text-white/30 text-xs tracking-widest uppercase mb-1">
+                <div className="text-white text-xs tracking-widest uppercase mb-1">
                   Email
                 </div>
                 <a
                   href="mailto:marketing@privehills.id"
-                  className="text-white/60 text-sm font-light hover:text-[#c8a96e] transition-colors"
+                  className="text-white text-sm font-light hover:text-[#c8a96e] transition-colors"
                 >
                   marketing@privehills.id
                 </a>
