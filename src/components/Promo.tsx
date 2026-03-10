@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 export default function Promo() {
   const ref = useRef<HTMLDivElement>(null);
@@ -72,14 +73,16 @@ export default function Promo() {
         <div
           className={`relative rounded-none overflow-hidden mb-16 transition-all duration-1000 delay-200 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <div
-            className="relative h-90 md:h-96 bg-cover bg-center"
-            style={{
-              backgroundImage: `url('/assets/img/promo/promo-2.webp')`,
-            }}
-          >
+          <div className="relative h-72 md:h-96">
+            <Image
+              src="/assets/img/promo/promo-2.webp"
+              alt="Promo banner"
+              fill
+              className="object-cover"
+              priority
+            />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0f0e0c]/80 via-[#0f0e0c]/50 to-transparent" />
-            <div className="absolute inset-0 flex items-center px-10 md:px-16">
+            <div className="absolute inset-0 flex items-center px-6 md:px-16">
               <div>
                 <div className="text-[#c8a96e] text-xs tracking-[0.4em] uppercase mb-3">
                   Promo Eksklusif 2026
