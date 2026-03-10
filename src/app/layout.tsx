@@ -33,21 +33,16 @@ export default function RootLayout({
   return (
     <html lang="id" className="scroll-smooth">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
+        {/* <link rel="preconnect" href="https://fonts.googleapis.com" /> */}
+        {/* <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
-        />
-        <link
+        /> */}
+        {/* <link
           href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"
           rel="stylesheet"
-        />
-        {/* Font Awesome (free) - used for social icons in the footer */}
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        />
+        /> */}
       </head>
       <body className="grain antialiased">{children}</body>
     </html>

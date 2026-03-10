@@ -1,3 +1,5 @@
+import { FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
+
 export default function Footer() {
   return (
     <footer className="bg-[#090807] border-t border-white/5">
@@ -26,23 +28,20 @@ export default function Footer() {
               terbaik.
             </p>
             <div className="flex gap-3 mt-6">
-              {["instagram", "facebook", "youtube"].map((s) => {
-                const iconClass =
-                  s === "facebook" ? "fa-facebook-f" : `fa-${s}`;
-                return (
-                  <a
-                    key={s}
-                    href="#"
-                    aria-label={s}
-                    className="w-9 h-9 border border-white/10 flex items-center justify-center text-white/30 hover:border-[#c8a96e]/40 hover:text-[#c8a96e] transition-all text-xs tracking-wider"
-                  >
-                    <i
-                      className={`fab ${iconClass} text-sm`}
-                      aria-hidden="true"
-                    />
-                  </a>
-                );
-              })}
+              {[
+                { id: "instagram", Icon: FaInstagram },
+                { id: "facebook", Icon: FaFacebook },
+                { id: "youtube", Icon: FaYoutube },
+              ].map(({ id, Icon }) => (
+                <a
+                  key={id}
+                  href="#"
+                  aria-label={id}
+                  className="w-9 h-9 border border-white/10 flex items-center justify-center text-white/30 hover:border-[#c8a96e]/40 hover:text-[#c8a96e] transition-all text-xs tracking-wider"
+                >
+                  <Icon className="text-lg" aria-hidden="true" />
+                </a>
+              ))}
             </div>
           </div>
 
