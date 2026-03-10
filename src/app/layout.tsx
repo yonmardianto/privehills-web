@@ -19,7 +19,7 @@ export const metadata: Metadata = {
         url: `${BASE_URL}/assets/img/banner.webp`,
         width: 1200,
         height: 630,
-        alt: "Privé Hills Residence - Hunian Premium di Pamulang",
+        alt: "Privé Hills Residence - Hunian Premium di Pamulang Tangerang Selatan",
       },
     ],
   },
