@@ -33,6 +33,7 @@ export default function Footer() {
                   <a
                     key={s}
                     href="#"
+                    aria-label={s}
                     className="w-9 h-9 border border-white/10 flex items-center justify-center text-white/30 hover:border-[#c8a96e]/40 hover:text-[#c8a96e] transition-all text-xs tracking-wider"
                   >
                     <i
@@ -63,6 +64,7 @@ export default function Footer() {
                   <a
                     href={link.href}
                     className="text-white hover:text-[#c8a96e] text-sm font-light transition-colors"
+                    aria-label={link.label}
                   >
                     {link.label}
                   </a>
