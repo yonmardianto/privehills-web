@@ -301,7 +301,7 @@ export default function Units() {
             <div className="flex gap-3 mt-4">
               <a
                 href={
-                  "https://wa.me/628111234567?text=Halo%2C%20saya%20tertarik%20dengan%20unit%20" +
+                  "https://wa.me/6287867309782?text=Halo%2C%20saya%20tertarik%20dengan%20unit%20" +
                   encodeURIComponent(unit.name)
                 }
                 target="_blank"
@@ -312,7 +312,7 @@ export default function Units() {
               </a>
               <a
                 href={
-                  "https://wa.me/628111234567?text=Halo%2C%20saya%20ingin%20detail%20unit%20" +
+                  "https://wa.me/6287867309782?text=Halo%2C%20saya%20ingin%20detail%20unit%20" +
                   encodeURIComponent(unit.name)
                 }
                 target="_blank"
