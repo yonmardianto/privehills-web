@@ -56,6 +56,7 @@ export default function Footer() {
                 { label: "Beranda", href: "#hero" },
                 { label: "Promo Spesial", href: "#promo" },
                 { label: "Tipe Unit", href: "#units" },
+                { label: "Testimonial", href: "#testimonials" },
                 { label: "Fasilitas", href: "#facilities" },
                 { label: "Lokasi", href: "#location" },
                 { label: "Hubungi Kami", href: "#contact" },
@@ -105,10 +106,10 @@ export default function Footer() {
                   Email
                 </div>
                 <a
-                  href="mailto:marketing@privehills.id"
+                  href="mailto:marketing@privehillsresidence.id"
                   className="text-white text-sm font-light hover:text-[#c8a96e] transition-colors"
                 >
-                  marketing@privehills.id
+                  marketing@privehillsresidence.id
                 </a>
               </div>
             </div>

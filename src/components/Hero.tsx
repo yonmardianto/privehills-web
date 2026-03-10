@@ -25,7 +25,7 @@ export default function Hero() {
         className="absolute inset-0 hero-bg"
         style={{
           // backgroundImage: `url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1920&q=80')`,
-          backgroundImage: `url('/assets/img/banner.webp')`,
+          backgroundImage: `url('/assets/img/hero/hero.webp')`,
         }}
       />
       {/* Deep overlay */}

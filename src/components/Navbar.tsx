@@ -15,6 +15,7 @@ export default function Navbar() {
     { label: "Beranda", href: "#hero" },
     { label: "Promo", href: "#promo" },
     { label: "Tipe Unit", href: "#units" },
+    { label: "Testimonial", href: "#testimonials" },
     { label: "Fasilitas", href: "#facilities" },
     { label: "Lokasi", href: "#location" },
     { label: "Kontak", href: "#contact" },

@@ -73,10 +73,9 @@ export default function Promo() {
           className={`relative rounded-none overflow-hidden mb-16 transition-all duration-1000 delay-200 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <div
-            className="relative h-72 md:h-96 bg-cover bg-center"
+            className="relative h-90 md:h-96 bg-cover bg-center"
             style={{
-              backgroundImage: `url('/assets/img/promo.webp')`,
-              // backgroundImage: `url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1400&q=80')`,
+              backgroundImage: `url('/assets/img/promo/promo-2.webp')`,
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-[#0f0e0c]/80 via-[#0f0e0c]/50 to-transparent" />
