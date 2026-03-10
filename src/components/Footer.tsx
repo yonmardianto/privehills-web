@@ -115,7 +115,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-center">
-          <div className="text-white/20 text-xs font-light">
+          <div className="text-white text-xs font-light">
             © {new Date().getFullYear()} Privé Hills Residence. Hak Cipta
             Dilindungi.
           </div>

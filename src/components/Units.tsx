@@ -15,7 +15,7 @@ const units = [
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
       "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
-      "https://images.unsplash.com/photo-1600210491892-03d54079d0a0?w=800&q=80",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
     ],
     specs: {
       pondasi: "Tapak beton",
@@ -200,6 +200,8 @@ export default function Units() {
                 <button
                   id={`btnGalleryUnit-${i}`}
                   key={i}
+                  aria-label={unit.name}
+                  title={unit.name}
                   onClick={() => setActiveImage(i)}
                   className={`aspect-[4/3] overflow-hidden border-2 transition-all duration-300 ${
                     activeImage === i
