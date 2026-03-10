@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const BASE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL || "https://privehillsresidence.id";
+
 export const metadata: Metadata = {
   title: "Privé Hills Residence | Hunian Premium Pamulang",
   description:
@@ -13,7 +16,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/img/banner.webp",
+        url: `${BASE_URL}/assets/img/banner.webp`,
         width: 1200,
         height: 630,
         alt: "Privé Hills Residence - Hunian Premium di Pamulang",
