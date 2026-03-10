@@ -17,7 +17,7 @@ export default function FloatingWhatsApp() {
         href="https://wa.me/6287867309782?text=Halo%2C%20saya%20tertarik%20dengan%20Prive%20Hills%20Residence.%20Boleh%20saya%20mendapat%20informasi%20lebih%20lanjut%3F"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-3 bg-[#25D366] text-white px-5 py-3.5 shadow-2xl shadow-black/40 hover:bg-[#1da851] transition-colors"
+        className="flex items-center gap-3 bg-[#25D366] text-black px-5 py-3.5 shadow-2xl shadow-black/40 hover:bg-[#1da851] transition-colors"
         aria-label="Chat via WhatsApp"
       >
         <svg

@@ -140,7 +140,7 @@ export default function Contact() {
               {[
                 {
                   label: "Marketing Office",
-                  value: "+62 811-1234-567",
+                  value: "+62 878-6730-9782",
                   icon: (
                     <svg
                       className="w-5 h-5"
@@ -156,7 +156,7 @@ export default function Contact() {
                       />
                     </svg>
                   ),
-                  href: "tel:+628111234567",
+                  href: "tel:+6287867309782",
                 },
                 {
                   label: "Email",
@@ -196,7 +196,7 @@ export default function Contact() {
                       />
                     </svg>
                   ),
-                  href: "https://maps.google.com",
+                  href: "https://maps.app.goo.gl/EK5MoVwUBqbSSx6T6",
                 },
                 {
                   label: "Jam Operasional",
@@ -222,6 +222,8 @@ export default function Contact() {
                 <a
                   key={i}
                   href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-4 bg-[#1a1814] border border-white/5 px-5 py-4 hover:border-[#c8a96e]/40 transition-all duration-300 group"
                 >
                   <div className="text-[#c8a96e]/60 group-hover:text-[#c8a96e] transition-colors flex-shrink-0">

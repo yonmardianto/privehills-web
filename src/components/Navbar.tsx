@@ -31,7 +31,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#hero" className="flex items-center gap-3 group">
+        <a href="/" className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-full border border-[#c8a96e]/60 flex items-center justify-center group-hover:border-[#c8a96e] transition-colors">
             <span className="text-[#c8a96e] font-display text-lg font-semibold leading-none">
               P
