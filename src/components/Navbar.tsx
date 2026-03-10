@@ -64,7 +64,7 @@ export default function Navbar() {
 
         {/* CTA */}
         <a
-          href="https://wa.me/628111234567?text=Halo,%20saya%20tertarik%20dengan%20Prive%20Hills%20Residence"
+          href="https://wa.me/6287867309782?text=Halo,%20saya%20tertarik%20dengan%20Prive%20Hills%20Residence"
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:flex items-center gap-2 bg-[#c8a96e] text-[#0f0e0c] px-5 py-2.5 text-xs tracking-widest uppercase font-semibold hover:bg-[#e4cc9a] transition-colors duration-300"

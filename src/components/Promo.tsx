@@ -90,7 +90,7 @@ export default function Promo() {
                   <span className="text-[#c8a96e]">Harga Terbaik</span>
                 </div>
                 <a
-                  href="https://wa.me/628111234567?text=Halo,%20saya%20ingin%20mengetahui%20promo%20Prive%20Hills%20Residence"
+                  href="https://wa.me/6287867309782?text=Halo,%20saya%20ingin%20mengetahui%20promo%20Prive%20Hills%20Residence"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-[#c8a96e] text-[#0f0e0c] px-6 py-3 text-xs tracking-widest uppercase font-semibold hover:bg-[#e4cc9a] transition-colors mt-2"

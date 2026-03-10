@@ -95,10 +95,10 @@ export default function Footer() {
                   WhatsApp
                 </div>
                 <a
-                  href="https://wa.me/628111234567"
+                  href="https://wa.me/6287867309782?text=Halo,%20saya%20ingin%20mengetahui%20tentang%20Prive%20Hills%20Residence"
                   className="text-white text-sm font-light hover:text-[#c8a96e] transition-colors"
                 >
-                  +62 811-1234-567
+                  +62 878-6730-9782
                 </a>
               </div>
               <div>

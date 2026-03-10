@@ -20,7 +20,7 @@ export default function Contact() {
   const handleWhatsApp = () => {
     const msg = `Halo, saya ${form.name}. Nomor HP: ${form.phone}. ${form.message || "Saya tertarik dengan Privé Hills Residence dan ingin mendapatkan informasi lebih lanjut."}`;
     window.open(
-      `https://wa.me/628111234567?text=${encodeURIComponent(msg)}`,
+      `https://wa.me/6287867309782?text=${encodeURIComponent(msg)}`,
       "_blank",
     );
   };
@@ -241,7 +241,7 @@ export default function Contact() {
 
             {/* Big WhatsApp CTA */}
             <a
-              href="https://wa.me/628111234567?text=Halo%2C%20saya%20tertarik%20dengan%20Prive%20Hills%20Residence"
+              href="https://wa.me/6287867309782?text=Halo%2C%20saya%20tertarik%20dengan%20Prive%20Hills%20Residence"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-4 border-2 border-[#c8a96e] py-5 text-[#c8a96e] hover:bg-[#c8a96e] hover:text-[#0f0e0c] transition-all duration-400 group"
