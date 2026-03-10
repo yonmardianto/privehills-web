@@ -78,7 +78,7 @@ export default function Footer() {
             </div>
             <div className="space-y-4">
               <div>
-                <div className="text-white text-xs tracking-widest uppercase mb-1">
+                <div className="text-white/50 text-xs tracking-widest uppercase mb-1">
                   Alamat
                 </div>
                 <div className="text-white text-sm font-light">
@@ -88,7 +88,7 @@ export default function Footer() {
                 </div>
               </div>
               <div>
-                <div className="text-white text-xs tracking-widest uppercase mb-1">
+                <div className="text-white/50 text-xs tracking-widest uppercase mb-1">
                   WhatsApp
                 </div>
                 <a
@@ -99,7 +99,7 @@ export default function Footer() {
                 </a>
               </div>
               <div>
-                <div className="text-white text-xs tracking-widest uppercase mb-1">
+                <div className="text-white/50 text-xs tracking-widest uppercase mb-1">
                   Email
                 </div>
                 <a
