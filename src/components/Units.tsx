@@ -192,13 +192,15 @@ export default function Units() {
 
         {/* Tab switcher */}
         <div
-          className={`flex gap-0 mb-12 border-b border-white/10 transition-all duration-800 delay-200 ${visible ? "opacity-100" : "opacity-0"}`}
+          className={`flex gap-0 mb-12 border-b border-white/10 transition-all duration-800 delay-200 overflow-x-auto no-scrollbar ${
+            visible ? "opacity-100" : "opacity-0"
+          }`}
         >
           {units.map((u, i) => (
             <button
               key={u.id}
               onClick={() => setActiveUnit(i)}
-              className={`px-8 py-4 text-sm tracking-widest uppercase font-light transition-all duration-300 relative ${
+              className={`flex-none min-w-[8rem] px-6 py-4 text-sm tracking-widest uppercase font-light transition-all duration-300 relative ${
                 activeUnit === i
                   ? "text-[#c8a96e]"
                   : "text-white/40 hover:text-white/70"
