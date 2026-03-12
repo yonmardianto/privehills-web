@@ -237,7 +237,7 @@ export default function Units() {
                   title={unit.name}
                   onClick={() => {
                     setActiveImage(i);
-                    setGalleryOpen(true);
+                    // setGalleryOpen(true);
                   }}
                   className={`aspect-[4/3] overflow-hidden border-2 transition-all duration-300 ${
                     activeImage === i
