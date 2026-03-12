@@ -61,9 +61,8 @@ export default function Footer() {
             </div>
             <ul className="space-y-3">
               {[
-                { label: "Beranda", href: "#hero" },
                 { label: "Promo Spesial", href: "#promo" },
-                { label: "Tipe Unit", href: "#units" },
+                { label: "Tipe Unit", href: "#units-hunian" },
                 { label: "Testimonial", href: "#testimonials" },
                 { label: "Fasilitas", href: "#facilities" },
                 { label: "Lokasi", href: "#location" },

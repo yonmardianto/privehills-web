@@ -113,7 +113,7 @@ export default function Hero() {
               Konsultasi Gratis
             </a>
             <a
-              href="#units"
+              href="#units-hunian"
               className="flex items-center justify-center gap-3 border border-white/30 text-white px-8 py-4 text-sm tracking-widest uppercase font-light hover:border-[#c8a96e] hover:text-[#c8a96e] transition-all duration-300"
             >
               Lihat Unit
