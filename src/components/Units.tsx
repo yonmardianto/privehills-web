@@ -110,7 +110,7 @@ const units = [
     landArea: 90,
     buildingArea: 96,
     images: Array.from(
-      { length: 8 },
+      { length: 9 },
       (_, i) => `${BASE_URL}/assets/img/unit/verbena/verbena-${i + 1}.webp`,
     ),
     specs: {
