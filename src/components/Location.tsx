@@ -3,40 +3,63 @@ import { useEffect, useRef, useState } from "react";
 
 const landmarks = [
   {
-    category: "Transportasi",
+    category: "Harga",
     items: [
-      "30 menit ke Bandara Soekarno Hatta",
-      "10 menit ke Gerbang Tol Pamulang",
-      "20 menit ke Stasiun Jurangmangu",
-      "15 menit ke Stasiun Rawa Buntu",
+      "Agave 1,3 M-an",
+      "Acacia 1,4 M-an",
+      "Stevia Hook 1,57 M-an",
+      "Verbena 1,79 M-an (KT 3+1 dan KM 2+1)",
+      "⁠Shophouse 2,29 M-an",
     ],
   },
   {
     category: "Pendidikan",
     items: [
-      "Universitas Pamulang (5 menit)",
-      "SMAN Pamulang (7 menit)",
-      "Sekolah Internasional (10 menit)",
-      "Institut Teknologi BSD (15 menit)",
-    ],
-  },
-  {
-    category: "Komersial",
-    items: [
-      "Pamulang Square (5 menit)",
-      "Living World (12 menit)",
-      "Transmart (8 menit)",
-      "AEON Mall (20 menit)",
+      "5 menit ke TK SD SMP SMA Kharisma Bangsa International School",
+      "10 menit ke SD SMP Mumtaza Cambridge Islamic School",
+      "5 menit ke Universitas Terbuka dan Universitas Sahid",
     ],
   },
   {
     category: "Kesehatan",
     items: [
-      "RS Pondok Indah (15 menit)",
-      "RS Ciputra (10 menit)",
-      "Klinik & Apotek (3 menit)",
-      "Puskesmas (5 menit)",
+      "RS Mitra Keluarga (5 menit)",
+      "RSIA Bunda (8 menit)",
+      "RS Sari Asih (10 menit)",
     ],
+  },
+  {
+    category: "Perbelanjaan",
+    items: [
+      "Indomaret Prive Hills (0 menit)",
+      "Superindo (5 menit)",
+      "Pasar Modern Pondok Cabe (5 menit)",
+      "Azko & Living Plaza (10 menit)",
+      "⁠Mall The Park Sawangan (15 menit)",
+    ],
+  },
+  {
+    category: "Kuliner",
+    items: [
+      "McDonald, KFC, Mie Gacoan, Kopi Kenangan (5 menit)",
+      "⁠Solaria, Hokben, Bebek Kaleyo, Sushi Yay, Mang Engking (10 menit)",
+    ],
+  },
+
+  {
+    category: "Tempat Ibadah",
+    items: [
+      "Musollah Prive Hills",
+      "⁠Masjid Jami Nurul Fadillah",
+      "⁠Lithang Bakti",
+      "Gereja GBI Kunir",
+      "Vihara Avalokitesvara",
+    ],
+  },
+
+  {
+    category: "Keamanan",
+    items: ["One Gate System", "Security 24 Hours", "⁠CCTV area"],
   },
 ];
 
@@ -192,7 +215,7 @@ export default function Location() {
             </div>
 
             {/* Stats row */}
-            <div className="grid grid-cols-3 gap-3 mt-8">
+            {/* <div className="grid grid-cols-3 gap-3 mt-8">
               {[
                 { value: "10 min", label: "ke Tol Pamulang" },
                 { value: "20 min", label: "ke Stasiun Jurangmangu" },
@@ -210,7 +233,7 @@ export default function Location() {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

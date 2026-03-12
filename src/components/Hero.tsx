@@ -92,7 +92,7 @@ export default function Hero() {
               Harga Mulai Dari
             </div>
             <div className="font-display text-3xl md:text-4xl text-[#c8a96e] font-light">
-              Rp1,41 Miliar
+              Rp 1,3 Miliar
             </div>
           </div>
 

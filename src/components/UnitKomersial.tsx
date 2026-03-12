@@ -6,131 +6,37 @@ const BASE_URL =
 
 const units = [
   {
-    id: "agave",
-    name: "Agave",
-    // tagline: "Compact & Smart",
-    price: "Rp 1,3 M-an",
-    bedroom: 3,
-    bathroom: 2,
-    landArea: 72,
-    buildingArea: 56,
+    id: "shophouse",
+    name: "Shophouse",
+    tagline: "Shophouse Strategis",
+    price: "Rp 2,2 M-an",
+    bathroom: 1,
+    landArea: 67.5,
+    buildingArea: 127,
     images: Array.from(
-      { length: 10 },
-      (_, i) => `${BASE_URL}/assets/img/unit/agave/agave-${i + 1}.webp`,
+      { length: 3 },
+      (_, i) => `${BASE_URL}/assets/img/unit/shophouse/shophouse-${i + 1}.webp`,
     ),
     // denah: `${BASE_URL}/assets/img/unit/agave/denah.webp`,
     specs: {
-      pondasi: "Tapak Beton, Batu Kali, Beton Bertulang",
-      struktur: "Beton bertulang",
-      dinding: "Bata Merah Finishing Plester Aci & Cat",
-      rangkaAtap: "Genteng Flat Keramik",
-      plafon: "Gypsum board",
-      lantaiUtamaDanRuangTidur: "Homogeneous Tile 60x60 cm",
-      lantaiKamarMandi: "Keramik Roman 25x25/setara",
-      carport: "Rabat Beton + Tali Air",
-      daunpintu: "Engineering Wood",
-      sanitary: "American Standard/setara",
-      air: "Sumur Pantek + Pompa",
-      listrik: "2.200 watt",
-    },
-  },
-  {
-    id: "acacia",
-    name: "Acacia",
-    // tagline: "Compact & Smart",
-    price: "Rp 1,4 M-an",
-    bedroom: 3,
-    bathroom: 2,
-    landArea: 72,
-    buildingArea: 72,
-    images: Array.from(
-      { length: 11 },
-      (_, i) => `${BASE_URL}/assets/img/unit/acacia/acacia-${i + 1}.webp`,
-    ),
-    // denah: `${BASE_URL}/assets/img/unit/acacia/denah.webp`,
-    specs: {
       pondasi: "Tiang Pancang",
       struktur: "Beton bertulang",
-      dinding: "Bata Merah Finishing Plester Aci & Cat",
-      dindingKamarMandi: "Keramik Roman 30x60 cm",
-      penutupAtap: "Spandek pasir",
+      dinding: "Bata Ringan",
+      finishing: "Plester + Aci + Cat",
+      dindingEksteriorDanInterior: "Emulsion Paint",
       rangkaAtap: "Baja Ringan",
-      plafon: "Gypsum board",
-      lantaiUtamaDanRuangTidur: "Homogeneous Tile 60x60 cm",
-      lantaiKamarMandi: "Keramik Roman 30x30 cm",
-      carport: "Rabat Beton + Tali Air",
-      daunpintu: "Engineering Door",
-      kusenJendelaPintu: "Aluminium",
-      sanitary: "American Standard",
-      air: "Sumur Pantek + Pompa",
-      listrik: "2.200 watt",
-    },
-  },
-
-  {
-    id: "stevia",
-    name: "Stevia",
-    // tagline: "Compact & Smart",
-    price: "Rp 1,57 M-an",
-    bedroom: 3,
-    bathroom: 2,
-    landArea: 84,
-    buildingArea: 72,
-    images: Array.from(
-      { length: 8 },
-      (_, i) => `${BASE_URL}/assets/img/unit/stevia/stevia-${i + 1}.webp`,
-    ),
-    // denah: `${BASE_URL}/assets/img/unit/stevia/denah.webp`,
-    specs: {
-      pondasi: "Tiang Pancang",
-      struktur: "Beton bertulang",
-      dinding: "Bata Merah Finishing Plester Aci & Cat",
-      dindingKamarMandi: "Keramik Roman 30x60 cm",
-      penutupAtap: "Spandek pasir",
-      rangkaAtap: "Baja Ringan",
-      plafon: "Gypsum board",
-      lantaiUtamaDanRuangTidur: "Homogeneous Tile 60x60 cm",
-      lantaiKamarMandi: "Keramik Roman 30x30 cm",
-      carport: "Rabat Beton + Tali Air",
-      daunpintu: "Engineer Door",
-      kusenJendelaPintu: "Aluminium",
-      sanitary: "American Standard / Setara",
-      air: "Sumur Pantek + Pompa",
-      listrik: "2.200 watt",
-    },
-  },
-
-  {
-    id: "verbena",
-    name: "Verbena",
-    // tagline: "Compact & Smart",
-    price: "Rp 1,79 M-an",
-    bedroom: 3,
-    bathroom: 2,
-    landArea: 90,
-    buildingArea: 96,
-    images: Array.from(
-      { length: 8 },
-      (_, i) => `${BASE_URL}/assets/img/unit/verbena/verbena-${i + 1}.webp`,
-    ),
-    specs: {
-      pondasi: "Tiang Pancang",
-      dinding: "Bata Merah",
-      finishing: "Plester Aci & Cat",
-      struktur: "Beton bertulang",
-      rangkaAtap: "Baja Ringan",
-      penutupAtap: "Genteng Flat Kanmuri Silk Black",
+      penutupAtap: "PVC White Doff Alderon",
       lantaiRuangan: "Homogeneous Tile 60x60",
-      lantaiKamarMandi: "Roman 30x60",
+      lantaiKamarMandi: "25x25",
+      dindingKamarMandi: "Roman 25x45 cm",
       sanitary: "American Standard",
-      kusenDanDaunPintu: "WPC",
-      kusenDanDaunJendela: "Aluminium Anodize + Kaca Bening 5 mm",
-      listrik: "2.200 watt",
+      kusenPintu: "Aluminium Anodize",
+      dayaListrik: "3500 watt",
     },
   },
 ];
 
-export default function Units() {
+export default function UnitsKomersial() {
   const [activeUnit, setActiveUnit] = useState(0);
   const [activeImage, setActiveImage] = useState(0);
   const [galleryOpen, setGalleryOpen] = useState(false);
@@ -169,7 +75,7 @@ export default function Units() {
   const unit = units[activeUnit];
 
   return (
-    <section id="units-hunian" className="py-28 bg-[#111009]" ref={ref}>
+    <section id="units-komersial" className="py-28 bg-[#111009]" ref={ref}>
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div
@@ -177,16 +83,16 @@ export default function Units() {
         >
           <div className="ornament-divider mb-6">
             <span className="text-[#c8a96e] text-xs tracking-[0.4em] uppercase">
-              Pilihan Hunian
+              Pilihan Unit Komersial
             </span>
           </div>
           <h2 className="font-display text-5xl md:text-6xl text-white font-light mb-4">
-            Tipe <span className="text-[#c8a96e] italic">Unit</span>
+            Tipe <span className="text-[#c8a96e] italic">Ruko</span>
           </h2>
           <p className="text-white/50 max-w-2xl mx-auto font-light leading-relaxed">
-            Tersedia dalam {units.length} pilihan tipe unit yang dirancang
-            dengan desain minimalis modern, memadukan estetika kontemporer
-            dengan kenyamanan hunian keluarga.
+            Tersedia Unit Komersial (Shophouse) dengan desain modern dan lokasi
+            strategis, ideal untuk usaha Anda berkembang di kawasan eksklusif
+            Prive Hills Residence.
           </p>
         </div>
 
@@ -290,7 +196,7 @@ export default function Units() {
               {/* Unit heading */}
               <div className="mb-6">
                 {/* <div className="text-[#c8a96e]/60 text-xs tracking-[0.4em] uppercase mb-1"> */}
-                {/* {unit.tagline} */}
+                {unit.tagline}
                 {/* </div> */}
                 <h3 className="font-display text-5xl text-white font-light">
                   {unit.name}
@@ -303,7 +209,6 @@ export default function Units() {
               {/* Stats */}
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {[
-                  { label: "Kamar Tidur", value: unit.bedroom, icon: "🛏" },
                   { label: "Kamar Mandi", value: unit.bathroom, icon: "🚿" },
                   {
                     label: "Luas Tanah",

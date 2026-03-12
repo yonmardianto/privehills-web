@@ -5,6 +5,7 @@ import Image from "next/image";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -13,13 +14,20 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: "Beranda", href: "#hero" },
     { label: "Promo", href: "#promo" },
-    { label: "Tipe Unit", href: "#units" },
+    {
+      label: "Tipe Unit",
+      href: "#",
+      submenu: [
+        { label: "Hunian", href: "#units-hunian" },
+        { label: "Komersial", href: "#units-komersial" },
+      ],
+    },
     { label: "Testimonial", href: "#testimonials" },
     { label: "Fasilitas", href: "#facilities" },
     { label: "Lokasi", href: "#location" },
     { label: "Kontak", href: "#contact" },
+    { label: "SitePlan", href: "#hero" },
   ];
 
   return (
@@ -37,8 +45,8 @@ export default function Navbar() {
             <Image
               src="/assets/img/logo-white.png"
               alt="Privé Hills Logo"
-              width={135}
-              height={135}
+              width={130}
+              height={130}
               className="object-contain transition-opacity duration-300 contrast-500 saturate-300 [image-rendering:crisp-edges]"
               priority
             />
@@ -48,14 +56,45 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <li key={link.label}>
+            <li key={link.label} className="relative group">
               <a
                 href={link.href}
-                className="text-white hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light transition-colors duration-300 relative group"
+                className="text-white hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light transition-colors duration-300 relative"
               >
                 {link.label}
+                {link.submenu && (
+                  <svg
+                    className="w-3 h-3 mt-0.5 inline-block"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                )}
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#c8a96e] transition-all duration-300 group-hover:w-full" />
               </a>
+
+              {/* Submenu */}
+              {link.submenu && (
+                <ul className="absolute left-0 top-full mt-2 w-48 rounded-xl bg-[#0f0e0c]/90 backdrop-blur-md border border-[#c8a96e]/20 py-2 opacity-0 pointer-events-none transition-all duration-200 group-hover:opacity-100 group-hover:pointer-events-auto">
+                  {link.submenu.map((sublink) => (
+                    <li key={sublink.label}>
+                      <a
+                        href={sublink.href}
+                        className="block text-white/70 hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light px-4 py-2"
+                      >
+                        {sublink.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>
@@ -95,14 +134,43 @@ export default function Navbar() {
       >
         <div className="bg-[#0f0e0c]/98 px-6 py-6 space-y-4 border-t border-[#c8a96e]/20">
           {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="block text-white/70 hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light transition-colors"
-            >
-              {link.label}
-            </a>
+            <div key={link.label}>
+              <button
+                type="button"
+                onClick={() => {
+                  if (link.submenu) {
+                    setMobileSubmenu((prev) =>
+                      prev === link.label ? null : link.label,
+                    );
+                  } else {
+                    setMenuOpen(false);
+                  }
+                }}
+                className="w-full text-left text-white/70 hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light transition-colors flex items-center justify-between"
+              >
+                {link.label}
+                {link.submenu && (
+                  <span className="text-xs">
+                    {mobileSubmenu === link.label ? "▲" : "▼"}
+                  </span>
+                )}
+              </button>
+
+              {link.submenu && mobileSubmenu === link.label && (
+                <div className="mt-2 space-y-2 pl-4">
+                  {link.submenu.map((sublink) => (
+                    <a
+                      key={sublink.label}
+                      href={sublink.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="block text-white/70 hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light"
+                    >
+                      {sublink.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
           <a
             href="https://wa.me/628111234567"
