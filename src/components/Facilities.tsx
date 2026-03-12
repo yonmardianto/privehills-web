@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 
 const facilities = [
   {
-    title: "Keamanan 24 Jam",
-    desc: "Sistem keamanan terpadu dengan one gate system, CCTV, dan petugas keamanan profesional",
+    title: "Keamanan",
+    desc: `Sistem keamanan terpadu dengan one gate system, CCTV, dan petugas keamanan profesional`,
     icon: (
       <svg
         className="w-8 h-8"
@@ -21,9 +21,14 @@ const facilities = [
       </svg>
     ),
   },
+
   {
-    title: "Taman & RTH",
-    desc: "Area ruang terbuka hijau yang asri, taman bermain anak, dan jogging track di lingkungan perumahan",
+    title: "Pendidikan",
+    desc: `<ul>
+             <li>5 menit ke TK SD SMP SMA Kharisma Bangsa International School</li>
+             <li>10 menit ke SD SMP Mumtaza Cambridge Islamic School</li>
+             <li>5 menit ke Universitas Terbuka dan Universitas Sahid</li>
+          </ul>`,
     icon: (
       <svg
         className="w-8 h-8"
@@ -35,14 +40,61 @@ const facilities = [
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={1.2}
-          d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+          d="M12 14l9-5-9-5-9 5 9 5z"
+        />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.2}
+          d="M12 14v7"
+        />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.2}
+          d="M7 21h10"
         />
       </svg>
     ),
   },
+
   {
-    title: "Area Komersial",
-    desc: "Fasilitas komersial strategis di dalam kawasan untuk memenuhi kebutuhan sehari-hari penghuni",
+    title: "Kesehatan",
+    desc: `<ul>
+             <li>RS Mitra Keluarga (5 menit)</li>
+             <li>⁠RSIA Bunda (8 menit)</li>
+             <li>⁠RS Sari Asih (10 menit)</li>
+          </ul>`,
+    icon: (
+      <svg
+        className="w-8 h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.2}
+          d="M12 8v8m4-4H8"
+        />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.2}
+          d="M4 13a8 8 0 1116 0 8 8 0 01-16 0z"
+        />
+      </svg>
+    ),
+  },
+
+  {
+    title: "Perbelanjaan",
+    desc: `<ul><li>Indomaret Prive Hills (0 menit) </li>
+           <li>⁠Superindo (5 menit) </li>
+           <li>Pasar Modern Pondok Cabe (5 menit) </li>
+           <li>Azko & Living Plaza (10 menit) </li>
+           <li>⁠Mall The Park Sawangan (15 menit) </li>`,
     icon: (
       <svg
         className="w-8 h-8"
@@ -60,8 +112,11 @@ const facilities = [
     ),
   },
   {
-    title: "Akses Mudah",
-    desc: "Infrastruktur jalan yang baik, dekat akses tol dan stasiun commuter line untuk mobilitas optimal",
+    title: "Kuliner",
+    desc: `<ul>
+        <li>McDonald, KFC, Mie Gacoan, Kopi Kenangan (5 menit)</li>
+        <li>Solaria, Hokben, Bebek Kaleyo, Sushi Yay, Mang Engking (10 menit)</li>
+    </ul>`,
     icon: (
       <svg
         className="w-8 h-8"
@@ -69,18 +124,32 @@ const facilities = [
         stroke="currentColor"
         viewBox="0 0 24 24"
       >
+        {/* Fork */}
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={1.2}
-          d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+          d="M6 2v4m0 0a2 2 0 000 4v12M6 6h0M8 2v4M4 2v4"
+        />
+        {/* Spoon */}
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.2}
+          d="M18 2a3 3 0 010 6v14"
         />
       </svg>
     ),
   },
   {
-    title: "Masjid & Mushola",
-    desc: "Fasilitas ibadah yang nyaman dan terawat untuk mendukung kehidupan spiritual penghuni",
+    title: "Tempat Ibadah",
+    desc: `<ul>
+           <li>Musollah Prive Hills</li>
+           <li>⁠Masjid Jami Nurul Fadillah</li>
+           <li>⁠Lithang Bakti</li>
+           <li>⁠Gereja GBI Kunir</li>
+           <li>⁠Vihara Avalokitesvara</li>
+     </ul>`,
     icon: (
       <svg
         className="w-8 h-8"
@@ -187,9 +256,10 @@ export default function Facilities() {
               <h3 className="text-white font-display text-xl font-light mb-3 group-hover:text-[#c8a96e] transition-colors duration-300">
                 {f.title}
               </h3>
-              <p className="text-white/40 text-sm font-light leading-relaxed">
-                {f.desc}
-              </p>
+              <div
+                className="text-white/40 text-sm font-light leading-relaxed prose-desc"
+                dangerouslySetInnerHTML={{ __html: f.desc }}
+              />
               <div className="mt-6 w-6 h-px bg-[#c8a96e]/40 group-hover:w-12 transition-all duration-500" />
             </div>
           ))}

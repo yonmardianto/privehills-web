@@ -166,10 +166,13 @@ body {
   max-height: 600px;
 }
 
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.prose-desc ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  space-y: 0.25rem;
 }
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+
+.prose-desc li {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
 }
