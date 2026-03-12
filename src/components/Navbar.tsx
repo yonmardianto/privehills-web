@@ -135,40 +135,46 @@ export default function Navbar() {
         <div className="bg-[#0f0e0c]/98 px-6 py-6 space-y-4 border-t border-[#c8a96e]/20">
           {navLinks.map((link) => (
             <div key={link.label}>
-              <button
-                type="button"
-                onClick={() => {
-                  if (link.submenu) {
-                    setMobileSubmenu((prev) =>
-                      prev === link.label ? null : link.label,
-                    );
-                  } else {
-                    setMenuOpen(false);
-                  }
-                }}
-                className="w-full text-left text-white/70 hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light transition-colors flex items-center justify-between"
-              >
-                {link.label}
-                {link.submenu && (
-                  <span className="text-xs">
-                    {mobileSubmenu === link.label ? "▲" : "▼"}
-                  </span>
-                )}
-              </button>
+              {link.submenu ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setMobileSubmenu((prev) =>
+                        prev === link.label ? null : link.label,
+                      )
+                    }
+                    className="w-full text-left text-white/70 hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light transition-colors flex items-center justify-between"
+                  >
+                    {link.label}
+                    <span className="text-xs">
+                      {mobileSubmenu === link.label ? "▲" : "▼"}
+                    </span>
+                  </button>
 
-              {link.submenu && mobileSubmenu === link.label && (
-                <div className="mt-2 space-y-2 pl-4">
-                  {link.submenu.map((sublink) => (
-                    <a
-                      key={sublink.label}
-                      href={sublink.href}
-                      onClick={() => setMenuOpen(false)}
-                      className="block text-white/70 hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light"
-                    >
-                      {sublink.label}
-                    </a>
-                  ))}
-                </div>
+                  {mobileSubmenu === link.label && (
+                    <div className="mt-2 space-y-2 pl-4">
+                      {link.submenu.map((sublink) => (
+                        <a
+                          key={sublink.label}
+                          href={sublink.href}
+                          onClick={() => setMenuOpen(false)}
+                          className="block text-white/70 hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light"
+                        >
+                          {sublink.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <a
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="block text-white/70 hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light"
+                >
+                  {link.label}
+                </a>
               )}
             </div>
           ))}
