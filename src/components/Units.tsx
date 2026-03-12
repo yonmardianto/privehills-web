@@ -1,89 +1,102 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 
+const BASE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL || "https://privehillsresidence.id";
+
 const units = [
   {
     id: "agave",
     name: "Agave",
-    tagline: "Compact & Smart",
-    price: "Rp1,41 Miliar",
+    // tagline: "Compact & Smart",
+    price: "Rp 1,3 M-an",
     bedroom: 3,
     bathroom: 2,
     landArea: 72,
     buildingArea: 56,
-    images: [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
-    ],
+    images: Array.from(
+      { length: 10 },
+      (_, i) => `${BASE_URL}/assets/img/unit/agave/agave-${i + 1}.webp`,
+    ),
+    // denah: `${BASE_URL}/assets/img/unit/agave/denah.webp`,
     specs: {
-      pondasi: "Tapak beton",
+      pondasi: "Tapak Beton, Batu Kali, Beton Bertulang",
       struktur: "Beton bertulang",
-      atap: "Spandek pasir",
-      rangkaAtap: "Baja ringan",
+      dinding: "Bata Merah Finishing Plester Aci & Cat",
+      rangkaAtap: "Genteng Flat Keramik",
       plafon: "Gypsum board",
-      dinding: "Bata merah, plester aci, cat",
-      lantai: "Homogeneous tile 60 x 60 cm",
-      kusen: "Aluminium",
-      sanitari: "American standard",
+      lantaiUtamaDanRuangTidur: "Homogeneous Tile 60x60 cm",
+      lantaiKamarMandi: "Keramik Roman 25x25/setara",
+      carport: "Rabat Beton + Tali Air",
+      daunpintu: "Engineering Wood",
+      sanitary: "American Standard/setara",
+      air: "Sumur Pantek + Pompa",
       listrik: "2.200 watt",
     },
   },
   {
-    id: "birch",
-    name: "Birch",
-    tagline: "Luas & Nyaman",
-    price: "Rp1,85 Miliar",
+    id: "acacia",
+    name: "Acacia",
+    // tagline: "Compact & Smart",
+    price: "Rp 1,4 M-an",
     bedroom: 3,
-    bathroom: 3,
-    landArea: 84,
+    bathroom: 2,
+    landArea: 72,
     buildingArea: 72,
-    images: [
-      "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&q=80",
-      "https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?w=800&q=80",
-      "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=800&q=80",
-      "https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=800&q=80",
-    ],
+    images: Array.from(
+      { length: 11 },
+      (_, i) => `${BASE_URL}/assets/img/unit/acacia/acacia-${i + 1}.webp`,
+    ),
+    // denah: `${BASE_URL}/assets/img/unit/acacia/denah.webp`,
     specs: {
-      pondasi: "Tapak beton",
+      pondasi: "Tiang Pancang",
       struktur: "Beton bertulang",
-      atap: "Spandek pasir",
-      rangkaAtap: "Baja ringan",
+      dinding: "Bata Merah Finishing Plester Aci & Cat",
+      dindingKamarMandi: "Keramik Roman 30x60 cm",
+      penutupAtap: "Spandek pasir",
+      rangkaAtap: "Baja Ringan",
       plafon: "Gypsum board",
-      dinding: "Bata merah, plester aci, cat",
-      lantai: "Homogeneous tile 60 x 60 cm",
-      kusen: "Aluminium",
-      sanitari: "American standard",
-      listrik: "3.300 watt",
+      lantaiUtamaDanRuangTidur: "Homogeneous Tile 60x60 cm",
+      lantaiKamarMandi: "Keramik Roman 30x30 cm",
+      carport: "Rabat Beton + Tali Air",
+      daunpintu: "Engineering Door",
+      kusenJendelaPintu: "Aluminium",
+      sanitary: "American Standard",
+      air: "Sumur Pantek + Pompa",
+      listrik: "2.200 watt",
     },
   },
+
   {
-    id: "cedar",
-    name: "Cedar",
-    tagline: "Premium & Mewah",
-    price: "Rp2,35 Miliar",
-    bedroom: 4,
-    bathroom: 3,
-    landArea: 90,
-    buildingArea: 96,
-    images: [
-      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
-      "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&q=80",
-      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80",
-      "https://images.unsplash.com/photo-1600047509782-20d39509f26d?w=800&q=80",
-    ],
+    id: "stevia",
+    name: "Stevia",
+    // tagline: "Compact & Smart",
+    price: "Rp 1,57 M-an",
+    bedroom: 3,
+    bathroom: 2,
+    landArea: 84,
+    buildingArea: 72,
+    images: Array.from(
+      { length: 8 },
+      (_, i) => `${BASE_URL}/assets/img/unit/stevia/stevia-${i + 1}.webp`,
+    ),
+    // denah: `${BASE_URL}/assets/img/unit/stevia/denah.webp`,
     specs: {
-      pondasi: "Tapak beton",
+      pondasi: "Tiang Pancang",
       struktur: "Beton bertulang",
-      atap: "Spandek pasir",
-      rangkaAtap: "Baja ringan",
+      dinding: "Bata Merah Finishing Plester Aci & Cat",
+      dindingKamarMandi: "Keramik Roman 30x60 cm",
+      penutupAtap: "Spandek pasir",
+      rangkaAtap: "Baja Ringan",
       plafon: "Gypsum board",
-      dinding: "Bata merah, plester aci, cat",
-      lantai: "Homogeneous tile 80 x 80 cm",
-      kusen: "Aluminium premium",
-      sanitari: "American standard",
-      listrik: "4.400 watt",
+      lantaiUtamaDanRuangTidur: "Homogeneous Tile 60x60 cm",
+      lantaiKamarMandi: "Keramik Roman 30x30 cm",
+      carport: "Rabat Beton + Tali Air",
+      daunpintu: "Engineer Door",
+      kusenJendelaPintu: "Aluminium",
+      sanitary: "American Standard / Setara",
+      air: "Sumur Pantek + Pompa",
+      listrik: "2.200 watt",
     },
   },
 ];
@@ -91,6 +104,7 @@ const units = [
 export default function Units() {
   const [activeUnit, setActiveUnit] = useState(0);
   const [activeImage, setActiveImage] = useState(0);
+  const [galleryOpen, setGalleryOpen] = useState(false);
   const [showSpec, setShowSpec] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -109,7 +123,19 @@ export default function Units() {
   useEffect(() => {
     setActiveImage(0);
     setShowSpec(false);
+    setGalleryOpen(false);
   }, [activeUnit]);
+
+  useEffect(() => {
+    if (!galleryOpen) return;
+
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setGalleryOpen(false);
+    };
+
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [galleryOpen]);
 
   const unit = units[activeUnit];
 
@@ -164,12 +190,19 @@ export default function Units() {
           {/* Gallery */}
           <div>
             <div className="gallery-item relative aspect-[4/3] overflow-hidden mb-3">
-              <img
-                key={unit.images[activeImage]}
-                src={unit.images[activeImage]}
-                alt={`${unit.name} - View ${activeImage + 1}`}
-                className="w-full h-full object-cover transition-all duration-700"
-              />
+              <button
+                type="button"
+                onClick={() => setGalleryOpen(true)}
+                className="w-full h-full cursor-zoom-in"
+                aria-label="Open gallery"
+              >
+                <img
+                  key={unit.images[activeImage]}
+                  src={unit.images[activeImage]}
+                  alt={`${unit.name} - View ${activeImage + 1}`}
+                  className="w-full h-full object-cover transition-all duration-700"
+                />
+              </button>
               {/* Image counter */}
               <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm px-3 py-1 text-white/70 text-xs tracking-wider">
                 {activeImage + 1} / {unit.images.length}
@@ -202,7 +235,10 @@ export default function Units() {
                   key={i}
                   aria-label={unit.name}
                   title={unit.name}
-                  onClick={() => setActiveImage(i)}
+                  onClick={() => {
+                    setActiveImage(i);
+                    setGalleryOpen(true);
+                  }}
                   className={`aspect-[4/3] overflow-hidden border-2 transition-all duration-300 ${
                     activeImage === i
                       ? "border-[#c8a96e]"
@@ -220,13 +256,13 @@ export default function Units() {
           </div>
 
           {/* Info */}
-          <div className="flex flex-col justify-between">
-            <div>
+          <div className="flex flex-col justify-between h-full">
+            <div className="flex-1 overflow-y-auto">
               {/* Unit heading */}
               <div className="mb-6">
-                <div className="text-[#c8a96e]/60 text-xs tracking-[0.4em] uppercase mb-1">
-                  {unit.tagline}
-                </div>
+                {/* <div className="text-[#c8a96e]/60 text-xs tracking-[0.4em] uppercase mb-1"> */}
+                {/* {unit.tagline} */}
+                {/* </div> */}
                 <h3 className="font-display text-5xl text-white font-light">
                   {unit.name}
                 </h3>
@@ -325,6 +361,74 @@ export default function Units() {
           </div>
         </div>
       </div>
+
+      {/* Gallery modal */}
+      {galleryOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4">
+          <div className="relative w-full max-w-5xl">
+            <button
+              type="button"
+              onClick={() => setGalleryOpen(false)}
+              className="absolute right-2 top-2 z-20 rounded-full bg-black/40 px-3 py-2 text-white/90 hover:bg-black/60"
+              aria-label="Close gallery"
+            >
+              ✕
+            </button>
+
+            <div className="relative">
+              <img
+                src={unit.images[activeImage]}
+                alt={`${unit.name} - View ${activeImage + 1}`}
+                className="w-full max-h-[80vh] object-contain"
+              />
+
+              <button
+                type="button"
+                onClick={() =>
+                  setActiveImage(
+                    (p) => (p - 1 + unit.images.length) % unit.images.length,
+                  )
+                }
+                className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/40 px-3 py-2 text-white/90 hover:bg-black/60"
+                aria-label="Previous image"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  setActiveImage((p) => (p + 1) % unit.images.length)
+                }
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/40 px-3 py-2 text-white/90 hover:bg-black/60"
+                aria-label="Next image"
+              >
+                ›
+              </button>
+            </div>
+
+            <div className="mt-4 flex items-center justify-center gap-2 overflow-x-auto pb-2">
+              {unit.images.map((img, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setActiveImage(i)}
+                  className={`h-16 w-24 flex-none overflow-hidden rounded border-2 transition-all duration-300 ${
+                    activeImage === i
+                      ? "border-[#c8a96e]"
+                      : "border-white/20 hover:border-white/40"
+                  }`}
+                >
+                  <img
+                    src={img}
+                    alt=""
+                    className="h-full w-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

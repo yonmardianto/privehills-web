@@ -29,13 +29,22 @@ export default function Footer() {
             </p>
             <div className="flex gap-3 mt-6">
               {[
-                { id: "instagram", Icon: FaInstagram },
-                { id: "facebook", Icon: FaFacebook },
-                { id: "youtube", Icon: FaYoutube },
-              ].map(({ id, Icon }) => (
+                {
+                  id: "instagram",
+                  link: "https://www.instagram.com/privehills.residence",
+                  Icon: FaInstagram,
+                },
+                {
+                  id: "facebook",
+                  link: "https://www.facebook.com/residences.privehills/",
+                  Icon: FaFacebook,
+                },
+              ].map(({ id, link, Icon }) => (
                 <a
                   key={id}
-                  href="#"
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={id}
                   className="w-9 h-9 border border-white/10 flex items-center justify-center text-white/30 hover:border-[#c8a96e]/40 hover:text-[#c8a96e] transition-all text-xs tracking-wider"
                 >
