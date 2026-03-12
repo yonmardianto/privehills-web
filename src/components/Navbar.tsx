@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -32,18 +33,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-full border border-[#c8a96e]/60 flex items-center justify-center group-hover:border-[#c8a96e] transition-colors">
-            <span className="text-[#c8a96e] font-display text-lg font-semibold leading-none">
-              P
-            </span>
-          </div>
-          <div>
-            <div className="text-white font-display text-base font-medium tracking-wider leading-none">
-              PRIVÉ HILLS
-            </div>
-            <div className="text-[#c8a96e] text-[10px] tracking-[0.3em] uppercase font-light">
-              Residence
-            </div>
+          <div className="flex-shrink-0">
+            <Image
+              src="/assets/img/logo.png"
+              alt="Privé Hills Logo"
+              width={120}
+              height={120}
+              className="object-contain transition-opacity duration-300 contrast-500 saturate-300 [image-rendering:crisp-edges]"
+              priority
+            />
           </div>
         </a>
 
