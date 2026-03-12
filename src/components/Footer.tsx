@@ -1,4 +1,4 @@
-import { FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
+import { FaInstagram, FaFacebook } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -8,9 +8,9 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-full border border-[#c8a96e]/60 flex items-center justify-center">
-                <span className="text-[#c8a96e] font-display text-lg font-semibold leading-none">
-                  P
+              <div className="w-20 h-20 rounded-full border border-[#c8a96e]/60 flex items-center justify-center">
+                <span className="text-[#c8a96e] font-display text-lg font-semibold leading-none text-center">
+                  PRIVE HILLS
                 </span>
               </div>
               <div>
