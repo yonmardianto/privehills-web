@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import BonusExtra from "./BonusExtra";
 
 export default function Promo() {
   const ref = useRef<HTMLDivElement>(null);
@@ -20,23 +21,28 @@ export default function Promo() {
   const promos = [
     {
       title: "Free Biaya KPR",
-      desc: "Gratis biaya administrasi, provisi, dan appraisal untuk pembelian dengan KPR",
+      desc: "Gratis biaya KPR hingga 40 JT",
       icon: "🏦",
     },
     {
-      title: "Cicilan Ringan",
-      desc: "Cicilan mulai Rp7 jutaan/bulan dengan uang muka ringan dan tenor fleksibel",
+      title: "KPR Cicilan Ringan",
+      desc: "KPR PROMO DP 0% bisa cicilan mulai Rp 7 Jutaan aja!",
       icon: "💳",
     },
     {
-      title: "Subsidi DP",
-      desc: "Subsidi uang muka hingga 20% untuk pembeli pertama yang memenuhi syarat",
+      title: "Subsidi DP KPR",
+      desc: "Subsidi DP 5% dan dapatkan kesempatan Booking Fee 10 JT All In",
       icon: "🎁",
     },
     {
-      title: "Free Smart Home",
-      desc: "Gratis pemasangan sistem smart home untuk 20 pembeli pertama",
+      title: "Free Smart Door Lock",
+      desc: "Gratis pemasangan smart door lock",
       icon: "🏠",
+    },
+    {
+      title: "Free Biaya Surat",
+      desc: "Gratis biaya BPHTB, AJB, SHM hingga balik nama",
+      icon: "📄",
     },
   ];
 
@@ -68,6 +74,9 @@ export default function Promo() {
             terbatas
           </p>
         </div>
+
+        {/* Bonus Extra Component element */}
+        <BonusExtra />
 
         {/* Banner */}
         <div
@@ -108,7 +117,7 @@ export default function Promo() {
         </div>
 
         {/* Promo cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {promos.map((promo, i) => (
             <div
               key={i}

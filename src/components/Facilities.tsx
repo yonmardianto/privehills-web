@@ -1,5 +1,7 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import BonusExtra from "./BonusExtra";
 
 const facilities = [
   {
@@ -42,7 +44,7 @@ const facilities = [
   },
   {
     title: "Area Komersial",
-    desc: "Fasilitas komersial strategis di dalam kawasan untuk memenuhi kebutuhan sehari-hari penghuni",
+    desc: "Fasilitas komersial untuk memenuhi kebutuhan harian Anda, berlokasi strategis di sekitar Prive Hills Residence mulai dari <ul><li>Tempat Perbelanjaan</li><li>Sekolah</li><li>Rumah Sakit</li></ul>",
     icon: (
       <svg
         className="w-8 h-8"
@@ -192,9 +194,11 @@ export default function Facilities() {
               key={i}
               className="relative w-full sm:flex-1 aspect-video overflow-hidden rounded-xl gallery-item"
             >
-              <img
+              <Image
                 src={item.src}
                 alt={item.label}
+                fill
+                priority
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
