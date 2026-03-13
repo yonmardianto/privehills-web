@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL || "https://privehillsresidence.id";
@@ -227,11 +228,13 @@ export default function Units() {
                 className="w-full h-full cursor-zoom-in"
                 aria-label="Open gallery"
               >
-                <img
+                <Image
                   key={unit.images[activeImage]}
                   src={unit.images[activeImage]}
                   alt={`${unit.name} - View ${activeImage + 1}`}
-                  className="w-full h-full object-cover transition-all duration-700"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  className="w-full h-full transition-all duration-700"
                 />
               </button>
               {/* Image counter */}
@@ -270,17 +273,13 @@ export default function Units() {
                     setActiveImage(i);
                     // setGalleryOpen(true);
                   }}
-                  className={`aspect-[4/3] overflow-hidden border-2 transition-all duration-300 ${
+                  className={`aspect-[4/3] overflow-hidden border-2 transition-all duration-300 relative ${
                     activeImage === i
                       ? "border-[#c8a96e]"
                       : "border-transparent opacity-50 hover:opacity-80"
                   }`}
                 >
-                  <img
-                    src={img}
-                    alt=""
-                    className="w-full h-full object-cover"
-                  />
+                  <Image src={img} alt="" fill style={{ objectFit: "cover" }} />
                 </button>
               ))}
             </div>
@@ -406,11 +405,12 @@ export default function Units() {
               ✕
             </button>
 
-            <div className="relative">
-              <img
+            <div className="relative w-full h-[80vh]">
+              <Image
                 src={unit.images[activeImage]}
                 alt={`${unit.name} - View ${activeImage + 1}`}
-                className="w-full max-h-[80vh] object-contain"
+                fill
+                style={{ objectFit: "contain" }}
               />
 
               <button
@@ -443,17 +443,13 @@ export default function Units() {
                   key={i}
                   type="button"
                   onClick={() => setActiveImage(i)}
-                  className={`h-16 w-24 flex-none overflow-hidden rounded border-2 transition-all duration-300 ${
+                  className={`h-16 w-24 flex-none overflow-hidden rounded border-2 transition-all duration-300 relative ${
                     activeImage === i
                       ? "border-[#c8a96e]"
                       : "border-white/20 hover:border-white/40"
                   }`}
                 >
-                  <img
-                    src={img}
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
+                  <Image src={img} alt="" fill style={{ objectFit: "cover" }} />
                 </button>
               ))}
             </div>
