@@ -27,7 +27,7 @@ export default function Navbar() {
     { label: "Fasilitas", href: "#facilities" },
     { label: "Lokasi", href: "#location" },
     { label: "Kontak", href: "#contact" },
-    { label: "SitePlan", href: "#hero" },
+    // { label: "SitePlan", href: "#hero" },
   ];
 
   return (
