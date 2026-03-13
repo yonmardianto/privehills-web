@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
@@ -20,14 +21,18 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Background image via CSS gradient + unsplash */}
-      <div
-        className="absolute inset-0 hero-bg"
-        style={{
-          // backgroundImage: `url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1920&q=80')`,
-          backgroundImage: `url('/assets/img/hero/hero.webp')`,
-        }}
-      />
+      <div className="absolute inset-0">
+        <Image
+          src="/assets/img/hero/hero.webp"
+          alt="Hero background"
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: "cover" }}
+          className="hero-bg"
+        />
+      </div>
+
       {/* Deep overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#0f0e0c]/90 via-[#0f0e0c]/70 to-[#0f0e0c]/30" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c] via-transparent to-[#0f0e0c]/40" />
