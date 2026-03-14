@@ -135,7 +135,6 @@ const bonusOptions = [
 export default function BonusExtra() {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-  const [selected, setSelected] = useState<string | null>(null);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -171,7 +170,7 @@ export default function BonusExtra() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div
-          className={`mb-6 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`mb-6 ornament-divider transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <div className="flex items-end gap-8">
             <h2 className="font-display text-2xl md:text-4xl text-white font-light leading-tight">

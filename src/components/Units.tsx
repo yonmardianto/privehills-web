@@ -2,6 +2,8 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
+type UnitId = "agave" | "acacia" | "stevia" | "verbena";
+
 const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL || "https://privehillsresidence.id";
 
@@ -9,17 +11,12 @@ const units = [
   {
     id: "agave",
     name: "Agave",
-    // tagline: "Compact & Smart",
     price: "Rp 1,3 M-an",
     bedroom: 3,
     bathroom: 2,
     landArea: 72,
     buildingArea: 56,
-    images: Array.from(
-      { length: 10 },
-      (_, i) => `${BASE_URL}/assets/img/unit/agave/agave-${i + 1}.webp`,
-    ),
-    // denah: `${BASE_URL}/assets/img/unit/agave/denah.webp`,
+    images: { length: 0 },
     specs: {
       pondasi: "Tapak Beton, Batu Kali, Beton Bertulang",
       struktur: "Beton bertulang",
@@ -38,17 +35,12 @@ const units = [
   {
     id: "acacia",
     name: "Acacia",
-    // tagline: "Compact & Smart",
     price: "Rp 1,4 M-an",
     bedroom: 3,
     bathroom: 2,
     landArea: 72,
     buildingArea: 72,
-    images: Array.from(
-      { length: 11 },
-      (_, i) => `${BASE_URL}/assets/img/unit/acacia/acacia-${i + 1}.webp`,
-    ),
-    // denah: `${BASE_URL}/assets/img/unit/acacia/denah.webp`,
+    images: { length: 0 },
     specs: {
       pondasi: "Tiang Pancang",
       struktur: "Beton bertulang",
@@ -71,17 +63,12 @@ const units = [
   {
     id: "stevia",
     name: "Stevia",
-    // tagline: "Compact & Smart",
     price: "Rp 1,57 M-an",
     bedroom: 3,
     bathroom: 2,
     landArea: 84,
     buildingArea: 72,
-    images: Array.from(
-      { length: 8 },
-      (_, i) => `${BASE_URL}/assets/img/unit/stevia/stevia-${i + 1}.webp`,
-    ),
-    // denah: `${BASE_URL}/assets/img/unit/stevia/denah.webp`,
+    images: { length: 0 },
     specs: {
       pondasi: "Tiang Pancang",
       struktur: "Beton bertulang",
@@ -104,16 +91,12 @@ const units = [
   {
     id: "verbena",
     name: "Verbena",
-    // tagline: "Compact & Smart",
     price: "Rp 1,79 M-an",
     bedroom: 3,
     bathroom: 2,
     landArea: 90,
     buildingArea: 96,
-    images: Array.from(
-      { length: 9 },
-      (_, i) => `${BASE_URL}/assets/img/unit/verbena/verbena-${i + 1}.webp`,
-    ),
+    images: { length: 0 },
     specs: {
       pondasi: "Tiang Pancang",
       dinding: "Bata Merah",
@@ -136,8 +119,25 @@ export default function Units() {
   const [activeImage, setActiveImage] = useState(0);
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [showSpec, setShowSpec] = useState(false);
+  const [unitFileCount, setUnitFileCount] = useState<Record<
+    UnitId,
+    number
+  > | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    async function fetchCounts() {
+      try {
+        const res = await fetch("/api/unit-count");
+        const data = await res.json();
+        setUnitFileCount(data);
+      } catch (error) {
+        console.error("Failed to fetch unit image counts", error);
+      }
+    }
+    fetchCounts();
+  }, []);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -168,6 +168,12 @@ export default function Units() {
   }, [galleryOpen]);
 
   const unit = units[activeUnit];
+  const effectiveImageCount =
+    unitFileCount?.[unit.id as UnitId] ?? unit.images.length;
+  const imageSources = Array.from(
+    { length: effectiveImageCount },
+    (_, i) => `${BASE_URL}/assets/img/unit/${unit.id}/${unit.id}-${i + 1}.webp`,
+  );
 
   return (
     <section id="units-hunian" className="py-28 bg-[#111009]" ref={ref}>
@@ -229,8 +235,8 @@ export default function Units() {
                 aria-label="Open gallery"
               >
                 <Image
-                  key={unit.images[activeImage]}
-                  src={unit.images[activeImage]}
+                  key={imageSources[activeImage]}
+                  src={imageSources[activeImage]}
                   alt={`${unit.name} - View ${activeImage + 1}`}
                   fill
                   style={{ objectFit: "cover" }}
@@ -239,13 +245,13 @@ export default function Units() {
               </button>
               {/* Image counter */}
               <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm px-3 py-1 text-white/70 text-xs tracking-wider">
-                {activeImage + 1} / {unit.images.length}
+                {activeImage + 1} / {imageSources.length}
               </div>
               {/* Nav arrows */}
               <button
                 onClick={() =>
                   setActiveImage(
-                    (p) => (p - 1 + unit.images.length) % unit.images.length,
+                    (p) => (p - 1 + imageSources.length) % imageSources.length,
                   )
                 }
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 backdrop-blur-sm flex items-center justify-center text-white/80 hover:bg-[#c8a96e]/80 hover:text-[#0f0e0c] transition-all"
@@ -254,7 +260,7 @@ export default function Units() {
               </button>
               <button
                 onClick={() =>
-                  setActiveImage((p) => (p + 1) % unit.images.length)
+                  setActiveImage((p) => (p + 1) % imageSources.length)
                 }
                 className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 backdrop-blur-sm flex items-center justify-center text-white/80 hover:bg-[#c8a96e]/80 hover:text-[#0f0e0c] transition-all"
               >
@@ -263,7 +269,7 @@ export default function Units() {
             </div>
             {/* Thumbnails */}
             <div className="grid grid-cols-4 gap-2">
-              {unit.images.map((img, i) => (
+              {imageSources.map((img, i) => (
                 <button
                   id={`btnGalleryUnit-${i}`}
                   key={i}
@@ -271,7 +277,6 @@ export default function Units() {
                   title={unit.name}
                   onClick={() => {
                     setActiveImage(i);
-                    // setGalleryOpen(true);
                   }}
                   className={`aspect-[4/3] overflow-hidden border-2 transition-all duration-300 relative ${
                     activeImage === i
@@ -407,7 +412,7 @@ export default function Units() {
 
             <div className="relative w-full h-[80vh]">
               <Image
-                src={unit.images[activeImage]}
+                src={imageSources[activeImage]}
                 alt={`${unit.name} - View ${activeImage + 1}`}
                 fill
                 style={{ objectFit: "contain" }}
@@ -417,7 +422,7 @@ export default function Units() {
                 type="button"
                 onClick={() =>
                   setActiveImage(
-                    (p) => (p - 1 + unit.images.length) % unit.images.length,
+                    (p) => (p - 1 + imageSources.length) % imageSources.length,
                   )
                 }
                 className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/40 px-3 py-2 text-white/90 hover:bg-black/60"
@@ -428,7 +433,7 @@ export default function Units() {
               <button
                 type="button"
                 onClick={() =>
-                  setActiveImage((p) => (p + 1) % unit.images.length)
+                  setActiveImage((p) => (p + 1) % imageSources.length)
                 }
                 className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/40 px-3 py-2 text-white/90 hover:bg-black/60"
                 aria-label="Next image"
@@ -438,7 +443,7 @@ export default function Units() {
             </div>
 
             <div className="mt-4 flex items-center justify-center gap-2 overflow-x-auto pb-2">
-              {unit.images.map((img, i) => (
+              {imageSources.map((img, i) => (
                 <button
                   key={i}
                   type="button"
