@@ -78,7 +78,7 @@ export default function Hero() {
 
           {/* Tagline */}
           <p
-            className={`text-white/60 text-base md:text-lg font-light leading-relaxed max-w-md mb-8 transition-all duration-1000 delay-600 ${
+            className={`text-white/60 text-base md:text-lg font-light leading-relaxed max-w-md mb-8 transition-all duration-1000 ${
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
