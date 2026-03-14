@@ -129,7 +129,7 @@ export default function UnitsKomersial() {
               <button
                 type="button"
                 onClick={() => setGalleryOpen(true)}
-                className="w-full h-full cursor-zoom-in"
+                className="w-full h-full relative cursor-zoom-in"
                 aria-label="Open gallery"
               >
                 <Image
@@ -137,6 +137,7 @@ export default function UnitsKomersial() {
                   src={unit.images[activeImage]}
                   alt={`${unit.name} - View ${activeImage + 1}`}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   style={{ objectFit: "cover" }}
                   className="w-full h-full transition-all duration-700"
                 />
@@ -183,7 +184,13 @@ export default function UnitsKomersial() {
                       : "border-transparent opacity-50 hover:opacity-80"
                   }`}
                 >
-                  <Image src={img} alt="" fill style={{ objectFit: "cover" }} />
+                  <Image
+                    src={img}
+                    alt=""
+                    fill
+                    style={{ objectFit: "cover" }}
+                    sizes="(max-width: 768px) 50vw, 20vw"
+                  />
                 </button>
               ))}
             </div>

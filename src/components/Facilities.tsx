@@ -199,6 +199,7 @@ export default function Facilities() {
                 alt={item.label}
                 fill
                 priority
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

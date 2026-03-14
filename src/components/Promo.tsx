@@ -84,7 +84,7 @@ export default function Promo() {
         >
           <div className="relative h-72 md:h-96">
             <Image
-              src="/assets/img/promo/promo-2.webp"
+              src="/assets/img/promo/promo.webp"
               alt="Promo banner"
               fill
               className="object-cover"

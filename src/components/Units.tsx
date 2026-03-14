@@ -16,7 +16,7 @@ const units = [
     bathroom: 2,
     landArea: 72,
     buildingArea: 56,
-    images: { length: 0 },
+    images: { length: 1 },
     specs: {
       pondasi: "Tapak Beton, Batu Kali, Beton Bertulang",
       struktur: "Beton bertulang",
@@ -231,7 +231,7 @@ export default function Units() {
               <button
                 type="button"
                 onClick={() => setGalleryOpen(true)}
-                className="w-full h-full cursor-zoom-in"
+                className="w-full h-full relative cursor-zoom-in"
                 aria-label="Open gallery"
               >
                 <Image
@@ -239,6 +239,7 @@ export default function Units() {
                   src={imageSources[activeImage]}
                   alt={`${unit.name} - View ${activeImage + 1}`}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   style={{ objectFit: "cover" }}
                   className="w-full h-full transition-all duration-700"
                 />
@@ -284,7 +285,13 @@ export default function Units() {
                       : "border-transparent opacity-50 hover:opacity-80"
                   }`}
                 >
-                  <Image src={img} alt="" fill style={{ objectFit: "cover" }} />
+                  <Image
+                    src={img}
+                    alt={unit.name}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 20vw"
+                    style={{ objectFit: "cover" }}
+                  />
                 </button>
               ))}
             </div>
@@ -415,6 +422,7 @@ export default function Units() {
                 src={imageSources[activeImage]}
                 alt={`${unit.name} - View ${activeImage + 1}`}
                 fill
+                sizes="100vw"
                 style={{ objectFit: "contain" }}
               />
 
