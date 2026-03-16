@@ -5,11 +5,11 @@ const landmarks = [
   {
     category: "Harga",
     items: [
-      "Agave 1,3 M-an",
-      "Acacia 1,4 M-an",
-      "Stevia Hook 1,57 M-an",
-      "Verbena 1,79 M-an (KT 3+1 dan KM 2+1)",
-      "⁠Shophouse 2,29 M-an",
+      "Agave - Mulai dari Rp 1,3 M",
+      "Acacia - Mulai dari Rp 1,4 M",
+      "Stevia - Mulai dari Rp 1,57 M",
+      "Verbena - Mulai dari Rp 1,79 M",
+      "⁠Shophouse - Mulai dari Rp 2,29 M",
     ],
   },
   {

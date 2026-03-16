@@ -5,11 +5,56 @@ const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL || "https://privehillsresidence.id";
 
 export const metadata: Metadata = {
-  title: "Privé Hills Residence | Hunian Premium Pamulang",
+  title:
+    "Privé Hills Residence | Perumahan Minimalis Modern di Pamulang, Tangerang Selatan",
   description:
-    "Privé Hills Residence – hunian minimalis modern di perbukitan Pamulang, Tangerang Selatan. Harga mulai Rp1,41 Miliar.",
-  keywords:
-    "rumah pamulang, privé hills residence, perumahan tangerang selatan, hunian modern",
+    "Privé Hills Residence – hunian eksklusif di perbukitan Pamulang, Tangerang Selatan. Harga mulai Rp 1,3 Miliar. KPR DP 0%, Free PPN, BPHTB & Biaya KPR hingga 40 Juta. Cek promo 2026!",
+  keywords: [
+    // Primary Keywords
+    "rumah dijual Pamulang",
+    "perumahan Pamulang Tangerang Selatan",
+    "rumah minimalis Pamulang",
+    "perumahan eksklusif Pamulang",
+    "Privé Hills Residence",
+    "Hunian modern Pamulang",
+
+    // Long-Tail / High Conversion
+    "perumahan KPR Pamulang",
+    "rumah 3 kamar tidur Pamulang",
+    "perumahan cluster Pamulang one gate system",
+    "rumah baru Tangerang Selatan dekat tol",
+    "perumahan dekat Stasiun Jurangmangu",
+    "beli rumah Pamulang DP rendah",
+    "perumahan minimalis modern Tangerang Selatan",
+
+    // Location-Based
+    "perumahan dekat BSD Tangerang",
+    "rumah dijual Ciputat Tangerang Selatan",
+    "hunian dekat Jakarta Selatan",
+    "perumahan Banten strategis",
+
+    // Commercial / Shophouse
+    "ruko dijual Pamulang",
+    "shophouse Pamulang Tangerang Selatan",
+    "investasi properti Pamulang",
+
+    // Feature-Based
+    "perumahan dengan kolam renang Pamulang",
+    "perumahan gated community Tangerang Selatan",
+    "rumah dengan clubhouse Pamulang",
+    "perumahan dekat sekolah rumah sakit Pamulang",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
+  // keywords:
+  //   "rumah pamulang, privé hills residence, perumahan tangerang selatan, hunian modern",
   openGraph: {
     title: "Privé Hills Residence",
     description: "Hunian premium di perbukitan Pamulang, Tangerang Selatan",
