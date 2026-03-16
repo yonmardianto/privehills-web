@@ -21,6 +21,7 @@ export default function Navbar() {
       submenu: [
         { label: "Hunian", href: "#units-hunian" },
         { label: "Komersial", href: "#units-komersial" },
+        { label: "Upcoming", href: "#upcoming-design" },
       ],
     },
     { label: "Testimonial", href: "#testimonials" },
