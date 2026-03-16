@@ -6,9 +6,9 @@ const BASE_URL =
 
 export const metadata: Metadata = {
   title:
-    "Privé Hills Residence | Perumahan Minimalis Modern di Pamulang, Tangerang Selatan",
+    "Prive Hills Residence | Perumahan Minimalis Modern di Pamulang, Tangerang Selatan",
   description:
-    "Privé Hills Residence – hunian eksklusif di perbukitan Pamulang, Tangerang Selatan. Harga mulai Rp 1,3 Miliar. KPR DP 0%, Free PPN, BPHTB & Biaya KPR hingga 40 Juta. Cek promo 2026!",
+    "Prive Hills Residence – hunian eksklusif di perbukitan Pamulang, Tangerang Selatan. Harga mulai Rp 1,3 Miliar. KPR DP 0%, Free PPN, BPHTB & Biaya KPR hingga 40 Juta. Cek promo 2026!",
   keywords: [
     // Primary Keywords
     "rumah dijual Pamulang",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   // keywords:
   //   "rumah pamulang, privé hills residence, perumahan tangerang selatan, hunian modern",
   openGraph: {
-    title: "Privé Hills Residence",
+    title: "Prive Hills Residence",
     description: "Hunian premium di perbukitan Pamulang, Tangerang Selatan",
     type: "website",
     images: [

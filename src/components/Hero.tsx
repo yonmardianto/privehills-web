@@ -61,13 +61,13 @@ export default function Hero() {
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <span className="text-white">Privé</span>{" "}
-            <span className="shimmer-gold italic">Hills</span>
-            <br />
-            <span className="text-white/80 text-4xl md:text-5xl lg:text-6xl not-italic font-light tracking-widest">
-              RESIDENCE
-            </span>
+            <span className="text-[#c8a96e]">Prive</span>{" "}
+            <span className="text-[#c8a96e] italic">Hills</span>{" "}
           </h1>
+
+          <span className="text-white/80 text-4xl md:text-5xl lg:text-6xl not-italic font-light tracking-widest font-display">
+            RESIDENCE
+          </span>
 
           {/* Divider */}
           <div
