@@ -1,10 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 
 export default function UpcomingDesign() {
   const items = [
+    {
+      title: "Upcoming",
+      subtitle: "Tipe 2BR + Study (Crafting Modern Living)",
+      status: "Progress 50%",
+      description:
+        "Unit baru dengan konsep mixed-use dan area hijau luas, siap hadir awal 2027.",
+      image: "/assets/img/upcoming/upcoming.webp",
+    },
     {
       title: "Upcoming",
       subtitle: "Tipe 2BR + Study (Crafting Modern Living)",
@@ -19,7 +28,6 @@ export default function UpcomingDesign() {
       status: "Progress 35%",
       description:
         "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
-
       image: "/assets/img/upcoming/upcoming-2.webp",
     },
     {
@@ -28,7 +36,6 @@ export default function UpcomingDesign() {
       status: "Progress 35%",
       description:
         "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
-
       image: "/assets/img/upcoming/upcoming-3.webp",
     },
     {
@@ -37,39 +44,92 @@ export default function UpcomingDesign() {
       status: "Progress 35%",
       description:
         "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
-
       image: "/assets/img/upcoming/upcoming-4.webp",
+    },
+    {
+      title: "Upcoming",
+      subtitle: "Tipe 3BR Family Home",
+      status: "Progress 35%",
+      description:
+        "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
+      image: "/assets/img/upcoming/upcoming-5.webp",
+    },
+    {
+      title: "Upcoming",
+      subtitle: "Tipe 3BR Family Home",
+      status: "Progress 35%",
+      description:
+        "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
+      image: "/assets/img/upcoming/upcoming-6.webp",
+    },
+    {
+      title: "Upcoming",
+      subtitle: "Tipe 3BR Family Home",
+      status: "Progress 35%",
+      description:
+        "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
+      image: "/assets/img/upcoming/upcoming-7.webp",
+    },
+    {
+      title: "Upcoming",
+      subtitle: "Tipe 3BR Family Home",
+      status: "Progress 35%",
+      description:
+        "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
+      image: "/assets/img/upcoming/upcoming-8.webp",
+    },
+    {
+      title: "Upcoming",
+      subtitle: "Tipe 3BR Family Home",
+      status: "Progress 35%",
+      description:
+        "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
+      image: "/assets/img/upcoming/upcoming-9.webp",
+    },
+    {
+      title: "Upcoming",
+      subtitle: "Tipe 3BR Family Home",
+      status: "Progress 35%",
+      description:
+        "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
+      image: "/assets/img/upcoming/upcoming-10.webp",
     },
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    skipSnaps: false,
+  });
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImage, setModalImage] = useState<string | null>(null);
-  const [touchStartX, setTouchStartX] = useState<number | null>(null);
-  const [touchMoved, setTouchMoved] = useState(false);
 
-  const goNext = () => setCurrentIndex((p) => (p + 1) % items.length);
-  const goPrev = () => setCurrentIndex((p) => (p - 1 + items.length) % items.length);
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
-  const handleSwipeMove = (clientX: number) => {
-    if (touchStartX === null) return;
-    const delta = touchStartX - clientX;
-    if (Math.abs(delta) > 50) {
-      if (delta > 0) goNext();
-      else goPrev();
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
 
-      setTouchStartX(null);
-      setTouchMoved(true);
-    }
-  };
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % items.length);
-    }, 5000);
+    if (!emblaApi) return;
+    emblaApi.on("select", onSelect);
+    onSelect();
+  }, [emblaApi, onSelect]);
 
+  useEffect(() => {
+    if (!emblaApi) return;
+    const timer = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 5000);
     return () => clearInterval(timer);
-  }, [items.length]);
+  }, [emblaApi]);
 
   useEffect(() => {
     if (!isModalOpen) return;
@@ -90,7 +150,7 @@ export default function UpcomingDesign() {
         <div className="text-center mb-12">
           <div className="ornament-divider mb-6">
             <span className="text-[#c8a96e] text-xs tracking-[0.4em] uppercase">
-              Introducing Our Upcoming Signature Ultimate Design
+              Our Upcoming Signature Ultimate Design
             </span>
           </div>
           <h2 className="font-display text-5xl md:text-6xl text-white font-light mb-4">
@@ -111,64 +171,61 @@ export default function UpcomingDesign() {
         </div>
 
         <div className="relative w-full max-w-5xl mx-auto">
-          {items.map((item, index) => (
-            <div
-              key={`${item.title}-${index}`}
-              className={`bg-[#161412] border border-white/10 rounded-xl overflow-hidden shadow-lg transition-all ${
-                index === currentIndex ? "block" : "hidden"
-              }`}
-            >
-              <button
-                type="button"
-                className="relative w-full h-56 sm:h-72 md:h-80 lg:h-96 overflow-hidden cursor-zoom-in"
-                onPointerDown={(e) => {
-                  setTouchStartX(e.clientX);
-                  setTouchMoved(false);
-                }}
-                onPointerMove={(e) => handleSwipeMove(e.clientX)}
-                onPointerUp={() => {
-                  setTouchStartX(null);
-                }}
-                onClick={() => {
-                  if (touchMoved) {
-                    setTouchMoved(false);
-                    return;
-                  }
-                  setModalImage(item.image);
-                  setIsModalOpen(true);
-                }}
-                aria-label={`View ${item.title} larger`}
-              >
-                <Image
-                  width={1280}
-                  height={960}
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                />
-              </button>
-              {/* <div className="p-5">
-                <p className="text-xs uppercase tracking-wider text-[#c8a96e] font-semibold mb-2">
-                  {item.status}
-                </p>
-                <h3 className="text-xl text-white font-semibold mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-white/60 mb-3">{item.subtitle}</p>
-                <p className="text-sm text-white/70 leading-relaxed">
-                  {item.description}
-                </p>
-              </div> */}
+          <div className="embla overflow-hidden" ref={emblaRef}>
+            <div className="embla__container flex">
+              {items.map((item, index) => (
+                <div
+                  className="embla__slide min-w-full flex justify-center"
+                  key={`${item.title}-${index}`}
+                >
+                  <div className="bg-[#161412] border border-white/10 rounded-xl overflow-hidden shadow-lg transition-all w-full">
+                    <button
+                      type="button"
+                      className="relative w-full h-56 sm:h-72 md:h-80 lg:h-96 overflow-hidden cursor-zoom-in"
+                      onClick={() => {
+                        setModalImage(item.image);
+                        setIsModalOpen(true);
+                      }}
+                      aria-label={`View ${item.title} larger`}
+                    >
+                      <Image
+                        width={1280}
+                        height={960}
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* <div className="mt-4 flex items-center justify-between">
+            <button
+              onClick={scrollPrev}
+              className="rounded-full bg-white/10 px-4 py-2 text-xs uppercase tracking-widest text-white hover:bg-white/20"
+              aria-label="Previous slide"
+            >
+              Prev
+            </button>
+            <button
+              onClick={scrollNext}
+              className="rounded-full bg-white/10 px-4 py-2 text-xs uppercase tracking-widest text-white hover:bg-white/20"
+              aria-label="Next slide"
+            >
+              Next
+            </button>
+          </div> */}
 
           <div className="flex justify-center gap-2 mt-4">
-            {items.map((_item, index) => (
+            {items.map((_, index) => (
               <button
                 key={`dot-${index}`}
-                onClick={() => setCurrentIndex(index)}
+                onClick={() => emblaApi?.scrollTo(index)}
                 className={`w-3 h-3 rounded-full transition-colors ${
-                  index === currentIndex ? "bg-[#c8a96e]" : "bg-white/30"
+                  index === selectedIndex ? "bg-[#c8a96e]" : "bg-white/30"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
