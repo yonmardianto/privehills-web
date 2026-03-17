@@ -45,6 +45,23 @@ export default function UpcomingDesign() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImage, setModalImage] = useState<string | null>(null);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchMoved, setTouchMoved] = useState(false);
+
+  const goNext = () => setCurrentIndex((p) => (p + 1) % items.length);
+  const goPrev = () => setCurrentIndex((p) => (p - 1 + items.length) % items.length);
+
+  const handleSwipeMove = (clientX: number) => {
+    if (touchStartX === null) return;
+    const delta = touchStartX - clientX;
+    if (Math.abs(delta) > 50) {
+      if (delta > 0) goNext();
+      else goPrev();
+
+      setTouchStartX(null);
+      setTouchMoved(true);
+    }
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -104,7 +121,19 @@ export default function UpcomingDesign() {
               <button
                 type="button"
                 className="relative w-full h-56 sm:h-72 md:h-80 lg:h-96 overflow-hidden cursor-zoom-in"
+                onPointerDown={(e) => {
+                  setTouchStartX(e.clientX);
+                  setTouchMoved(false);
+                }}
+                onPointerMove={(e) => handleSwipeMove(e.clientX)}
+                onPointerUp={() => {
+                  setTouchStartX(null);
+                }}
                 onClick={() => {
+                  if (touchMoved) {
+                    setTouchMoved(false);
+                    return;
+                  }
                   setModalImage(item.image);
                   setIsModalOpen(true);
                 }}
