@@ -82,7 +82,7 @@ export default function Navbar() {
 
               {/* Submenu */}
               {link.submenu && (
-                <ul className="absolute left-0 top-full mt-2 w-48 rounded-xl bg-[#0f0e0c]/90 backdrop-blur-md border border-[#c8a96e]/20 py-2 opacity-0 pointer-events-none transition-all duration-200 group-hover:opacity-100 group-hover:pointer-events-auto">
+                <ul className="absolute left-0 top-full mt-0 w-48 rounded-xl bg-[#0f0e0c]/90 backdrop-blur-md border border-[#c8a96e]/20 py-2 opacity-0 pointer-events-none transition-transform duration-200 transform -translate-y-2 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0">
                   {link.submenu.map((sublink) => (
                     <li key={sublink.label}>
                       <a

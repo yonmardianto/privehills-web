@@ -15,7 +15,7 @@ export default function Footer() {
               </div>
               <div>
                 <div className="text-white font-display text-base font-medium tracking-wider leading-none">
-                  PRIVÉ HILLS
+                  PRIVE HILLS
                 </div>
                 <div className="text-[#c8a96e] text-[10px] tracking-[0.3em] uppercase font-light">
                   Residence
@@ -92,9 +92,8 @@ export default function Footer() {
                   Alamat
                 </div>
                 <div className="text-white text-sm font-light">
-                  Pamulang, Tangerang Selatan,
-                  <br />
-                  Banten 15417
+                  Jl. Kunir No.53 Pondok Cabe Udik, Kec. Pamulang, Tangerang
+                  Selatan Banten 15418
                 </div>
               </div>
               <div>
@@ -126,7 +125,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-center">
           <div className="text-white text-xs font-light">
-            © {new Date().getFullYear()} Privé Hills Residence. Hak Cipta
+            © {new Date().getFullYear()} Prive Hills Residence. Hak Cipta
             Dilindungi.
           </div>
           {/* <div className="text-white/20 text-xs font-light">
