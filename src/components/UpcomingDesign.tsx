@@ -150,23 +150,24 @@ export default function UpcomingDesign() {
         <div className="text-center mb-12">
           <div className="ornament-divider mb-6">
             <span className="text-[#c8a96e] text-xs tracking-[0.4em] uppercase">
-              Our Upcoming Signature Ultimate Design
+              Upcoming Signature Ultimate Design
             </span>
           </div>
           <h2 className="font-display text-5xl md:text-6xl text-white font-light mb-4">
             Upcoming <span className="text-[#c8a96e] italic">Design</span>
           </h2>
           <p className="text-white/60 max-w-2xl mx-auto font-light">
-            A new interpretation of modern living, designed with bold
-            architecture, warm textures, and thoughtfully crafted interiors.
+            Sebuah interpretasi baru dari hunian modern, dirancang dengan
+            arsitektur yang berani, tekstur yang hangat, serta interior yang
+            dibuat dengan penuh perhatian.
           </p>
           <br />
 
           <p className="text-white/60 max-w-2xl mx-auto font-light">
-            Experience a home that blends modern design with everyday comfort.
-            Featuring open living spaces, elegant interiors, and natural light
-            throughout the house, this new unit design is created to support the
-            lifestyle of modern families.
+            Rasakan rumah yang menggabungkan desain modern dengan kenyamanan
+            sehari-hari. Menyajikan ruang tamu terbuka, interior yang elegan,
+            dan cahaya alami di seluruh rumah, desain unit baru ini dibuat untuk
+            mendukung gaya hidup keluarga modern.
           </p>
         </div>
 
