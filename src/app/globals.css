@@ -16,9 +16,14 @@
 }
 
 body {
-  font-family: var(--font-body);
+  /* font-family: var(--font-body); */
+  font-family: var(--font-jost), sans-serif;
   background-color: var(--dark);
   color: #e8e0d0;
+}
+
+h1, h2 {
+  font-family: var(--font-cormorant), serif;
 }
 
 @layer utilities {
@@ -32,7 +37,7 @@ body {
     border-color: var(--gold);
   }
   .font-display {
-    font-family: var(--font-display);
+    font-family: var(--font-cormorant);
   }
 }
 
