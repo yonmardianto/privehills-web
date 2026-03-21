@@ -145,7 +145,7 @@ export default function UpcomingDesign() {
   }, [isModalOpen]);
 
   return (
-    <section id="upcoming-design" className="py-20 bg-[#0f0e0c]">
+    <section id="upcoming-design" className="pb-20 pt-18 bg-[#0f0e0c]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <div className="ornament-divider mb-6">
