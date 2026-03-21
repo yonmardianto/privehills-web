@@ -57,7 +57,7 @@ export default function Hero() {
 
           {/* Headline */}
           <h1
-            className={`font-display text-4xl md:text-8xl lg:text-9xl font-light leading-[0.9] mb-4 transition-all duration-1000 delay-300 ${
+            className={`font-display text-4xl md:text-8xl lg:text-9xl font-light leading-[0.9] mb-4 transition-all  ${
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
