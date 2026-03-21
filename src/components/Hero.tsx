@@ -160,12 +160,12 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+      {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
         <span className="text-white/30 text-xs tracking-widest uppercase">
           Scroll
         </span>
         <div className="w-px h-8 bg-gradient-to-b from-[#c8a96e]/40 to-transparent" />
-      </div>
+      </div> */}
     </section>
   );
 }

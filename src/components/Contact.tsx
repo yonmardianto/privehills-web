@@ -35,7 +35,7 @@ export default function Contact() {
       <div
         className="absolute inset-0 bg-cover bg-center opacity-10"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1920&q=80')`,
+          backgroundImage: `url('/assets/img/photo-contact.jpg')`,
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0f0e0c] via-transparent to-[#0f0e0c]" />
