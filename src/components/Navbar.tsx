@@ -43,7 +43,7 @@ export default function Navbar() {
         <a href="/" className="flex items-center gap-3 group">
           <div className="flex-shrink-0">
             <Image
-              src="/assets/img/logo-white.png"
+              src="/assets/img/logo-white.svg"
               alt="Privé Hills Logo"
               width={130}
               height={130}
