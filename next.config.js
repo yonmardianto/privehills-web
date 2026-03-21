@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      "localhost",
-      "privehillsresidence.id",
-      "privehills-web.vercel.app",
+    remotePatterns: [
+      { protocol: "http", hostname: "localhost" },
+      { protocol: "https", hostname: "privehillsresidence.id" },
+      { protocol: "https", hostname: "privehills-web.vercel.app" },
     ],
     minimumCacheTTL: 60 * 60 * 24 * 7, // 7 day in seconds
   },

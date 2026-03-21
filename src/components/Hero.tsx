@@ -29,6 +29,7 @@ export default function Hero() {
           priority
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
           style={{ objectFit: "cover" }}
+          quality={60}
           className="hero-bg"
         />
       </div>
