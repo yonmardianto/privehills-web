@@ -9,17 +9,19 @@ const BASE_URL =
 
 export const metadata: Metadata = {
   title:
-    "Prive Hills Residence | Perumahan Minimalis Modern di Pamulang, Tangerang Selatan",
+    "Prive Hills Residence | Hunian minimalis modern di area Pondok Cabe. Eksklusif, menawarkan privasi, keamanan, dan ketenangan untuk keluarga Anda",
   description:
-    "Prive Hills Residence – hunian eksklusif di perbukitan Pamulang, Tangerang Selatan. Harga mulai Rp 1,3 Miliar. KPR DP 0%, Free PPN, BPHTB & Biaya KPR hingga 40 Juta. Cek promo 2026!",
+    "Prive Hills Residence – Hunian minimalis modern di area Pondok Cabe. Eksklusif, menawarkan privasi, keamanan, dan ketenangan untuk keluarga Anda. Harga mulai Rp 1,3 Miliar. KPR DP 0%, Free PPN, BPHTB & Biaya KPR hingga 40 Juta.",
   keywords: [
     // Primary Keywords
-    "rumah dijual Pamulang",
-    "perumahan Pamulang Tangerang Selatan",
-    "rumah minimalis Pamulang",
-    "perumahan eksklusif Pamulang",
-    "Privé Hills Residence",
+    "Rumah dijual Pamulang",
+    "Perumahan Pamulang Tangerang Selatan",
+    "Rumah minimalis Pamulang",
+    "Perumahan eksklusif Pamulang",
+    "Prive Hills Residence",
     "Hunian modern Pamulang",
+    "Hunian minimalis modern",
+    "Hunian eksklusif Pondok Cabe",
 
     // Long-Tail / High Conversion
     "perumahan KPR Pamulang",

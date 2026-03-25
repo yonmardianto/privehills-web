@@ -184,8 +184,11 @@ export default function Facilities() {
           className={`mt-16 grid grid-cols-1 sm:grid-cols-3 gap-3 transition-all duration-800 delay-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           {[
-            { src: "/assets/img/swimming_pool.webp", label: "Swimming Pool" },
-            { src: "/assets/img/clubhouse.webp", label: "Clubhouse" },
+            {
+              src: "/assets/img/swimmingpool-new.webp",
+              label: "Swimming Pool",
+            },
+            { src: "/assets/img/clubhouse-new.webp", label: "Clubhouse" },
             { src: "/assets/img/playground.webp", label: "Playground" },
           ].map((item, i) => (
             // <div key={i} className="gallery-item aspect-video overflow-hidden">

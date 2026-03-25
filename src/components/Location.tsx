@@ -160,7 +160,7 @@ export default function Location() {
               </div>
               <div>
                 <div className="text-white font-display text-base font-light mb-1">
-                  Privé Hills Residence
+                  Prive Hills Residence
                 </div>
                 <div className="text-white/50 text-sm font-light">
                   Pamulang, Tangerang Selatan, Banten, Indonesia
