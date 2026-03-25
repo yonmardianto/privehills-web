@@ -125,7 +125,10 @@ const carouselGroups = [
   {
     id: "playground",
     label: "Playground",
-    images: ["/assets/img/facilities/playground/playground-1.webp"],
+    images: [
+      "/assets/img/facilities/playground/playground-1.webp",
+      "/assets/img/facilities/playground/playground-2.webp",
+    ],
   },
 ];
 

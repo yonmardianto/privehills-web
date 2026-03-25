@@ -155,17 +155,8 @@ export default function UpcomingDesign() {
           </div>
 
           <p className="text-white/60 max-w-2xl mx-auto font-light">
-            Sebuah interpretasi baru dari hunian modern, dirancang dengan
-            arsitektur yang berani, tekstur yang hangat, serta interior yang
-            dibuat dengan penuh perhatian.
-          </p>
-          <br />
-
-          <p className="text-white/60 max-w-2xl mx-auto font-light">
-            Rasakan rumah yang menggabungkan desain modern dengan kenyamanan
-            sehari-hari. Menyajikan ruang tamu terbuka, interior yang elegan,
-            dan cahaya alami di seluruh rumah, desain unit baru ini dibuat untuk
-            mendukung gaya hidup keluarga modern.
+            TerraFold adalah hunian tropis modern yang berkarakter mewakili rasa
+            hangat, kenyamanan, dan sebagai ruang tumbuh bagi pemiliknya.
           </p>
         </div>
 

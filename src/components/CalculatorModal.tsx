@@ -13,6 +13,7 @@ export default function CalculatorModal({
   const [price, setPrice] = useState<string>("");
   const [downPayment, setDownPayment] = useState<string>("");
   const [tenor, setTenor] = useState<string>("");
+  const [bank, setBank] = useState<string>("BCA");
   const [monthlyPayment, setMonthlyPayment] = useState<number | null>(null);
   const [error, setError] = useState<string>("");
 
@@ -22,6 +23,7 @@ export default function CalculatorModal({
       setPrice("");
       setDownPayment("");
       setTenor("");
+      setBank("BCA");
       setMonthlyPayment(null);
       setError("");
     }
@@ -42,13 +44,15 @@ export default function CalculatorModal({
     const priceNum = parseFloat(price.replace(/,/g, ""));
     const downPaymentNum = parseFloat(downPayment.replace(/,/g, ""));
     const tenorNum = parseInt(tenor);
+    const annualRate = bank === "BCA" ? 0.03 : bank === "BRI" ? 0.05 : 0.045;
 
     const msg = `Halo, saya tertarik dengan kalkulasi KPR:
+- Bank: ${bank}
+- Bunga: ${(annualRate * 100).toFixed(1)}% per tahun
 - Harga Properti: Rp ${priceNum.toLocaleString("id-ID")}
 - Down Payment: Rp ${downPaymentNum.toLocaleString("id-ID")}
 - Tenor: ${tenorNum} tahun
 - Estimasi Cicilan Bulanan: Rp ${monthlyPayment?.toLocaleString("id-ID")}
-- Bunga: 8.5% per tahun
 
 Saya ingin mendapatkan informasi lebih lanjut.`;
 
@@ -79,7 +83,7 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
     }
 
     const loanAmount = priceNum - downPaymentNum;
-    const annualRate = 0.085; // 8.5%
+    const annualRate = bank === "BCA" ? 0.03 : bank === "BRI" ? 0.05 : 0.045;
     const monthlyRate = annualRate / 12;
     const numberOfPayments = tenorNum * 12;
 
@@ -166,6 +170,27 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
             />
           </div>
 
+          <div>
+            <label className="text-white/40 text-xs tracking-widest uppercase block mb-2">
+              Nama Bank
+            </label>
+            <select
+              value={bank}
+              onChange={(e) => setBank(e.target.value)}
+              className="w-full bg-transparent border border-white/10 px-4 py-3 text-white/80 text-sm focus:border-[#c8a96e]/50 focus:outline-none transition-colors"
+            >
+              <option className="text-black" value="BCA">
+                Bank BCA (3%)
+              </option>
+              <option className="text-black" value="BRI">
+                Bank BRI (5%)
+              </option>
+              <option className="text-black" value="BTN">
+                Bank BTN (4.5%)
+              </option>
+            </select>
+          </div>
+
           {error && (
             <div className="text-red-400 text-sm bg-red-400/10 border border-red-400/20 px-3 py-2 rounded">
               {error}
@@ -188,7 +213,8 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
                 Rp {monthlyPayment.toLocaleString("id-ID")}
               </div>
               <div className="text-white/50 text-xs mt-1">
-                *Bunga 8.5% per tahun, belum termasuk biaya administrasi
+                *Bunga {bank === "BCA" ? "3%" : bank === "BRI" ? "5%" : "4.5%"}{" "}
+                per tahun, belum termasuk biaya administrasi
               </div>
               <button
                 onClick={handleContactUs}
