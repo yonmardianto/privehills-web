@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 
 const facilities = [
   {
@@ -101,9 +102,47 @@ const facilities = [
   },
 ];
 
+const carouselGroups = [
+  {
+    id: "swimming-pool",
+    label: "Swimming Pool",
+    images: [
+      "/assets/img/facilities/swimming-pool/swimming-1.webp",
+      "/assets/img/facilities/swimming-pool/swimming-2.webp",
+      "/assets/img/facilities/swimming-pool/swimming-3.webp",
+      "/assets/img/facilities/swimming-pool/swimming-4.webp",
+    ],
+  },
+  {
+    id: "clubhouse",
+    label: "Clubhouse",
+    images: [
+      "/assets/img/facilities/clubhouse/clubhouse-1.webp",
+      "/assets/img/facilities/clubhouse/clubhouse-2.webp",
+      "/assets/img/facilities/clubhouse/clubhouse-3.webp",
+    ],
+  },
+  {
+    id: "playground",
+    label: "Playground",
+    images: ["/assets/img/facilities/playground/playground-1.webp"],
+  },
+];
+
 export default function Facilities() {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+
+  const [swimRef, swimApi] = useEmblaCarousel({ loop: true, skipSnaps: false });
+  const [clubRef, clubApi] = useEmblaCarousel({ loop: true, skipSnaps: false });
+  const [playRef, playApi] = useEmblaCarousel({ loop: true, skipSnaps: false });
+
+  const [swimSelected, setSwimSelected] = useState(0);
+  const [clubSelected, setClubSelected] = useState(0);
+  const [playSelected, setPlaySelected] = useState(0);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalImage, setModalImage] = useState<string | null>(null);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -116,10 +155,60 @@ export default function Facilities() {
     return () => obs.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!swimApi) return;
+    const onSelect = () => setSwimSelected(swimApi.selectedScrollSnap());
+    swimApi.on("select", onSelect);
+    onSelect();
+  }, [swimApi]);
+
+  useEffect(() => {
+    if (!clubApi) return;
+    const onSelect = () => setClubSelected(clubApi.selectedScrollSnap());
+    clubApi.on("select", onSelect);
+    onSelect();
+  }, [clubApi]);
+
+  useEffect(() => {
+    if (!playApi) return;
+    const onSelect = () => setPlaySelected(playApi.selectedScrollSnap());
+    playApi.on("select", onSelect);
+    onSelect();
+  }, [playApi]);
+
+  const swimScrollNext = useCallback(() => {
+    if (swimApi) swimApi.scrollNext();
+  }, [swimApi]);
+
+  const swimScrollPrev = useCallback(() => {
+    if (swimApi) swimApi.scrollPrev();
+  }, [swimApi]);
+
+  const clubScrollNext = useCallback(() => {
+    if (clubApi) clubApi.scrollNext();
+  }, [clubApi]);
+
+  const clubScrollPrev = useCallback(() => {
+    if (clubApi) clubApi.scrollPrev();
+  }, [clubApi]);
+
+  const playScrollNext = useCallback(() => {
+    if (playApi) playApi.scrollNext();
+  }, [playApi]);
+
+  const playScrollPrev = useCallback(() => {
+    if (playApi) playApi.scrollPrev();
+  }, [playApi]);
+
+  const openModal = (image: string) => {
+    setModalImage(image);
+    setIsModalOpen(true);
+  };
+
   return (
     <section
       id="facilities"
-      className="py-28 relative overflow-hidden bg-[#0f0e0c]"
+      className="py-20 relative overflow-hidden bg-[#0f0e0c]"
       ref={ref}
     >
       {/* Decorative element */}
@@ -179,39 +268,184 @@ export default function Facilities() {
           ))}
         </div>
 
-        {/* Full-width image strip */}
-        <div
-          className={`mt-16 grid grid-cols-1 sm:grid-cols-3 gap-3 transition-all duration-800 delay-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-        >
-          {[
-            {
-              src: "/assets/img/swimmingpool-new.webp",
-              label: "Swimming Pool",
-            },
-            { src: "/assets/img/clubhouse-new.webp", label: "Clubhouse" },
-            { src: "/assets/img/playground.webp", label: "Playground" },
-          ].map((item, i) => (
-            // <div key={i} className="gallery-item aspect-video overflow-hidden">
-            <div
-              key={i}
-              className="relative w-full sm:flex-1 aspect-video overflow-hidden rounded-xl gallery-item"
-            >
-              <Image
-                src={item.src}
-                alt={item.label}
-                fill
-                priority
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              {/* Absolutely positioned text */}
-              <p className="absolute bottom-4 left-4 text-white text-lg font-semibold tracking-wide drop-shadow-md">
-                {item.label}
-              </p>
-            </div>
-          ))}
+        {/* Facility Carousels */}
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {carouselGroups.map((group, groupIndex) => {
+            const isSwimming = group.id === "swimming-pool";
+            const isClubhouse = group.id === "clubhouse";
+            const isPlayground = group.id === "playground";
+
+            const emblaRef = isSwimming
+              ? swimRef
+              : isClubhouse
+                ? clubRef
+                : playRef;
+            const selectedIndex = isSwimming
+              ? swimSelected
+              : isClubhouse
+                ? clubSelected
+                : playSelected;
+            const scrollNext = isSwimming
+              ? swimScrollNext
+              : isClubhouse
+                ? clubScrollNext
+                : playScrollNext;
+            const scrollPrev = isSwimming
+              ? swimScrollPrev
+              : isClubhouse
+                ? clubScrollPrev
+                : playScrollPrev;
+
+            return (
+              <div
+                key={group.id}
+                className={`transition-all duration-800 ${
+                  visible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8"
+                }`}
+                style={{ transitionDelay: `${500 + groupIndex * 200}ms` }}
+              >
+                {/* <h3 className="text-[#c8a96e] text-2xl font-bold mb-6 text-center">
+                  {group.label}
+                </h3> */}
+
+                <div className="relative">
+                  <div className="overflow-hidden rounded-xl" ref={emblaRef}>
+                    <div className="flex">
+                      {group.images.map((image, index) => (
+                        <div
+                          key={index}
+                          className="flex-[0_0_100%] min-w-0 relative aspect-video cursor-pointer"
+                          onClick={() => openModal(image)}
+                        >
+                          <Image
+                            src={image}
+                            alt={`${group.label} ${index + 1}`}
+                            fill
+                            priority
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw"
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                          <div className="absolute bottom-4 left-4 right-4">
+                            <p className="text-white text-lg font-semibold tracking-wide drop-shadow-md">
+                              {group.label}
+                            </p>
+                            <p className="text-white/80 text-sm mt-1">
+                              {index + 1} of {group.images.length}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Navigation buttons */}
+                  <button
+                    onClick={scrollPrev}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 z-10"
+                    aria-label="Previous image"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 19l-7-7 7-7"
+                      />
+                    </svg>
+                  </button>
+
+                  <button
+                    onClick={scrollNext}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 z-10"
+                    aria-label="Next image"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </button>
+
+                  {/* Dots indicator */}
+                  <div className="flex justify-center mt-4 space-x-2">
+                    {group.images.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => {
+                          const api = isSwimming
+                            ? swimApi
+                            : isClubhouse
+                              ? clubApi
+                              : playApi;
+                          if (api) api.scrollTo(index);
+                        }}
+                        className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                          index === selectedIndex
+                            ? "bg-[#c8a96e]"
+                            : "bg-white/50"
+                        }`}
+                        aria-label={`Go to image ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
+
+        {/* Modal for enlarged images */}
+        {isModalOpen && modalImage && (
+          <div
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+            onClick={() => setIsModalOpen(false)}
+          >
+            <div className="relative max-w-xl max-h-full w-full">
+              <Image
+                src={modalImage}
+                alt="Enlarged facility image"
+                width={1200}
+                height={800}
+                className="w-full h-auto object-contain"
+              />
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="absolute top-4 right-4 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200"
+                aria-label="Close modal"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
