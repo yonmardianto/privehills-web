@@ -181,7 +181,13 @@ export default function Navbar() {
               ) : (
                 <a
                   href={link.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => {
+                    setMenuOpen(false);
+                    if (link.onClick) {
+                      e.preventDefault();
+                      link.onClick();
+                    }
+                  }}
                   className="block text-white/70 hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light"
                 >
                   {link.label}
