@@ -62,14 +62,15 @@ export const metadata: Metadata = {
   //   "rumah pamulang, privé hills residence, perumahan tangerang selatan, hunian modern",
   openGraph: {
     title: "Prive Hills Residence",
-    description: "Hunian premium di perbukitan Pamulang, Tangerang Selatan",
+    description:
+      "Hunian minimalis modern di area Pondok Cabe. Eksklusif, menawarkan privasi, keamanan, dan ketenangan untuk keluarga Anda",
     type: "website",
     images: [
       {
         url: `${BASE_URL}/assets/img/banner.webp`,
         width: 1200,
         height: 630,
-        alt: "Privé Hills Residence - Hunian Premium di Pamulang Tangerang Selatan",
+        alt: "Prive Hills Residence - Hunian minimalis modern di area Pondok Cabe. Eksklusif, menawarkan privasi, keamanan, dan ketenangan untuk keluarga Anda",
       },
     ],
   },
