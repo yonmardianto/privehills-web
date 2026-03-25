@@ -83,7 +83,7 @@ export default function Hero() {
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Hunian minimalis modern di area perbukitan eksklusif, menawarkan
+            Hunian minimalis modern di area Pondok Cabe. Eksklusif, menawarkan
             privasi, keamanan, dan ketenangan untuk keluarga Anda.
           </p>
 

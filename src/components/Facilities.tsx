@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import BonusExtra from "./BonusExtra";
 
 const facilities = [
   {
@@ -44,7 +43,7 @@ const facilities = [
   },
   {
     title: "Area Komersial",
-    desc: "Fasilitas komersial untuk memenuhi kebutuhan harian Anda, berlokasi strategis di sekitar Prive Hills Residence mulai dari <ul><li>Tempat Perbelanjaan</li><li>Sekolah</li><li>Rumah Sakit</li></ul>",
+    desc: "Fasilitas komersial untuk memenuhi kebutuhan harian Anda, berlokasi strategis di sekitar Prive Hills Residence mulai dari <p>Tempat Perbelanjaan, Sekolah, Rumah Sakit</p>",
     icon: (
       <svg
         className="w-8 h-8"
@@ -146,7 +145,7 @@ export default function Facilities() {
               <div className="w-full h-px bg-gradient-to-r from-[#c8a96e]/40 to-transparent" />
             </div>
           </div>
-          <p className="text-white/50 max-w-xl mt-6 font-light leading-relaxed">
+          <p className="text-white/90 max-w-xl mt-6 font-light leading-relaxed">
             Privé Hills Residence hadir dengan fasilitas lengkap yang dirancang
             untuk memberikan pengalaman hunian terbaik bagi seluruh keluarga
             Anda.
@@ -168,11 +167,11 @@ export default function Facilities() {
               <div className="text-[#c8a96e]/60 group-hover:text-[#c8a96e] mb-5 transition-colors duration-300">
                 {f.icon}
               </div>
-              <h3 className="text-white font-display text-xl font-light mb-3 group-hover:text-[#c8a96e] transition-colors duration-300">
+              <h3 className="text-[#c8a96e] text-xl font-bold mb-3 group-hover:text-[#c8a96e] transition-colors duration-300">
                 {f.title}
               </h3>
               <div
-                className="text-white/40 text-sm font-light leading-relaxed prose-desc"
+                className="text-white/90 text-sm leading-relaxed prose-desc"
                 dangerouslySetInnerHTML={{ __html: f.desc }}
               />
               <div className="mt-6 w-6 h-px bg-[#c8a96e]/40 group-hover:w-12 transition-all duration-500" />

@@ -225,7 +225,7 @@ export default function BonusExtra() {
           ].map((item, index) => (
             <div
               key={index}
-              className="rounded-lg border border-[#c8a96e]/30 bg-[#c8a96e]/80 p-2 text-center text-sm md:text-base text-black"
+              className="rounded-lg border border-[#c8a96e]/30 bg-[#c8a96e] p-2 font-bold text-center text-sm md:text-bold text-black/90"
               dangerouslySetInnerHTML={{ __html: item }}
             ></div>
           ))}

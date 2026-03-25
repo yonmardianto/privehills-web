@@ -2,10 +2,12 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import BonusExtra from "./BonusExtra";
+import CalculatorModal from "./CalculatorModal";
 
 export default function Promo() {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -16,6 +18,19 @@ export default function Promo() {
     );
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const openCalculator = () => setIsCalculatorOpen(true);
+    window.addEventListener(
+      "openKprCalculator",
+      openCalculator as EventListener,
+    );
+    return () =>
+      window.removeEventListener(
+        "openKprCalculator",
+        openCalculator as EventListener,
+      );
   }, []);
 
   const promos = [
@@ -124,7 +139,16 @@ export default function Promo() {
           {promos.map((promo, i) => (
             <div
               key={i}
-              className={`bg-[#1a1814] border border-white/5 p-6 hover:border-[#c8a96e]/40 transition-all duration-500 group cursor-default ${
+              onClick={() => {
+                if (promo.title === "KPR Cicilan Ringan") {
+                  setIsCalculatorOpen(true);
+                }
+              }}
+              className={`bg-[#1a1814] border border-white/5 p-6 hover:border-[#c8a96e]/40 transition-all duration-500 group ${
+                promo.title === "KPR Cicilan Ringan"
+                  ? "cursor-pointer"
+                  : "cursor-default"
+              } ${
                 visible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
@@ -143,6 +167,11 @@ export default function Promo() {
           ))}
         </div>
       </div>
+
+      <CalculatorModal
+        isOpen={isCalculatorOpen}
+        onClose={() => setIsCalculatorOpen(false)}
+      />
     </section>
   );
 }

@@ -20,7 +20,6 @@ export default function Home() {
       <UpcomingDesign />
       <Stats />
       <Promo />
-
       <Units />
       <UnitsKomersial />
       <Testimonials />

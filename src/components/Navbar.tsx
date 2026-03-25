@@ -21,13 +21,22 @@ export default function Navbar() {
       submenu: [
         { label: "Hunian", href: "#units-hunian" },
         { label: "Komersial", href: "#units-komersial" },
-        { label: "Upcoming", href: "#upcoming-design" },
+        { label: "Desain Mendatang", href: "#upcoming-design" },
       ],
     },
     { label: "Testimonial", href: "#testimonials" },
     { label: "Fasilitas", href: "#facilities" },
     { label: "Lokasi", href: "#location" },
     { label: "Kontak", href: "#contact" },
+    {
+      label: "Kalkulator KPR",
+      href: "#",
+      onClick: () => {
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(new CustomEvent("openKprCalculator"));
+        }
+      },
+    },
   ];
 
   return (
@@ -60,6 +69,7 @@ export default function Navbar() {
             <li key={link.label} className="relative group">
               <a
                 href={link.href}
+                onClick={link.onClick}
                 className="text-white hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light transition-colors duration-300 relative"
               >
                 {link.label}

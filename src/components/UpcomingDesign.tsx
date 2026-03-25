@@ -150,7 +150,7 @@ export default function UpcomingDesign() {
         <div className="text-center mb-12">
           <div className="ornament-divider mb-6">
             <span className="text-[#c8a96e] text-lg tracking-[0.4em] uppercase">
-              Upcoming Design
+              Desain Mendatang
             </span>
           </div>
 

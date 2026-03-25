@@ -1,3 +1,5 @@
+"use client";
+
 import { FaInstagram, FaFacebook } from "react-icons/fa";
 
 export default function Footer() {
@@ -23,9 +25,8 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-white text-sm font-light leading-relaxed">
-              Hunian minimalis modern di perbukitan eksklusif Pamulang,
-              Tangerang Selatan. Hadirkan privasi, keamanan, dan kenyamanan
-              terbaik.
+              Hunian minimalis modern di area Pondok Cabe. Eksklusif, menawarkan
+              privasi, keamanan, dan ketenangan untuk keluarga Anda
             </p>
             <div className="flex gap-3 mt-6">
               {[
@@ -67,10 +68,22 @@ export default function Footer() {
                 { label: "Fasilitas", href: "#facilities" },
                 { label: "Lokasi", href: "#location" },
                 { label: "Hubungi Kami", href: "#contact" },
+                {
+                  label: "Kalkulator KPR",
+                  href: "#footer",
+                  onClick: () => {
+                    if (typeof window !== "undefined") {
+                      window.dispatchEvent(
+                        new CustomEvent("openKprCalculator"),
+                      );
+                    }
+                  },
+                },
               ].map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
+                    onClick={link.onClick ?? undefined}
                     className="text-white hover:text-[#c8a96e] text-sm font-light transition-colors"
                     aria-label={link.label}
                   >
@@ -98,7 +111,7 @@ export default function Footer() {
               </div>
               <div>
                 <div className="text-white/50 text-xs tracking-widest uppercase mb-1">
-                  WhatsApp
+                  Marketing
                 </div>
                 <a
                   href="https://wa.me/6287867309782?text=Halo,%20saya%20ingin%20mengetahui%20tentang%20Prive%20Hills%20Residence"
@@ -116,6 +129,18 @@ export default function Footer() {
                   className="text-white text-sm font-light hover:text-[#c8a96e] transition-colors"
                 >
                   marketing@privehillsresidence.id
+                </a>
+              </div>
+
+              <div>
+                <div className="text-white/50 text-xs tracking-widest uppercase mb-1">
+                  Admin Office (Fransisca)
+                </div>
+                <a
+                  href="https://wa.me/628132149053?text=Halo%20Admin%20Prive%20Hills%20Residence"
+                  className="text-white text-sm font-light hover:text-[#c8a96e] transition-colors"
+                >
+                  +62 813-2149-053
                 </a>
               </div>
             </div>
