@@ -11,9 +11,10 @@ export default function CalculatorModal({
   onClose,
 }: CalculatorModalProps) {
   const [price, setPrice] = useState<string>("");
+  const [bunga, setBunga] = useState<string>("0.029");
   const [downPayment, setDownPayment] = useState<string>("");
   const [tenor, setTenor] = useState<string>("");
-  const [bank, setBank] = useState<string>("BRI");
+  //   const [bank, setBank] = useState<string>("BRI");
   const [monthlyPayment, setMonthlyPayment] = useState<number | null>(null);
   const [error, setError] = useState<string>("");
 
@@ -23,7 +24,8 @@ export default function CalculatorModal({
       setPrice("");
       setDownPayment("");
       setTenor("");
-      setBank("BRI");
+      setBunga("0.05");
+      //   setBank("BRI");
       setMonthlyPayment(null);
       setError("");
     }
@@ -44,10 +46,10 @@ export default function CalculatorModal({
     const priceNum = parseFloat(price.replace(/,/g, ""));
     const downPaymentNum = parseFloat(downPayment.replace(/,/g, ""));
     const tenorNum = parseInt(tenor);
-    const annualRate = bank === "BCA" ? 0.029 : bank === "BRI" ? 0.05 : 0.045;
+    // const annualRate = bank === "BCA" ? 0.029 : bank === "BRI" ? 0.05 : 0.045;
+    const annualRate = parseFloat(bunga);
 
     const msg = `Halo, saya tertarik dengan kalkulasi KPR:
-- Bank: ${bank}
 - Bunga: ${(annualRate * 100).toFixed(1)}% per tahun
 - Harga Properti: Rp ${priceNum.toLocaleString("id-ID")}
 - Down Payment: Rp ${downPaymentNum.toLocaleString("id-ID")}
@@ -83,7 +85,8 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
     }
 
     const loanAmount = priceNum - downPaymentNum;
-    const annualRate = bank === "BCA" ? 0.029 : bank === "BRI" ? 0.05 : 0.045;
+    // const annualRate = bank === "BCA" ? 0.029 : bank === "BRI" ? 0.05 : 0.045;
+    const annualRate = parseFloat(bunga);
     const monthlyRate = annualRate / 12;
     const numberOfPayments = tenorNum * 12;
 
@@ -92,7 +95,7 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
         (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments))) /
       (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
 
-    setMonthlyPayment(monthlyPaymentCalc);
+    setMonthlyPayment(Math.round(monthlyPaymentCalc));
     setError("");
   };
 
@@ -172,6 +175,21 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
 
           <div>
             <label className="text-white/40 text-xs tracking-widest uppercase block mb-2">
+              Bunga Per Tahun
+            </label>
+            <select
+              value={bunga}
+              onChange={(e) => setBunga(e.target.value)}
+              className="w-full bg-transparent border border-white/10 px-4 py-3 text-white/80 text-sm focus:border-[#c8a96e]/50 focus:outline-none transition-colors"
+            >
+              <option className="text-black" value="0.05">
+                (5%)
+              </option>
+            </select>
+          </div>
+
+          {/* <div>
+            <label className="text-white/40 text-xs tracking-widest uppercase block mb-2">
               Nama Bank
             </label>
             <select
@@ -189,7 +207,7 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
                 Bank BTN (4.5%)
               </option>
             </select>
-          </div>
+          </div> */}
 
           {error && (
             <div className="text-red-400 text-sm bg-red-400/10 border border-red-400/20 px-3 py-2 rounded">
@@ -213,8 +231,7 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
                 Rp {monthlyPayment.toLocaleString("id-ID")}
               </div>
               <div className="text-white/50 text-xs mt-1">
-                *Bunga{" "}
-                {bank === "BCA" ? "2.9%" : bank === "BRI" ? "5%" : "4.5%"} per
+                *Bunga {Number((parseFloat(bunga) * 100).toFixed(1))}% per
                 tahun, belum termasuk biaya administrasi
               </div>
               <button
