@@ -6,14 +6,43 @@ interface CalculatorModalProps {
   onClose: () => void;
 }
 
+const unitPrices = [
+  {
+    id: "agave",
+    label: "Agave",
+    price: "1,379,297,297",
+  },
+  {
+    id: "acacia",
+    label: "Acacia",
+    price: "1,459,405,405",
+  },
+  {
+    id: "stevia",
+    label: "Stevia",
+    price: "1,570,090,090",
+  },
+  {
+    id: "verbena",
+    label: "Verbena",
+    price: "1,860,545,045",
+  },
+  {
+    id: "shophouse",
+    label: "Shophouse",
+    price: "1,960,270,270",
+  },
+];
+
 export default function CalculatorModal({
   isOpen,
   onClose,
 }: CalculatorModalProps) {
   const [price, setPrice] = useState<string>("");
-  const [bunga, setBunga] = useState<string>("0.029");
+  const [bunga, setBunga] = useState<string>("0.05");
   const [downPayment, setDownPayment] = useState<string>("");
   const [tenor, setTenor] = useState<string>("");
+  const [selectedUnit, setSelectedUnit] = useState<string>("");
   //   const [bank, setBank] = useState<string>("BRI");
   const [monthlyPayment, setMonthlyPayment] = useState<number | null>(null);
   const [error, setError] = useState<string>("");
@@ -25,6 +54,7 @@ export default function CalculatorModal({
       setDownPayment("");
       setTenor("");
       setBunga("0.05");
+      setSelectedUnit("");
       //   setBank("BRI");
       setMonthlyPayment(null);
       setError("");
@@ -49,7 +79,11 @@ export default function CalculatorModal({
     // const annualRate = bank === "BCA" ? 0.029 : bank === "BRI" ? 0.05 : 0.045;
     const annualRate = parseFloat(bunga);
 
+    const selectedUnitLabel =
+      unitPrices.find((unit) => unit.id === selectedUnit)?.label || "";
+
     const msg = `Halo, saya tertarik dengan kalkulasi KPR:
+- Tipe Unit: ${selectedUnitLabel}
 - Bunga: ${(annualRate * 100).toFixed(1)}% per tahun
 - Harga Properti: Rp ${priceNum.toLocaleString("id-ID")}
 - Down Payment: Rp ${downPaymentNum.toLocaleString("id-ID")}
@@ -79,8 +113,8 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
       return;
     }
 
-    if (tenorNum < 1 || tenorNum > 30) {
-      setError("Tenor harus antara 1-30 tahun");
+    if (tenorNum < 10 || tenorNum > 30) {
+      setError("Tenor harus antara 10-30 tahun");
       return;
     }
 
@@ -112,11 +146,20 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
     setDownPayment(formatCurrency(e.target.value));
   };
 
+  const handleUnitChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const unitId = e.target.value;
+    setSelectedUnit(unitId);
+    const selectedUnitData = unitPrices.find((unit) => unit.id === unitId);
+    if (selectedUnitData) {
+      setPrice(selectedUnitData.price);
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-      <div className="bg-[#1a1814] border border-white/10 rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-[#1a1814] border border-white/10 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-white/10">
           <h3 className="font-display text-xl text-[#c8a96e] font-medium">
@@ -131,7 +174,27 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
         </div>
 
         {/* Form */}
-        <div className="p-6 space-y-4">
+        <div className="p-6 grid grid-cols-2 gap-4">
+          <div>
+            <label className="text-white/40 text-xs tracking-widest uppercase block mb-2">
+              Tipe Unit
+            </label>
+            <select
+              value={selectedUnit}
+              onChange={handleUnitChange}
+              className="w-full bg-transparent text-white/80 border border-white/10 px-4 py-3 text-sm focus:border-[#c8a96e]/50 focus:outline-none transition-colors"
+            >
+              <option value="" className="text-black">
+                Pilih Tipe Unit
+              </option>
+              {unitPrices.map((unit) => (
+                <option key={unit.id} value={unit.id} className="text-black">
+                  {unit.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
           <div>
             <label className="text-white/40 text-xs tracking-widest uppercase block mb-2">
               Harga Properti (Rp)
@@ -141,6 +204,7 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
               value={price}
               onChange={handlePriceChange}
               placeholder="1,000,000,000"
+              readOnly={selectedUnit !== ""}
               className="w-full bg-transparent border border-white/10 px-4 py-3 text-white/80 text-sm placeholder-white/20 focus:border-[#c8a96e]/50 focus:outline-none transition-colors"
             />
           </div>
@@ -167,7 +231,7 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
               value={tenor}
               onChange={(e) => setTenor(e.target.value)}
               placeholder="20"
-              min="1"
+              min="10"
               max="30"
               className="w-full bg-transparent border border-white/10 px-4 py-3 text-white/80 text-sm placeholder-white/20 focus:border-[#c8a96e]/50 focus:outline-none transition-colors"
             />
@@ -210,20 +274,20 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
           </div> */}
 
           {error && (
-            <div className="text-red-400 text-sm bg-red-400/10 border border-red-400/20 px-3 py-2 rounded">
+            <div className="col-span-2 text-red-400 text-sm bg-red-400/10 border border-red-400/20 px-3 py-2 rounded">
               {error}
             </div>
           )}
 
           <button
             onClick={calculateMonthlyPayment}
-            className="w-full bg-[#c8a96e] text-[#0f0e0c] py-3 text-sm tracking-widest uppercase font-semibold hover:bg-[#e4cc9a] transition-colors"
+            className="col-span-2 w-full bg-[#c8a96e] text-[#0f0e0c] py-3 text-sm tracking-widest uppercase font-semibold hover:bg-[#e4cc9a] transition-colors"
           >
             Hitung Cicilan
           </button>
 
           {monthlyPayment !== null && (
-            <div className="bg-[#c8a96e]/10 border border-[#c8a96e]/20 p-4 rounded">
+            <div className="col-span-2 bg-[#c8a96e]/10 border border-[#c8a96e]/20 p-4 rounded">
               <div className="text-[#c8a96e] text-xs tracking-widest uppercase mb-2">
                 Estimasi Cicilan Bulanan
               </div>
