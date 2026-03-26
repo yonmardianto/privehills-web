@@ -144,7 +144,13 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
 
   const handleDownPaymentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDownPayment(formatCurrency(e.target.value));
+    setMonthlyPayment(null);
   };
+
+  const handleTenorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTenor(e.target.value);
+    setMonthlyPayment(null);
+  }
 
   const handleUnitChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const unitId = e.target.value;
@@ -153,6 +159,8 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
     if (selectedUnitData) {
       setPrice(selectedUnitData.price);
     }
+
+    setMonthlyPayment(null);
   };
 
   if (!isOpen) return null;
@@ -229,7 +237,7 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
             <input
               type="number"
               value={tenor}
-              onChange={(e) => setTenor(e.target.value)}
+              onChange={handleTenorChange}
               placeholder="20"
               min="10"
               max="30"
