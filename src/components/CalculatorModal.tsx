@@ -230,9 +230,14 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
               <div className="text-2xl text-white font-medium">
                 Rp {monthlyPayment.toLocaleString("id-ID")}
               </div>
+              {/* <div className="text-white/50 text-xs mt-1">
+                *Bunga {Number((parseFloat(bunga) * 100).toFixed(1))}% per tahun
+              </div> */}
               <div className="text-white/50 text-xs mt-1">
-                *Bunga {Number((parseFloat(bunga) * 100).toFixed(1))}% per
-                tahun, belum termasuk biaya administrasi
+                *Cicilan KPR di atas bersifat estimasi.
+              </div>
+              <div className="text-white/50 text-xs mt-1">
+                *Perhitungan cicilan KPR bisa menghubungi marketing kami.
               </div>
               <button
                 onClick={handleContactUs}
