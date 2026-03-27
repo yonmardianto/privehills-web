@@ -146,6 +146,8 @@ export default function Facilities() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImage, setModalImage] = useState<string | null>(null);
+  const [modalGroupId, setModalGroupId] = useState<string | null>(null);
+  const [modalImageIndex, setModalImageIndex] = useState(0);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -203,10 +205,50 @@ export default function Facilities() {
     if (playApi) playApi.scrollPrev();
   }, [playApi]);
 
-  const openModal = (image: string) => {
+  const openModal = (image: string, groupId: string, imageIndex: number) => {
     setModalImage(image);
+    setModalGroupId(groupId);
+    setModalImageIndex(imageIndex);
     setIsModalOpen(true);
   };
+
+  const scrollModalNext = useCallback(() => {
+    const currentGroup = carouselGroups.find((g) => g.id === modalGroupId);
+    if (!currentGroup) return;
+    const nextIndex = (modalImageIndex + 1) % currentGroup.images.length;
+    setModalImageIndex(nextIndex);
+    setModalImage(currentGroup.images[nextIndex]);
+  }, [modalGroupId, modalImageIndex]);
+
+  const scrollModalPrev = useCallback(() => {
+    const currentGroup = carouselGroups.find((g) => g.id === modalGroupId);
+    if (!currentGroup) return;
+    const prevIndex =
+      modalImageIndex === 0
+        ? currentGroup.images.length - 1
+        : modalImageIndex - 1;
+    setModalImageIndex(prevIndex);
+    setModalImage(currentGroup.images[prevIndex]);
+  }, [modalGroupId, modalImageIndex]);
+
+  useEffect(() => {
+    if (!isModalOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsModalOpen(false);
+      }
+      if (event.key === "ArrowRight") {
+        scrollModalNext();
+      }
+      if (event.key === "ArrowLeft") {
+        scrollModalPrev();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isModalOpen, scrollModalNext, scrollModalPrev]);
 
   return (
     <section
@@ -320,7 +362,7 @@ export default function Facilities() {
                         <div
                           key={index}
                           className="flex-[0_0_100%] min-w-0 relative aspect-video cursor-pointer"
-                          onClick={() => openModal(image)}
+                          onClick={() => openModal(image, group.id, index)}
                         >
                           <Image
                             src={image}
@@ -414,19 +456,20 @@ export default function Facilities() {
         </div>
 
         {/* Modal for enlarged images */}
-        {isModalOpen && modalImage && (
+        {isModalOpen && modalImage && modalGroupId && (
           <div
             className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
             onClick={() => setIsModalOpen(false)}
           >
-            <div className="relative max-w-xl max-h-full w-full">
+            <div className="relative max-w-3xl max-h-full w-full">
               <Image
                 src={modalImage}
                 alt="Enlarged facility image"
                 width={1200}
                 height={800}
-                className="w-full h-auto object-contain"
+                className="w-full h-auto object-contain rounded-lg"
               />
+
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="absolute top-4 right-4 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200"
@@ -446,6 +489,83 @@ export default function Facilities() {
                   />
                 </svg>
               </button>
+
+              {/* Previous button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  scrollModalPrev();
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 z-20"
+                aria-label="Previous image"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
+              {/* Next button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  scrollModalNext();
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 z-20"
+                aria-label="Next image"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+
+              {/* Dot indicators */}
+              {carouselGroups.find((g) => g.id === modalGroupId) && (
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                  {carouselGroups
+                    .find((g) => g.id === modalGroupId)
+                    ?.images.map((_, index) => (
+                      <button
+                        key={`modal-dot-${index}`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalImageIndex(index);
+                          const group = carouselGroups.find(
+                            (g) => g.id === modalGroupId,
+                          );
+                          if (group) {
+                            setModalImage(group.images[index]);
+                          }
+                        }}
+                        className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                          index === modalImageIndex
+                            ? "bg-[#c8a96e]"
+                            : "bg-white/50"
+                        }`}
+                        aria-label={`Go to image ${index + 1}`}
+                      />
+                    ))}
+                </div>
+              )}
             </div>
           </div>
         )}

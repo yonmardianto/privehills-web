@@ -103,6 +103,7 @@ export default function UpcomingDesign() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImage, setModalImage] = useState<string | null>(null);
+  const [modalImageIndex, setModalImageIndex] = useState(0);
 
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
@@ -111,6 +112,16 @@ export default function UpcomingDesign() {
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
   }, [emblaApi]);
+
+  const scrollNextModal = useCallback(() => {
+    setModalImageIndex((prevIndex) => (prevIndex + 1) % items.length);
+  }, [items.length]);
+
+  const scrollPrevModal = useCallback(() => {
+    setModalImageIndex((prevIndex) =>
+      prevIndex === 0 ? items.length - 1 : prevIndex - 1,
+    );
+  }, [items.length]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -138,11 +149,17 @@ export default function UpcomingDesign() {
       if (event.key === "Escape") {
         setIsModalOpen(false);
       }
+      if (event.key === "ArrowRight") {
+        scrollNextModal();
+      }
+      if (event.key === "ArrowLeft") {
+        scrollPrevModal();
+      }
     };
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [isModalOpen]);
+  }, [isModalOpen, scrollNextModal, scrollPrevModal]);
 
   return (
     <section id="upcoming-design" className="pb-20 pt-18 bg-[#0f0e0c]">
@@ -174,6 +191,7 @@ export default function UpcomingDesign() {
                       className="relative w-full h-56 sm:h-72 md:h-80 lg:h-96 overflow-hidden cursor-zoom-in"
                       onClick={() => {
                         setModalImage(item.image);
+                        setModalImageIndex(index);
                         setIsModalOpen(true);
                       }}
                       aria-label={`View ${item.title} larger`}
@@ -232,15 +250,47 @@ export default function UpcomingDesign() {
               >
                 ✕
               </button>
+
+              <button
+                type="button"
+                onClick={scrollPrevModal}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-40 rounded-full bg-black/70 px-4 py-3 text-white hover:bg-black transition-colors"
+                aria-label="Previous image"
+              >
+                &#10094;
+              </button>
+
               <div className="relative h-full max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-lg">
                 <Image
-                  src={modalImage}
+                  src={items[modalImageIndex].image}
                   alt="Upcoming design preview"
                   fill
                   style={{ objectFit: "contain" }}
                   className="w-full h-full"
                   priority
                 />
+              </div>
+
+              <button
+                type="button"
+                onClick={scrollNextModal}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-40 rounded-full bg-black/70 px-4 py-3 text-white hover:bg-black transition-colors"
+                aria-label="Next image"
+              >
+                &#10095;
+              </button>
+
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 flex gap-2">
+                {items.map((_, index) => (
+                  <button
+                    key={`modal-dot-${index}`}
+                    onClick={() => setModalImageIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      index === modalImageIndex ? "bg-[#c8a96e]" : "bg-white/30"
+                    }`}
+                    aria-label={`Go to image ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
           )}
