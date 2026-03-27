@@ -202,12 +202,10 @@ export default function UnitsKomersial() {
               {/* Unit heading */}
               <div className="mb-6">
                 {/* <div className="text-[#c8a96e]/60 text-xs tracking-[0.4em] uppercase mb-1"> */}
-                {unit.tagline}
+                {/* {unit.tagline} */}
                 {/* </div> */}
-                <h3 className="font-display text-5xl text-white font-light">
-                  {unit.name}
-                </h3>
-                <div className="font-display text-2xl text-[#c8a96e] mt-2">
+                <h3 className=" text-5xl text-white font-light">{unit.name}</h3>
+                <div className=" text-2xl text-[#c8a96e] mt-2">
                   {unit.price}
                 </div>
               </div>

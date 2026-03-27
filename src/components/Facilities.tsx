@@ -83,7 +83,7 @@ const facilities = [
 
   {
     title: "Listrik & Air",
-    desc: "Infrastruktur utilitas berkualitas dengan listrik PLN dan sumber air bersih yang terjamin",
+    desc: "Listrik : Kelistrikan menggunakan sistem bawah tanah (underground) untuk PLN dan Wifi <br/> Air : Sumber air bersih terjamin dengan sumur pantek di masing-masing unit rumah. Bonus jetpump dan toren terpasang",
     icon: (
       <svg
         className="w-8 h-8"

@@ -38,7 +38,7 @@ const bonusOptions = [
   },
   {
     id: "voucher-belanja",
-    title: "Voucher Indomaret <br/>Rp 1,5JT",
+    title: "Voucher Indomaret <br/>Rp 1,5 JT",
     icon: (
       <svg
         fill="#c8a96e"
@@ -61,7 +61,7 @@ const bonusOptions = [
   },
   {
     id: "voucher-interior",
-    title: "Voucher Interior <br/>Rp 50JT",
+    title: "Voucher Interior <br/>Rp 50 JT",
     icon: (
       <svg
         fill="#c8a96e"
@@ -204,7 +204,7 @@ export default function BonusExtra() {
 
                   {/* Title */}
                   <h3
-                    className={`font-display text-md md:text-xl font-light mb-1 transition-colors duration-300 text-white group-hover:text-[#c8a96e]`}
+                    className={` text-md md:text-xl font-light mb-1 transition-colors duration-300 text-white group-hover:text-[#c8a96e]`}
                     dangerouslySetInnerHTML={{ __html: bonus.title }}
                   ></h3>
                 </div>
