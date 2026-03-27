@@ -7,6 +7,8 @@ type UnitId = "agave" | "acacia" | "stevia" | "verbena";
 const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL || "https://privehillsresidence.id";
 
+const imageVersion = process.env.NEXT_PUBLIC_VERSION_IMAGE || "1.0";
+
 const units = [
   {
     id: "agave",
@@ -175,7 +177,8 @@ export default function Units() {
     unitFileCount?.[unit.id as UnitId] ?? unit.images.length;
   const imageSources = Array.from(
     { length: effectiveImageCount },
-    (_, i) => `${BASE_URL}/assets/img/unit/${unit.id}/${unit.id}-${i + 1}.webp`,
+    (_, i) =>
+      `${BASE_URL}/assets/img/unit/${unit.id}/${unit.id}-${i + 1}.webp?v=${imageVersion}`,
   );
 
   return (
