@@ -134,7 +134,7 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
       </h3>
 
       {/* Form */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="flex flex-col  gap-4">
         <div>
           <label className="text-white/40 text-xs tracking-widest uppercase block mb-2">
             Tipe Unit
