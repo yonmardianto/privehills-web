@@ -68,22 +68,22 @@ export default function Footer() {
                 { label: "Fasilitas", href: "#facilities" },
                 { label: "Lokasi", href: "#location" },
                 { label: "Hubungi Kami", href: "#contact" },
-                {
-                  label: "Kalkulator KPR",
-                  href: "#footer",
-                  onClick: () => {
-                    if (typeof window !== "undefined") {
-                      window.dispatchEvent(
-                        new CustomEvent("openKprCalculator"),
-                      );
-                    }
-                  },
-                },
+                // {
+                //   label: "Kalkulator KPR",
+                //   href: "#footer",
+                //   onClick: () => {
+                //     if (typeof window !== "undefined") {
+                //       window.dispatchEvent(
+                //         new CustomEvent("openKprCalculator"),
+                //       );
+                //     }
+                //   },
+                // },
               ].map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    onClick={link.onClick ?? undefined}
+                    // onClick={link.onClick ?? undefined}
                     className="text-white hover:text-[#c8a96e] text-sm font-light transition-colors"
                     aria-label={link.label}
                   >
