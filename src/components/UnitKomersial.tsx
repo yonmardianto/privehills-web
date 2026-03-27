@@ -10,7 +10,7 @@ const units = [
     id: "shophouse",
     name: "Shophouse",
     tagline: "Shophouse Strategis",
-    price: "Rp 2,2 M-an",
+    price: "Mulai dari Rp 2,2 M",
     bathroom: 1,
     landArea: 67.5,
     buildingArea: 127,
