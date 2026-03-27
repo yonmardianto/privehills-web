@@ -5,8 +5,6 @@ import Image from "next/image";
 const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL || "https://privehillsresidence.id";
 
-const imageVersion = process.env.NEXT_PUBLIC_VERSION_IMAGE || "1.0";
-
 const units = [
   {
     id: "shophouse",
@@ -18,8 +16,7 @@ const units = [
     buildingArea: 127,
     images: Array.from(
       { length: 3 },
-      (_, i) =>
-        `${BASE_URL}/assets/img/unit/shophouse/shophouse-${i + 1}.webp?v=${imageVersion}`,
+      (_, i) => `${BASE_URL}/assets/img/unit/shophouse/shophouse-${i + 1}.webp`,
     ),
     // denah: `${BASE_URL}/assets/img/unit/agave/denah.webp`,
     specs: {
