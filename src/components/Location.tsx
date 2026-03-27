@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Calculator from "./Calculator";
 
 const landmarks = [
   {
@@ -214,26 +215,11 @@ export default function Location() {
               ))}
             </div>
 
-            {/* Stats row */}
-            {/* <div className="grid grid-cols-3 gap-3 mt-8">
-              {[
-                { value: "10 min", label: "ke Tol Pamulang" },
-                { value: "20 min", label: "ke Stasiun Jurangmangu" },
-                { value: "30 min", label: "ke Soekarno Hatta" },
-              ].map((s, i) => (
-                <div
-                  key={i}
-                  className="text-center border border-[#c8a96e]/20 py-5 px-3"
-                >
-                  <div className="font-display text-xl text-[#c8a96e] font-light">
-                    {s.value}
-                  </div>
-                  <div className="text-white/40 text-xs mt-1 font-light">
-                    {s.label}
-                  </div>
-                </div>
-              ))}
-            </div> */}
+            {/* Calculator Component */}
+            <div className="mt-12">
+              <Calculator />
+            </div>
+
           </div>
         </div>
       </div>
