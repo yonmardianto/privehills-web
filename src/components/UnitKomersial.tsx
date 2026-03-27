@@ -230,7 +230,7 @@ export default function UnitsKomersial() {
                     className="bg-[#1a1814] border border-white/5 p-4"
                   >
                     <div className="text-2xl mb-1">{stat.icon}</div>
-                    <div className="text-[#c8a96e] font-display text-xl font-light">
+                    <div className="text-[#c8a96e] text-xl font-light">
                       {stat.value}
                     </div>
                     <div className="text-white/40 text-xs tracking-widest uppercase mt-0.5">
