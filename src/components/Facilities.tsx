@@ -280,24 +280,19 @@ export default function Facilities() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div
-          className={`mb-16 transition-all duration-800 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={` text-center mb-16 transition-all duration-800 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <div className="flex items-start gap-8">
-            <div className="flex-shrink-0">
-              <div className="text-[#c8a96e] text-xs tracking-[0.4em] uppercase mb-3">
-                Fasilitas Lengkap
-              </div>
-              <h2 className="font-display text-5xl md:text-6xl text-white font-light leading-tight">
-                Kehidupan
-                <br />
-                <span className="text-[#c8a96e] italic">Sempurna</span>
-              </h2>
-            </div>
-            <div className="hidden md:block pt-12 flex-1">
-              <div className="w-full h-px bg-gradient-to-r from-[#c8a96e]/40 to-transparent" />
-            </div>
+          <div className="ornament-divider mb-6">
+            <span className="text-[#c8a96e] text-xs tracking-[0.4em] uppercase">
+              Fasilitas Lengkap
+            </span>
           </div>
-          <p className="text-white/50 max-w-xl mt-6 font-light leading-relaxed">
+
+          <h2 className="font-display text-5xl md:text-6xl text-white font-light mb-4">
+            Kehidupan<span className="text-[#c8a96e] italic"> Sempurna</span>
+          </h2>
+
+          <p className="text-white/50 max-w-2xl mx-auto font-light leading-relaxed">
             Prive Hills Residence hadir dengan fasilitas lengkap yang dirancang
             untuk memberikan pengalaman hunian terbaik bagi seluruh keluarga
             Anda.

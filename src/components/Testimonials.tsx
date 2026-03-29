@@ -28,6 +28,7 @@ const testimonials = [
     quote:
       "Keren Desainnya, saya suka banget! Rumahnya modern dan minimalis, cocok untuk keluarga muda. Saya sangat puas dengan kualitas bangunan dan materialnya.",
   },
+  
 ];
 
 export default function Testimonials() {
