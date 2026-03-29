@@ -156,7 +156,7 @@ export default function Promo() {
               style={{ transitionDelay: `${300 + i * 100}ms` }}
             >
               <div className="text-3xl mb-4">{promo.icon}</div>
-              <h3 className="font-display text-xl text-[#c8a96e] mb-2 font-medium">
+              <h3 className=" text-xl text-[#c8a96e] mb-2 font-medium">
                 {promo.title}
               </h3>
               <p className="text-white/50 text-sm font-light leading-relaxed">

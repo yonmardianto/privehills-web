@@ -28,7 +28,6 @@ const testimonials = [
     quote:
       "Keren Desainnya, saya suka banget! Rumahnya modern dan minimalis, cocok untuk keluarga muda. Saya sangat puas dengan kualitas bangunan dan materialnya.",
   },
-  
 ];
 
 export default function Testimonials() {
@@ -83,7 +82,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" ref={ref} className="py-28 bg-[#0f0e0c]">
+    <section id="testimonials" ref={ref} className="py-20 bg-[#0f0e0c]">
       <div className="max-w-7xl mx-auto px-6">
         <div
           className={`text-center mb-16 transition-all duration-800 ${

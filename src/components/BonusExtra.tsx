@@ -204,7 +204,7 @@ export default function BonusExtra() {
 
                   {/* Title */}
                   <h3
-                    className={` text-md md:text-xl font-light mb-1 transition-colors duration-300 text-white group-hover:text-[#c8a96e]`}
+                    className={`  text-md md:text-xl font-light mb-1 transition-colors duration-300 text-white/75 group-hover:text-[#c8a96e]`}
                     dangerouslySetInnerHTML={{ __html: bonus.title }}
                   ></h3>
                 </div>

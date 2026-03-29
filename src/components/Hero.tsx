@@ -58,15 +58,15 @@ export default function Hero() {
 
           {/* Headline */}
           <h1
-            className={`font-display text-5xl md:text-6xl lg:text-9xl font-light leading-[0.9] mb-4 transition-all  ${
+            className={`font-display text-6xl md:text-6xl lg:text-8xl font-light leading-[0.9] mb-4 transition-all  ${
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
             <span className="text-[#c8a96e]">Prive</span>{" "}
-            <span className="text-[#c8a96e] italic">Hills</span>{" "}
+            <span className="text-[#c8a96e]">Hills</span>{" "}
           </h1>
 
-          <span className="text-white/80 text-xl md:text-5xl lg:text-6xl not-italic font-light tracking-widest font-display">
+          <span className="text-white/80 text-2xl md:text-5xl lg:text-5xl  font-light tracking-widest font-display italic">
             RESIDENCE
           </span>
 
@@ -79,7 +79,7 @@ export default function Hero() {
 
           {/* Tagline */}
           <p
-            className={`text-white/60 text-base md:text-lg font-light leading-relaxed max-w-md mb-8 ${
+            className={` text-white/60 text-base md:text-lg font-light leading-relaxed max-w-md mb-8 ${
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
@@ -96,7 +96,7 @@ export default function Hero() {
             <div className="text-white/40 text-xs tracking-[0.3em] uppercase mb-1">
               Harga Mulai Dari
             </div>
-            <div className="font-body text-3xl md:text-4xl text-[#c8a96e] font-light">
+            <div className="font-display text-3xl md:text-4xl text-[#c8a96e] font-light">
               Rp 1,3 Miliar
             </div>
           </div>

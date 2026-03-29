@@ -28,7 +28,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-28 relative overflow-hidden bg-[#0f0e0c]"
+      className="py-20 relative overflow-hidden bg-[#0f0e0c]"
       ref={ref}
     >
       {/* Background */}

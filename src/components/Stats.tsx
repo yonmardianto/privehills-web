@@ -43,10 +43,10 @@ export default function Stats() {
               }`}
               style={{ transitionDelay: `${i * 150}ms` }}
             >
-              <div className="font-body text-4xl md:text-5xl text-[#c8a96e] font-light mb-1">
+              <div className="font-display text-4xl md:text-5xl text-[#c8a96e] font-light mb-1">
                 {stat.value}
               </div>
-              <div className="text-white/30 text-xs tracking-[0.3em] uppercase">
+              <div className="text-white/30 text-xs tracking-[0.3em] uppercase font-display">
                 {stat.label}
               </div>
             </div>

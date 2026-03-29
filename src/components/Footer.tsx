@@ -19,12 +19,12 @@ export default function Footer() {
                 <div className="text-white font-display text-base font-medium tracking-wider leading-none">
                   PRIVE HILLS
                 </div>
-                <div className="text-[#c8a96e] text-[10px] tracking-[0.3em] uppercase font-light">
+                <div className="text-[#c8a96e] text-[10px] tracking-[0.3em] uppercase font-light italic">
                   Residence
                 </div>
               </div>
             </div>
-            <p className="text-white text-sm font-light leading-relaxed">
+            <p className="text-white/50 text-sm font-light leading-relaxed">
               Hunian minimalis modern di area Pondok Cabe. Eksklusif, menawarkan
               privasi, keamanan, dan ketenangan untuk keluarga Anda
             </p>
@@ -84,7 +84,7 @@ export default function Footer() {
                   <a
                     href={link.href}
                     // onClick={link.onClick ?? undefined}
-                    className="text-white hover:text-[#c8a96e] text-sm font-light transition-colors"
+                    className="text-white/50 hover:text-[#c8a96e] text-sm font-light transition-colors"
                     aria-label={link.label}
                   >
                     {link.label}
@@ -101,44 +101,44 @@ export default function Footer() {
             </div>
             <div className="space-y-4">
               <div>
-                <div className="text-white/50 text-xs tracking-widest uppercase mb-1">
+                <div className="text-[#c8a96e] text-xs tracking-widest uppercase mb-1">
                   Alamat
                 </div>
-                <div className="text-white text-sm font-light">
+                <div className="text-white/50 text-sm font-light">
                   Jl. Kunir No.53 Pondok Cabe Udik, Kec. Pamulang, Tangerang
                   Selatan Banten 15418
                 </div>
               </div>
               <div>
-                <div className="text-white/50 text-xs tracking-widest uppercase mb-1">
+                <div className="text-[#c8a96e] text-xs tracking-widest uppercase mb-1">
                   Marketing
                 </div>
                 <a
                   href="https://wa.me/6287867309782?text=Halo,%20saya%20ingin%20mengetahui%20tentang%20Prive%20Hills%20Residence"
-                  className="text-white text-sm font-light hover:text-[#c8a96e] transition-colors"
+                  className="text-white/50 text-sm font-light hover:text-[#c8a96e] transition-colors"
                 >
                   +62 878-6730-9782
                 </a>
               </div>
               <div>
-                <div className="text-white/50 text-xs tracking-widest uppercase mb-1">
+                <div className="text-[#c8a96e] text-xs tracking-widest uppercase mb-1">
                   Email
                 </div>
                 <a
                   href="mailto:marketing@privehillsresidence.id"
-                  className="text-white text-sm font-light hover:text-[#c8a96e] transition-colors"
+                  className="text-white/50 text-sm font-light hover:text-[#c8a96e] transition-colors"
                 >
                   marketing@privehillsresidence.id
                 </a>
               </div>
 
               <div>
-                <div className="text-white/50 text-xs tracking-widest uppercase mb-1">
+                <div className="text-[#c8a96e] text-xs tracking-widest uppercase mb-1">
                   Admin Office (Fransisca)
                 </div>
                 <a
                   href="https://wa.me/628132149053?text=Halo%20Admin%20Prive%20Hills%20Residence"
-                  className="text-white text-sm font-light hover:text-[#c8a96e] transition-colors"
+                  className="text-white/50 text-sm font-light hover:text-[#c8a96e] transition-colors"
                 >
                   +62 813-2149-053
                 </a>

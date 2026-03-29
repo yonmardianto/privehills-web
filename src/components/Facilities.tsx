@@ -25,7 +25,7 @@ const facilities = [
   },
   {
     title: "Taman & RTH",
-    desc: "Area ruang terbuka hijau yang asri, taman bermain anak, dan jogging track di lingkungan perumahan",
+    desc: "Area ruang terbuka hijau yang asri, taman bermain anak di lingkungan perumahan",
     icon: (
       <svg
         className="w-8 h-8"
@@ -297,8 +297,8 @@ export default function Facilities() {
               <div className="w-full h-px bg-gradient-to-r from-[#c8a96e]/40 to-transparent" />
             </div>
           </div>
-          <p className="text-white/90 max-w-xl mt-6 font-light leading-relaxed">
-            Privé Hills Residence hadir dengan fasilitas lengkap yang dirancang
+          <p className="text-white/50 max-w-xl mt-6 font-light leading-relaxed">
+            Prive Hills Residence hadir dengan fasilitas lengkap yang dirancang
             untuk memberikan pengalaman hunian terbaik bagi seluruh keluarga
             Anda.
           </p>
@@ -323,7 +323,7 @@ export default function Facilities() {
                 {f.title}
               </h3>
               <div
-                className="text-white/90 text-sm leading-relaxed prose-desc"
+                className="text-white/50 text-sm leading-relaxed prose-desc"
                 dangerouslySetInnerHTML={{ __html: f.desc }}
               />
               <div className="mt-6 w-6 h-px bg-[#c8a96e]/40 group-hover:w-12 transition-all duration-500" />

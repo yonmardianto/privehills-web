@@ -81,7 +81,7 @@ export default function Location() {
   }, []);
 
   return (
-    <section id="location" className="py-28 bg-[#111009]" ref={ref}>
+    <section id="location" className="py-20 bg-[#111009]" ref={ref}>
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div
@@ -219,7 +219,6 @@ export default function Location() {
             <div className="mt-12">
               <Calculator />
             </div>
-
           </div>
         </div>
       </div>

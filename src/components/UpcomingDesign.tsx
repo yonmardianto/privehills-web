@@ -166,10 +166,14 @@ export default function UpcomingDesign() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <div className="ornament-divider mb-6">
-            <span className="text-[#c8a96e] text-lg tracking-[0.4em] uppercase">
+            <span className="text-[#c8a96e] text-xs tracking-[0.4em] uppercase">
               Desain Mendatang
             </span>
           </div>
+
+          <h2 className="font-display text-5xl md:text-6xl text-white font-light mb-4">
+            Terra <span className="text-[#c8a96e] italic">Fold</span>
+          </h2>
 
           <p className="text-white/60 max-w-2xl mx-auto font-light">
             TerraFold adalah hunian tropis modern yang berkarakter mewakili rasa
