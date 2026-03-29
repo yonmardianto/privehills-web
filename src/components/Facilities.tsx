@@ -63,7 +63,7 @@ const facilities = [
   },
   {
     title: "Akses Mudah",
-    desc: "Infrastruktur jalan yang baik, dekat akses tol dan stasiun commuter line untuk mobilitas optimal",
+    desc: "Insfrastruktur jalan yang baik, dekat akses tol dan halte transjakarta untuk mobilitas optimal",
     icon: (
       <svg
         className="w-8 h-8"
@@ -82,8 +82,8 @@ const facilities = [
   },
 
   {
-    title: "Listrik & Air",
-    desc: "Listrik : Kelistrikan menggunakan sistem bawah tanah (underground) untuk PLN dan Wifi <br/> Air : Sumber air bersih terjamin dengan sumur pantek di masing-masing unit rumah. Bonus jetpump dan toren terpasang",
+    title: "Listrik",
+    desc: "Kelistrikan menggunakan sistem bawah tanah (underground) untuk PLN dan Wifi ",
     icon: (
       <svg
         className="w-8 h-8"
@@ -97,6 +97,24 @@ const facilities = [
           strokeWidth={1.2}
           d="M13 10V3L4 14h7v7l9-11h-7z"
         />
+      </svg>
+    ),
+  },
+
+  {
+    title: "Air",
+    desc: "Sumber air bersih terjamin dengan sumur pantek di masing-masing unit rumah. Bonus jetpump dan toren terpasang",
+    icon: (
+      <svg
+        className="w-8 h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          id="primary"
+          d="M19,14A7,7,0,0,1,5,14C5,8,12,3,12,3S19,8,19,14Z"
+        ></path>
       </svg>
     ),
   },
