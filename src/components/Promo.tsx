@@ -102,10 +102,10 @@ export default function Promo() {
               src="/assets/img/promo/promo.webp"
               alt="Promo banner"
               fill
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 1280px) 100vw, 1280px"
               quality={60}
               className="object-cover w-full h-full"
-              priority
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0f0e0c]/80 via-[#0f0e0c]/50 to-transparent" />
             <div className="absolute inset-0 flex items-center px-6 md:px-16">

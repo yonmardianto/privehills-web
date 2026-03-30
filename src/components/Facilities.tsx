@@ -80,10 +80,9 @@ const facilities = [
       </svg>
     ),
   },
-
   {
     title: "Listrik",
-    desc: "Kelistrikan menggunakan sistem bawah tanah (underground) untuk PLN dan Wifi ",
+    desc: "Kelistrikan menggunakan sistem bawah tanah (underground) untuk PLN dan Wifi",
     icon: (
       <svg
         className="w-8 h-8"
@@ -100,7 +99,6 @@ const facilities = [
       </svg>
     ),
   },
-
   {
     title: "Air",
     desc: "Sumber air bersih terjamin dengan sumur pantek di masing-masing unit rumah. Bonus jetpump dan toren terpasang",
@@ -114,7 +112,7 @@ const facilities = [
         <path
           id="primary"
           d="M19,14A7,7,0,0,1,5,14C5,8,12,3,12,3S19,8,19,14Z"
-        ></path>
+        />
       </svg>
     ),
   },
@@ -202,23 +200,18 @@ export default function Facilities() {
   const swimScrollNext = useCallback(() => {
     if (swimApi) swimApi.scrollNext();
   }, [swimApi]);
-
   const swimScrollPrev = useCallback(() => {
     if (swimApi) swimApi.scrollPrev();
   }, [swimApi]);
-
   const clubScrollNext = useCallback(() => {
     if (clubApi) clubApi.scrollNext();
   }, [clubApi]);
-
   const clubScrollPrev = useCallback(() => {
     if (clubApi) clubApi.scrollPrev();
   }, [clubApi]);
-
   const playScrollNext = useCallback(() => {
     if (playApi) playApi.scrollNext();
   }, [playApi]);
-
   const playScrollPrev = useCallback(() => {
     if (playApi) playApi.scrollPrev();
   }, [playApi]);
@@ -249,23 +242,20 @@ export default function Facilities() {
     setModalImage(currentGroup.images[prevIndex]);
   }, [modalGroupId, modalImageIndex]);
 
+  // FIX 1: Added body scroll lock + keyboard nav for modal
   useEffect(() => {
     if (!isModalOpen) return;
-
+    document.body.style.overflow = "hidden";
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsModalOpen(false);
-      }
-      if (event.key === "ArrowRight") {
-        scrollModalNext();
-      }
-      if (event.key === "ArrowLeft") {
-        scrollModalPrev();
-      }
+      if (event.key === "Escape") setIsModalOpen(false);
+      if (event.key === "ArrowRight") scrollModalNext();
+      if (event.key === "ArrowLeft") scrollModalPrev();
     };
-
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = "";
+    };
   }, [isModalOpen, scrollModalNext, scrollModalPrev]);
 
   return (
@@ -274,24 +264,21 @@ export default function Facilities() {
       className="py-20 relative overflow-hidden bg-[#0f0e0c]"
       ref={ref}
     >
-      {/* Decorative element */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-48 bg-gradient-to-b from-transparent via-[#c8a96e] to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div
-          className={` text-center mb-16 transition-all duration-800 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`text-center mb-16 transition-all duration-800 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <div className="ornament-divider mb-6">
             <span className="text-[#c8a96e] text-xs tracking-[0.4em] uppercase">
               Fasilitas Lengkap
             </span>
           </div>
-
           <h2 className="font-display text-5xl md:text-6xl text-white font-light mb-4">
             Kehidupan<span className="text-[#c8a96e] italic"> Sempurna</span>
           </h2>
-
           <p className="text-white/50 max-w-2xl mx-auto font-light leading-relaxed">
             Prive Hills Residence hadir dengan fasilitas lengkap yang dirancang
             untuk memberikan pengalaman hunian terbaik bagi seluruh keluarga
@@ -299,7 +286,7 @@ export default function Facilities() {
           </p>
         </div>
 
-        {/* Facilities grid */}
+        {/* Facilities grid — icon only, no images */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
           {facilities.map((f, i) => (
             <div
@@ -314,7 +301,7 @@ export default function Facilities() {
               <div className="text-[#c8a96e]/60 group-hover:text-[#c8a96e] mb-5 transition-colors duration-300">
                 {f.icon}
               </div>
-              <h3 className="text-[#c8a96e] text-xl font-bold mb-3 group-hover:text-[#c8a96e] transition-colors duration-300">
+              <h3 className="text-[#c8a96e] text-xl font-bold mb-3 transition-colors duration-300">
                 {f.title}
               </h3>
               <div
@@ -331,7 +318,6 @@ export default function Facilities() {
           {carouselGroups.map((group, groupIndex) => {
             const isSwimming = group.id === "swimming-pool";
             const isClubhouse = group.id === "clubhouse";
-            const isPlayground = group.id === "playground";
 
             const emblaRef = isSwimming
               ? swimRef
@@ -353,21 +339,14 @@ export default function Facilities() {
               : isClubhouse
                 ? clubScrollPrev
                 : playScrollPrev;
+            const api = isSwimming ? swimApi : isClubhouse ? clubApi : playApi;
 
             return (
               <div
                 key={group.id}
-                className={`transition-all duration-800 ${
-                  visible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
+                className={`transition-all duration-800 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                 style={{ transitionDelay: `${500 + groupIndex * 200}ms` }}
               >
-                {/* <h3 className="text-[#c8a96e] text-2xl font-bold mb-6 text-center">
-                  {group.label}
-                </h3> */}
-
                 <div className="relative">
                   <div className="overflow-hidden rounded-xl" ref={emblaRef}>
                     <div className="flex">
@@ -379,10 +358,16 @@ export default function Facilities() {
                         >
                           <Image
                             src={image}
-                            alt={`${group.label} ${index + 1}`}
+                            alt={`${group.label} ${index + 1} of ${group.images.length}`}
                             fill
-                            priority
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw"
+                            // FIX 2: Removed `priority` from ALL carousel images —
+                            // these are deep in the page. Priority on 9 images kills LCP.
+                            // Only the first slide of the first carousel gets eager loading.
+                            loading={
+                              groupIndex === 0 && index === 0 ? "eager" : "lazy"
+                            }
+                            // FIX 3: Each carousel is 1/3 of the max-width on desktop
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                             className="w-full h-full object-cover"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -399,7 +384,6 @@ export default function Facilities() {
                     </div>
                   </div>
 
-                  {/* Navigation buttons */}
                   <button
                     onClick={scrollPrev}
                     className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 z-10"
@@ -440,17 +424,11 @@ export default function Facilities() {
                     </svg>
                   </button>
 
-                  {/* Dots indicator */}
                   <div className="flex justify-center mt-4 space-x-2">
                     {group.images.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => {
-                          const api = isSwimming
-                            ? swimApi
-                            : isClubhouse
-                              ? clubApi
-                              : playApi;
                           if (api) api.scrollTo(index);
                         }}
                         className={`w-2 h-2 rounded-full transition-colors duration-200 ${
@@ -468,18 +446,25 @@ export default function Facilities() {
           })}
         </div>
 
-        {/* Modal for enlarged images */}
+        {/* Modal */}
         {isModalOpen && modalImage && modalGroupId && (
           <div
             className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
             onClick={() => setIsModalOpen(false)}
           >
-            <div className="relative max-w-3xl max-h-full w-full">
+            <div
+              className="relative max-w-3xl max-h-full w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
               <Image
                 src={modalImage}
                 alt="Enlarged facility image"
                 width={1200}
                 height={800}
+                // FIX 4: Modal image is user-triggered, so priority is correct here
+                priority
+                // FIX 5: Was missing sizes — modal is max 768px wide (max-w-3xl)
+                sizes="(max-width: 768px) 100vw, 768px"
                 className="w-full h-auto object-contain rounded-lg"
               />
 
@@ -503,7 +488,6 @@ export default function Facilities() {
                 </svg>
               </button>
 
-              {/* Previous button */}
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -527,7 +511,6 @@ export default function Facilities() {
                 </svg>
               </button>
 
-              {/* Next button */}
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -550,8 +533,6 @@ export default function Facilities() {
                   />
                 </svg>
               </button>
-
-              {/* Dot indicators */}
             </div>
           </div>
         )}

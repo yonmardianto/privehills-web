@@ -2,6 +2,12 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
+const locationBadges = [
+  { icon: "✈", label: "30 menit ke Bandara Soekarno Hatta" },
+  { icon: "🛣", label: "10 menit ke Gerbang Tol Pamulang" },
+  { icon: "🚂", label: "20 menit ke Stasiun Jurangmangu" },
+];
+
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
 
@@ -9,12 +15,6 @@ export default function Hero() {
     const t = setTimeout(() => setLoaded(true), 100);
     return () => clearTimeout(t);
   }, []);
-
-  const locationBadges = [
-    { icon: "✈", label: "30 menit ke Bandara Soekarno Hatta" },
-    { icon: "🛣", label: "10 menit ke Gerbang Tol Pamulang" },
-    { icon: "🚂", label: "20 menit ke Stasiun Jurangmangu" },
-  ];
 
   return (
     <section
@@ -27,7 +27,8 @@ export default function Hero() {
           alt="Hero background"
           fill
           priority
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+          sizes="100vw"
+          // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
           style={{ objectFit: "cover" }}
           quality={50}
           // className="hero-bg"

@@ -62,7 +62,6 @@ const units = [
       listrik: "2.200 watt",
     },
   },
-
   {
     id: "stevia",
     name: "Stevia",
@@ -90,7 +89,6 @@ const units = [
       listrik: "2.200 watt",
     },
   },
-
   {
     id: "verbena",
     name: "Verbena",
@@ -125,10 +123,7 @@ export default function Units() {
   const [activeImage, setActiveImage] = useState(0);
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [showSpec, setShowSpec] = useState(false);
-  const [unitFileCount, setUnitFileCount] = useState<Record<
-    UnitId,
-    number
-  > | null>(null);
+  const [unitFileCount, setUnitFileCount] = useState<Record<UnitId, number> | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -164,13 +159,15 @@ export default function Units() {
 
   useEffect(() => {
     if (!galleryOpen) return;
-
+    document.body.style.overflow = "hidden"; // FIX 1: lock scroll when modal open
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") setGalleryOpen(false);
     };
-
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = ""; // FIX 1: restore scroll on close
+    };
   }, [galleryOpen]);
 
   const unit = units[activeUnit];
@@ -245,16 +242,17 @@ export default function Units() {
                   src={imageSources[activeImage]}
                   alt={`${unit.name} - View ${activeImage + 1}`}
                   fill
+                  // FIX 2: was already correct — keeping good sizes
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   style={{ objectFit: "cover" }}
+                  // FIX 3: This section is below the fold — lazy load it
+                  loading="lazy"
                   className="w-full h-full transition-all duration-700"
                 />
               </button>
-              {/* Image counter */}
               <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm px-3 py-1 text-white/70 text-xs tracking-wider">
                 {activeImage + 1} / {imageSources.length}
               </div>
-              {/* Nav arrows */}
               <button
                 onClick={() =>
                   setActiveImage(
@@ -274,6 +272,7 @@ export default function Units() {
                 ›
               </button>
             </div>
+
             {/* Thumbnails */}
             <div className="grid grid-cols-4 gap-2">
               {imageSources.map((img, i) => (
@@ -282,9 +281,7 @@ export default function Units() {
                   key={i}
                   aria-label={unit.name}
                   title={unit.name}
-                  onClick={() => {
-                    setActiveImage(i);
-                  }}
+                  onClick={() => setActiveImage(i)}
                   className={`aspect-[4/3] overflow-hidden border-2 transition-all duration-300 relative ${
                     activeImage === i
                       ? "border-[#c8a96e]"
@@ -295,8 +292,10 @@ export default function Units() {
                     src={img}
                     alt={unit.name}
                     fill
-                    sizes="(max-width: 768px) 50vw, 20vw"
+                    // FIX 4: thumbnails are small — was correct, keeping
+                    sizes="(max-width: 768px) 25vw, 12vw"
                     style={{ objectFit: "cover" }}
+                    loading="lazy"
                   />
                 </button>
               ))}
@@ -306,15 +305,11 @@ export default function Units() {
           {/* Info */}
           <div className="flex flex-col justify-between h-full">
             <div className="flex-1 overflow-y-auto">
-              {/* Unit heading */}
               <div className="mb-6">
-                {/* <div className="text-[#c8a96e]/60 text-xs tracking-[0.4em] uppercase mb-1"> */}
-                {/* {unit.tagline} */}
-                {/* </div> */}
-                <h3 className=" font-display text-5xl text-white font-light">
+                <h3 className="font-display text-5xl text-white font-light">
                   {unit.name}
                 </h3>
-                <div className=" font-display text-2xl text-[#c8a96e] mt-2">
+                <div className="font-display text-2xl text-[#c8a96e] mt-2">
                   {unit.price}
                 </div>
               </div>
@@ -324,23 +319,12 @@ export default function Units() {
                 {[
                   { label: "Kamar Tidur", value: unit.bedroom, icon: "🛏" },
                   { label: "Kamar Mandi", value: unit.bathroom, icon: "🚿" },
-                  {
-                    label: "Luas Tanah",
-                    value: `${unit.landArea} m²`,
-                    icon: "📐",
-                  },
-                  {
-                    label: "Luas Bangunan",
-                    value: `${unit.buildingArea} m²`,
-                    icon: "🏗",
-                  },
+                  { label: "Luas Tanah", value: `${unit.landArea} m²`, icon: "📐" },
+                  { label: "Luas Bangunan", value: `${unit.buildingArea} m²`, icon: "🏗" },
                 ].map((stat, i) => (
-                  <div
-                    key={i}
-                    className="bg-[#1a1814] border border-white/5 p-4"
-                  >
+                  <div key={i} className="bg-[#1a1814] border border-white/5 p-4">
                     <div className="text-2xl mb-1">{stat.icon}</div>
-                    <div className="text-[#c8a96e] font-display  text-xl font-light">
+                    <div className="text-[#c8a96e] font-display text-xl font-light">
                       {stat.value}
                     </div>
                     <div className="text-white/40 text-xs tracking-widest uppercase mt-0.5">
@@ -356,9 +340,7 @@ export default function Units() {
                 className="w-full flex items-center justify-between border border-white/10 px-5 py-4 text-white/60 hover:text-[#c8a96e] hover:border-[#c8a96e]/40 transition-all duration-300 text-sm tracking-widest uppercase mb-2"
               >
                 Spesifikasi Teknis
-                <span
-                  className={`transition-transform duration-300 ${showSpec ? "rotate-45" : ""}`}
-                >
+                <span className={`transition-transform duration-300 ${showSpec ? "rotate-45" : ""}`}>
                   +
                 </span>
               </button>
@@ -368,7 +350,6 @@ export default function Units() {
                     <div
                       key={key}
                       className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-sm py-2 sm:py-0"
-                      // className="flex justify-between items-center text-sm"
                     >
                       <span className="text-white/40 capitalize text-left sm:text-center mb-1 sm:mb-0">
                         {key.replace(/([A-Z])/g, " $1")}
@@ -413,8 +394,14 @@ export default function Units() {
 
       {/* Gallery modal */}
       {galleryOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4">
-          <div className="relative w-full max-w-5xl">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4"
+          onClick={() => setGalleryOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-5xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               type="button"
               onClick={() => setGalleryOpen(false)}
@@ -429,8 +416,11 @@ export default function Units() {
                 src={imageSources[activeImage]}
                 alt={`${unit.name} - View ${activeImage + 1}`}
                 fill
+                // FIX 5: Modal image is full-screen — use 100vw, and add priority
+                // since user explicitly opened it
                 sizes="100vw"
                 style={{ objectFit: "contain" }}
+                priority
               />
 
               <button
@@ -469,7 +459,8 @@ export default function Units() {
                       : "border-white/20 hover:border-white/40"
                   }`}
                 >
-                  <Image src={img} alt="" fill style={{ objectFit: "cover" }} />
+                  {/* FIX 6: Modal thumbnails were missing sizes entirely */}
+                  <Image src={img} alt="" fill sizes="96px" style={{ objectFit: "cover" }} loading="lazy" />
                 </button>
               ))}
             </div>
