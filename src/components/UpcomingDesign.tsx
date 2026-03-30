@@ -4,106 +4,110 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 
-export default function UpcomingDesign() {
-  const items = [
-    {
-      title: "Upcoming",
-      subtitle: "Tipe 2BR + Study (Crafting Modern Living)",
-      status: "Progress 50%",
-      description:
-        "Unit baru dengan konsep mixed-use dan area hijau luas, siap hadir awal 2027.",
-      image: "/assets/img/upcoming/upcoming.webp",
-    },
-    {
-      title: "Upcoming",
-      subtitle: "Tipe 2BR + Study (Crafting Modern Living)",
-      status: "Progress 50%",
-      description:
-        "Unit baru dengan konsep mixed-use dan area hijau luas, siap hadir awal 2027.",
-      image: "/assets/img/upcoming/upcoming-1.webp",
-    },
-    {
-      title: "Upcoming",
-      subtitle: "Tipe 3BR Family Home",
-      status: "Progress 35%",
-      description:
-        "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
-      image: "/assets/img/upcoming/upcoming-2.webp",
-    },
-    {
-      title: "Upcoming",
-      subtitle: "Tipe 3BR Family Home",
-      status: "Progress 35%",
-      description:
-        "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
-      image: "/assets/img/upcoming/upcoming-3.webp",
-    },
-    {
-      title: "Upcoming",
-      subtitle: "Tipe 3BR Family Home",
-      status: "Progress 35%",
-      description:
-        "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
-      image: "/assets/img/upcoming/upcoming-4.webp",
-    },
-    {
-      title: "Upcoming",
-      subtitle: "Tipe 3BR Family Home",
-      status: "Progress 35%",
-      description:
-        "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
-      image: "/assets/img/upcoming/upcoming-5.webp",
-    },
-    {
-      title: "Upcoming",
-      subtitle: "Tipe 3BR Family Home",
-      status: "Progress 35%",
-      description:
-        "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
-      image: "/assets/img/upcoming/upcoming-6.webp",
-    },
-    {
-      title: "Upcoming",
-      subtitle: "Tipe 3BR Family Home",
-      status: "Progress 35%",
-      description:
-        "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
-      image: "/assets/img/upcoming/upcoming-7.webp",
-    },
-    {
-      title: "Upcoming",
-      subtitle: "Tipe 3BR Family Home",
-      status: "Progress 35%",
-      description:
-        "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
-      image: "/assets/img/upcoming/upcoming-8.webp",
-    },
-    {
-      title: "Upcoming",
-      subtitle: "Tipe 3BR Family Home",
-      status: "Progress 35%",
-      description:
-        "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
-      image: "/assets/img/upcoming/upcoming-9.webp",
-    },
-    {
-      title: "Upcoming",
-      subtitle: "Tipe 3BR Family Home",
-      status: "Progress 35%",
-      description:
-        "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
-      image: "/assets/img/upcoming/upcoming-10.webp",
-    },
-  ];
+const items = [
+  {
+    title: "Upcoming",
+    subtitle: "Tipe 2BR + Study (Crafting Modern Living)",
+    status: "Progress 50%",
+    description:
+      "Unit baru dengan konsep mixed-use dan area hijau luas, siap hadir awal 2027.",
+    image: "/assets/img/upcoming/upcoming.webp",
+  },
+  {
+    title: "Upcoming",
+    subtitle: "Tipe 2BR + Study (Crafting Modern Living)",
+    status: "Progress 50%",
+    description:
+      "Unit baru dengan konsep mixed-use dan area hijau luas, siap hadir awal 2027.",
+    image: "/assets/img/upcoming/upcoming-1.webp",
+  },
+  {
+    title: "Upcoming",
+    subtitle: "Tipe 3BR Family Home",
+    status: "Progress 35%",
+    description:
+      "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
+    image: "/assets/img/upcoming/upcoming-2.webp",
+  },
+  {
+    title: "Upcoming",
+    subtitle: "Tipe 3BR Family Home",
+    status: "Progress 35%",
+    description:
+      "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
+    image: "/assets/img/upcoming/upcoming-3.webp",
+  },
+  {
+    title: "Upcoming",
+    subtitle: "Tipe 3BR Family Home",
+    status: "Progress 35%",
+    description:
+      "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
+    image: "/assets/img/upcoming/upcoming-4.webp",
+  },
+  {
+    title: "Upcoming",
+    subtitle: "Tipe 3BR Family Home",
+    status: "Progress 35%",
+    description:
+      "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
+    image: "/assets/img/upcoming/upcoming-5.webp",
+  },
+  {
+    title: "Upcoming",
+    subtitle: "Tipe 3BR Family Home",
+    status: "Progress 35%",
+    description:
+      "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
+    image: "/assets/img/upcoming/upcoming-6.webp",
+  },
+  {
+    title: "Upcoming",
+    subtitle: "Tipe 3BR Family Home",
+    status: "Progress 35%",
+    description:
+      "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
+    image: "/assets/img/upcoming/upcoming-7.webp",
+  },
+  {
+    title: "Upcoming",
+    subtitle: "Tipe 3BR Family Home",
+    status: "Progress 35%",
+    description:
+      "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
+    image: "/assets/img/upcoming/upcoming-8.webp",
+  },
+  {
+    title: "Upcoming",
+    subtitle: "Tipe 3BR Family Home",
+    status: "Progress 35%",
+    description:
+      "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
+    image: "/assets/img/upcoming/upcoming-9.webp",
+  },
+  {
+    title: "Upcoming",
+    subtitle: "Tipe 3BR Family Home",
+    status: "Progress 35%",
+    description:
+      "Rancang bangun hunian keluarga dengan pencahayaan natural & ruang multifungsi.",
+    image: "/assets/img/upcoming/upcoming-10.webp",
+  },
+];
 
+export default function UpcomingDesign() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     skipSnaps: false,
   });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalImage, setModalImage] = useState<string | null>(null);
   const [modalImageIndex, setModalImageIndex] = useState(0);
+
+  // FIX 1: Track which slides have been "visited" so we only lazy-load them on demand
+  const [loadedIndexes, setLoadedIndexes] = useState<Set<number>>(
+    new Set([0]), // preload only the first slide
+  );
 
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
@@ -114,18 +118,25 @@ export default function UpcomingDesign() {
   }, [emblaApi]);
 
   const scrollNextModal = useCallback(() => {
-    setModalImageIndex((prevIndex) => (prevIndex + 1) % items.length);
-  }, [items.length]);
+    setModalImageIndex((prev) => (prev + 1) % items.length);
+  }, []);
 
   const scrollPrevModal = useCallback(() => {
-    setModalImageIndex((prevIndex) =>
-      prevIndex === 0 ? items.length - 1 : prevIndex - 1,
-    );
-  }, [items.length]);
+    setModalImageIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
+  }, []);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
+    const index = emblaApi.selectedScrollSnap();
+    setSelectedIndex(index);
+
+    // FIX 2: Load the current slide + 1 ahead (preload next), not all at once
+    setLoadedIndexes((prev) => {
+      const next = new Set(prev);
+      next.add(index);
+      next.add((index + 1) % items.length); // preload next slide
+      return next;
+    });
   }, [emblaApi]);
 
   useEffect(() => {
@@ -134,31 +145,31 @@ export default function UpcomingDesign() {
     onSelect();
   }, [emblaApi, onSelect]);
 
+  // FIX 3: Pause autoplay when modal is open
   useEffect(() => {
-    if (!emblaApi) return;
+    if (isModalOpen) return;
     const timer = setInterval(() => {
-      emblaApi.scrollNext();
+      emblaApi?.scrollNext();
     }, 5000);
     return () => clearInterval(timer);
-  }, [emblaApi]);
+  }, [emblaApi, isModalOpen]);
 
+  // FIX 4: Keyboard nav + body scroll lock when modal is open
   useEffect(() => {
     if (!isModalOpen) return;
+    document.body.style.overflow = "hidden";
 
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsModalOpen(false);
-      }
-      if (event.key === "ArrowRight") {
-        scrollNextModal();
-      }
-      if (event.key === "ArrowLeft") {
-        scrollPrevModal();
-      }
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsModalOpen(false);
+      if (e.key === "ArrowRight") scrollNextModal();
+      if (e.key === "ArrowLeft") scrollPrevModal();
     };
 
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = "";
+    };
   }, [isModalOpen, scrollNextModal, scrollPrevModal]);
 
   return (
@@ -194,19 +205,30 @@ export default function UpcomingDesign() {
                       type="button"
                       className="relative w-full h-56 sm:h-72 md:h-80 lg:h-96 overflow-hidden cursor-zoom-in"
                       onClick={() => {
-                        setModalImage(item.image);
                         setModalImageIndex(index);
                         setIsModalOpen(true);
                       }}
-                      aria-label={`View ${item.title} larger`}
+                      aria-label={`View ${item.subtitle} larger`}
                     >
-                      <Image
-                        width={1280}
-                        height={960}
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover"
-                      />
+                      {/* FIX 5: Only render Image when slide has been visited,
+                          show placeholder bg otherwise to avoid 11 simultaneous requests */}
+                      {loadedIndexes.has(index) ? (
+                        <Image
+                          src={item.image}
+                          alt={item.subtitle}
+                          fill
+                          // FIX 6: 'sizes' tells Next.js the actual rendered width
+                          // so it serves ~900px images instead of 3840px
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 896px"
+                          className="object-cover"
+                          // FIX 7: Only the first slide is eager; rest are lazy
+                          loading={index === 0 ? "eager" : "lazy"}
+                          quality={75}
+                        />
+                      ) : (
+                        // Lightweight placeholder while slide hasn't been reached
+                        <div className="w-full h-full bg-[#1a1816] animate-pulse" />
+                      )}
                     </button>
                   </div>
                 </div>
@@ -214,22 +236,21 @@ export default function UpcomingDesign() {
             </div>
           </div>
 
-          {/* <div className="mt-4 flex items-center justify-between">
-            <button
-              onClick={scrollPrev}
-              className="rounded-full bg-white/10 px-4 py-2 text-xs uppercase tracking-widest text-white hover:bg-white/20"
-              aria-label="Previous slide"
-            >
-              Prev
-            </button>
-            <button
-              onClick={scrollNext}
-              className="rounded-full bg-white/10 px-4 py-2 text-xs uppercase tracking-widest text-white hover:bg-white/20"
-              aria-label="Next slide"
-            >
-              Next
-            </button>
-          </div> */}
+          {/* Navigation arrows */}
+          <button
+            onClick={scrollPrev}
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/50 px-3 py-2 text-white hover:bg-black/80 transition-colors"
+            aria-label="Previous slide"
+          >
+            &#10094;
+          </button>
+          <button
+            onClick={scrollNext}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/50 px-3 py-2 text-white hover:bg-black/80 transition-colors"
+            aria-label="Next slide"
+          >
+            &#10095;
+          </button>
 
           <div className="flex justify-center gap-2 mt-4">
             {items.map((_, index) => (
@@ -244,8 +265,12 @@ export default function UpcomingDesign() {
             ))}
           </div>
 
-          {isModalOpen && modalImage && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
+          {/* Modal */}
+          {isModalOpen && (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+              onClick={() => setIsModalOpen(false)} // click backdrop to close
+            >
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
@@ -257,27 +282,39 @@ export default function UpcomingDesign() {
 
               <button
                 type="button"
-                onClick={scrollPrevModal}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  scrollPrevModal();
+                }}
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-40 rounded-full bg-black/70 px-4 py-3 text-white hover:bg-black transition-colors"
                 aria-label="Previous image"
               >
                 &#10094;
               </button>
 
-              <div className="relative h-full max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-lg">
+              <div
+                className="relative h-full max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-lg"
+                onClick={(e) => e.stopPropagation()} // prevent close when clicking image
+              >
                 <Image
                   src={items[modalImageIndex].image}
-                  alt="Upcoming design preview"
+                  alt={items[modalImageIndex].subtitle}
                   fill
+                  // FIX 8: Modal can be larger, so use a bigger size hint
+                  sizes="(max-width: 1024px) 100vw, 1024px"
                   style={{ objectFit: "contain" }}
-                  className="w-full h-full"
+                  // FIX 9: priority on modal image since user explicitly opened it
                   priority
+                  quality={85}
                 />
               </div>
 
               <button
                 type="button"
-                onClick={scrollNextModal}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  scrollNextModal();
+                }}
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-40 rounded-full bg-black/70 px-4 py-3 text-white hover:bg-black transition-colors"
                 aria-label="Next image"
               >
@@ -288,7 +325,10 @@ export default function UpcomingDesign() {
                 {items.map((_, index) => (
                   <button
                     key={`modal-dot-${index}`}
-                    onClick={() => setModalImageIndex(index)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setModalImageIndex(index);
+                    }}
                     className={`w-2 h-2 rounded-full transition-colors ${
                       index === modalImageIndex ? "bg-[#c8a96e]" : "bg-white/30"
                     }`}
