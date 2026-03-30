@@ -101,11 +101,11 @@ export default function Promo() {
             <Image
               src="/assets/img/promo/promo.webp"
               alt="Promo banner"
-              width={384}
-              height={288}
-              sizes="(max-width: 640px) 100vw, 384px"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               quality={60}
               className="object-cover w-full h-full"
+              loading="lazy"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0f0e0c]/80 via-[#0f0e0c]/50 to-transparent" />

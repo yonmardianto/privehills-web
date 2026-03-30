@@ -35,7 +35,7 @@ export default function Contact() {
       <div
         className="absolute inset-0 bg-cover bg-center opacity-10"
         style={{
-          backgroundImage: `url('/assets/img/photo-contact.jpg')`,
+          backgroundImage: `url('/assets/img/photo-contact.webp')`,
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0f0e0c] via-transparent to-[#0f0e0c]" />

@@ -552,33 +552,6 @@ export default function Facilities() {
               </button>
 
               {/* Dot indicators */}
-              {carouselGroups.find((g) => g.id === modalGroupId) && (
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-                  {carouselGroups
-                    .find((g) => g.id === modalGroupId)
-                    ?.images.map((_, index) => (
-                      <button
-                        key={`modal-dot-${index}`}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setModalImageIndex(index);
-                          const group = carouselGroups.find(
-                            (g) => g.id === modalGroupId,
-                          );
-                          if (group) {
-                            setModalImage(group.images[index]);
-                          }
-                        }}
-                        className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                          index === modalImageIndex
-                            ? "bg-[#c8a96e]"
-                            : "bg-white/50"
-                        }`}
-                        aria-label={`Go to image ${index + 1}`}
-                      />
-                    ))}
-                </div>
-              )}
             </div>
           </div>
         )}

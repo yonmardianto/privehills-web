@@ -320,22 +320,6 @@ export default function UpcomingDesign() {
               >
                 &#10095;
               </button>
-
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 flex gap-2">
-                {items.map((_, index) => (
-                  <button
-                    key={`modal-dot-${index}`}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setModalImageIndex(index);
-                    }}
-                    className={`w-2 h-2 rounded-full transition-colors ${
-                      index === modalImageIndex ? "bg-[#c8a96e]" : "bg-white/30"
-                    }`}
-                    aria-label={`Go to image ${index + 1}`}
-                  />
-                ))}
-              </div>
             </div>
           )}
         </div>

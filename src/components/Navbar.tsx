@@ -70,6 +70,7 @@ export default function Navbar() {
               <a
                 href={link.href}
                 onClick={link.onClick}
+                aria-label={link.label}
                 className="text-white hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light transition-colors duration-300 relative"
               >
                 {link.label}
@@ -114,6 +115,7 @@ export default function Navbar() {
         <a
           href="https://wa.me/6287867309782?text=Halo,%20saya%20tertarik%20dengan%20Prive%20Hills%20Residence"
           target="_blank"
+          aria-label="contact us on WhatsApp"
           rel="noopener noreferrer"
           className="hidden md:flex items-center gap-2 bg-[#c8a96e] text-[#0f0e0c] px-5 py-2.5 text-xs tracking-widest uppercase font-semibold hover:bg-[#e4cc9a] transition-colors duration-300"
         >

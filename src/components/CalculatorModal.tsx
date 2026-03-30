@@ -250,10 +250,14 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
           </div>
 
           <div>
-            <label className="text-white/40 text-xs tracking-widest uppercase block mb-2">
+            <label
+              className="text-white/40 text-xs tracking-widest uppercase block mb-2"
+              htmlFor="select-bunga-modal"
+            >
               Bunga Per Tahun
             </label>
             <select
+              id="select-bunga-modal"
               value={bunga}
               onChange={(e) => setBunga(e.target.value)}
               className="w-full bg-transparent border border-white/10 px-4 py-3 text-white/80 text-sm focus:border-[#c8a96e]/50 focus:outline-none transition-colors"

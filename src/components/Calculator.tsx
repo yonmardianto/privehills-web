@@ -202,10 +202,14 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
         </div>
 
         <div>
-          <label className="text-white/40 text-xs tracking-widest uppercase block mb-2">
+          <label
+            className="text-white/40 text-xs tracking-widest uppercase block mb-2"
+            htmlFor="select-bunga"
+          >
             Bunga Per Tahun
           </label>
           <select
+            id="select-bunga"
             value={bunga}
             onChange={(e) => {
               setBunga(e.target.value);
