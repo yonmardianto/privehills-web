@@ -259,12 +259,14 @@ export default function UnitsKomersial() {
                   {Object.entries(unit.specs).map(([key, val]) => (
                     <div
                       key={key}
-                      className="flex justify-between items-center text-sm"
+                      className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-sm py-2 sm:py-0"
+
+                      // className="flex justify-between items-center text-sm"
                     >
-                      <span className="text-white/40 capitalize">
+                      <span className="text-white/40 capitalize text-left sm:text-center mb-1 sm:mb-0">
                         {key.replace(/([A-Z])/g, " $1")}
                       </span>
-                      <span className="text-white/70 text-right max-w-[60%]">
+                      <span className="text-white/70 text-left sm:text-right sm:max-w-[60%]">
                         {val}
                       </span>
                     </div>

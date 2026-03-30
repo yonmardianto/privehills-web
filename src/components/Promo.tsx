@@ -105,7 +105,6 @@ export default function Promo() {
               sizes="(max-width: 768px) 100vw, 50vw"
               quality={60}
               className="object-cover w-full h-full"
-              loading="lazy"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0f0e0c]/80 via-[#0f0e0c]/50 to-transparent" />
