@@ -15,7 +15,7 @@ const units = [
     landArea: 67.5,
     buildingArea: 127,
     images: Array.from(
-      { length: 1 },
+      { length: 2 },
       (_, i) => `${BASE_URL}/assets/img/unit/shophouse/ruko-${i + 1}.webp`,
     ),
     // denah: `${BASE_URL}/assets/img/unit/agave/denah.webp`,
