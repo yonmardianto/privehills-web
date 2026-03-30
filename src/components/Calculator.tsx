@@ -136,10 +136,14 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
       {/* Form */}
       <div className="flex flex-col  gap-4">
         <div>
-          <label className="text-white/40 text-xs tracking-widest uppercase block mb-2">
+          <label
+            className="text-white/40 text-xs tracking-widest uppercase block mb-2"
+            htmlFor="unit-select"
+          >
             Tipe Unit
           </label>
           <select
+            id="unit-select"
             value={selectedUnit}
             onChange={handleUnitChange}
             className="w-full bg-transparent text-white/80 border border-white/10 px-4 py-3 text-sm focus:border-[#c8a96e]/50 focus:outline-none transition-colors"
