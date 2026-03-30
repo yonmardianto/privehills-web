@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     "Perumahan eksklusif Pamulang",
     "Prive Hills Residence",
     "Hunian modern Pamulang",
+    "Hunian premium Pamulang",
     "Hunian minimalis modern",
     "Hunian eksklusif Pondok Cabe",
 
