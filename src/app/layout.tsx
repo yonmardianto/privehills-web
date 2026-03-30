@@ -8,8 +8,7 @@ const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL || "https://privehillsresidence.id";
 
 export const metadata: Metadata = {
-  title:
-    "Prive Hills Residence | Hunian minimalis modern di area Pondok Cabe. Eksklusif, menawarkan privasi, keamanan, dan ketenangan untuk keluarga Anda",
+  title: "Prive Hills Residence | Hunian Premium Pamulang",
   description:
     "Prive Hills Residence – Hunian minimalis modern di area Pondok Cabe. Eksklusif, menawarkan privasi, keamanan, dan ketenangan untuk keluarga Anda. Harga mulai Rp 1,3 Miliar. KPR DP 0%, Free PPN, BPHTB & Biaya KPR hingga 40 Juta.",
   keywords: [
