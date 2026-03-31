@@ -223,7 +223,7 @@ export default function UpcomingDesign() {
                           className="object-cover"
                           // FIX 7: Only the first slide is eager; rest are lazy
                           loading={index === 0 ? "eager" : "lazy"}
-                          quality={75}
+                          quality={70}
                         />
                       ) : (
                         // Lightweight placeholder while slide hasn't been reached
@@ -305,7 +305,7 @@ export default function UpcomingDesign() {
                   style={{ objectFit: "contain" }}
                   // FIX 9: priority on modal image since user explicitly opened it
                   priority
-                  quality={85}
+                  quality={70}
                 />
               </div>
 
