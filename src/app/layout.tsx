@@ -48,6 +48,7 @@ export const metadata: Metadata = {
     "perumahan gated community Tangerang Selatan",
     "rumah dengan clubhouse Pamulang",
     "perumahan dekat sekolah rumah sakit Pamulang",
+    "perumahan elit di tangerang selatan",
   ],
   robots: {
     index: true,
