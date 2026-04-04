@@ -32,7 +32,7 @@ export default function FloatingWhatsApp() {
             Chat WhatsApp
           </div>
           <div className="text-xs opacity-80 leading-none mt-0.5">
-            Konsultasi Gratis
+            Konsultasi
           </div>
         </div>
       </a>
