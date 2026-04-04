@@ -13,41 +13,34 @@ export const metadata: Metadata = {
     "Prive Hills Residence – Hunian minimalis modern di area Pondok Cabe. Eksklusif, menawarkan privasi, keamanan, dan ketenangan untuk keluarga Anda. Harga mulai Rp 1,3 Miliar. KPR DP 0%, Free PPN, BPHTB & Biaya KPR hingga 40 Juta.",
   keywords: [
     // Primary Keywords
-    "Rumah dijual Pamulang",
-    "Perumahan Pamulang Tangerang Selatan",
-    "Rumah minimalis Pamulang",
-    "Perumahan eksklusif Pamulang",
-    "Prive Hills Residence",
-    "Hunian modern Pamulang",
-    "Hunian premium Pamulang",
-    "Hunian minimalis modern",
-    "Hunian eksklusif Pondok Cabe",
+    "Rumah dijual di Pondok Cabe",
 
     // Long-Tail / High Conversion
-    "perumahan KPR Pamulang",
-    "rumah 3 kamar tidur Pamulang",
-    "perumahan cluster Pamulang one gate system",
-    "rumah baru Tangerang Selatan dekat tol",
-    "perumahan dekat Stasiun Jurangmangu",
-    "beli rumah Pamulang DP rendah",
-    "perumahan minimalis modern Tangerang Selatan",
+    "perumahan KPR Pondok Cabe",
+    "rumah 3 kamar tidur pondok cabe",
+    "perumahan cluster pondok cabe",
+    "beli rumah di pondok cabe DP 0",
+    "Rumah KPR di pondok cabe",
+    "Rumah 10 juta all in di pondok cabe",
+    "Rumah sertifikat aman di pondok cabe",
+    "Rumah siap huni pondok cabe",
+    "Rumah KPR siap huni pondok cabe",
+    "Rumah di pondok cabe fasilitas kolam renang",
 
     // Location-Based
-    "perumahan dekat BSD Tangerang",
-    "rumah dijual Ciputat Tangerang Selatan",
-    "hunian dekat Jakarta Selatan",
-    "perumahan Banten strategis",
+    "perumahan dekat tol",
+    "perumahan dekat halte transjakarta",
 
     // Commercial / Shophouse
-    "ruko dijual Pamulang",
-    "shophouse Pamulang Tangerang Selatan",
-    "investasi properti Pamulang",
+    "ruko dijual di Pondok Cabe",
+    "shophouse Pondok Cabe Tangerang Selatan",
+    "investasi properti pondok cabe",
+    "Ruko siap huni pondok cabe",
 
     // Feature-Based
-    "perumahan dengan kolam renang Pamulang",
-    "perumahan gated community Tangerang Selatan",
-    "rumah dengan clubhouse Pamulang",
-    "perumahan dekat sekolah rumah sakit Pamulang",
+    "perumahan dengan kolam renang di pondok cabe",
+    "rumah dengan clubhouse di pondok cabe",
+    "perumahan dekat sekolah dan rumah sakit pondok cabe",
     "perumahan elit di tangerang selatan",
   ],
   robots: {
