@@ -1,6 +1,7 @@
 "use client";
 
 import { FaInstagram, FaFacebook } from "react-icons/fa";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -9,21 +10,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-20 h-20 rounded-full border border-[#c8a96e]/60 flex items-center justify-center">
-                <span className="text-[#c8a96e] font-display text-lg font-semibold leading-none text-center">
-                  PRIVE HILLS
-                </span>
+            {/* Logo */}
+            <a href="/" className="flex items-center gap-3 group pt-2 pb-10">
+              <div className="flex-shrink-0">
+                <Image
+                  src="/assets/img/logo-white.svg"
+                  alt="Privé Hills Logo"
+                  width={130}
+                  height={130}
+                  sizes="130px"
+                  className="object-contain transition-opacity duration-300 contrast-500 saturate-300 [image-rendering:crisp-edges]"
+                  priority
+                />
               </div>
-              <div>
-                <div className="text-white font-display text-base font-medium tracking-wider leading-none">
-                  PRIVE HILLS
-                </div>
-                <div className="text-[#c8a96e] text-[10px] tracking-[0.3em] uppercase font-light italic">
-                  Residence
-                </div>
-              </div>
-            </div>
+            </a>
             <p className="text-white/50 text-sm font-light leading-relaxed">
               Hunian minimalis modern di area Pondok Cabe. Eksklusif, menawarkan
               privasi, keamanan, dan ketenangan untuk keluarga Anda
@@ -111,7 +111,7 @@ export default function Footer() {
               </div>
               <div>
                 <div className="text-[#c8a96e] text-xs tracking-widest uppercase mb-1">
-                  Marketing
+                  Marketing Sales
                 </div>
                 <a
                   href="https://wa.me/6287867309782?text=Halo,%20saya%20ingin%20mengetahui%20tentang%20Prive%20Hills%20Residence"

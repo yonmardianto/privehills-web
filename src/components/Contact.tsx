@@ -139,7 +139,7 @@ export default function Contact() {
 
               {[
                 {
-                  label: "Marketing Office",
+                  label: "Marketing Sales",
                   value: "+62 878-6730-9782",
                   icon: (
                     <svg
@@ -290,7 +290,7 @@ export default function Contact() {
                   Chat WhatsApp Sekarang
                 </div>
                 <div className="text-xs tracking-widest uppercase opacity-60">
-                  Respon Cepat & Gratis
+                  Respon Cepat
                 </div>
               </div>
             </a>
