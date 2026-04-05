@@ -8,41 +8,12 @@ const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL || "https://privehillsresidence.id";
 
 export const metadata: Metadata = {
-  title: "Prive Hills Residence | Hunian Premium Pamulang",
+  title: "Prive Hills Residence | Hunian Premium Pondok Cabe",
   description:
-    "Prive Hills Residence – Hunian minimalis modern di area Pondok Cabe. Eksklusif, menawarkan privasi, keamanan, dan ketenangan untuk keluarga Anda. Harga mulai Rp 1,3 Miliar. KPR DP 0%, Free PPN, BPHTB & Biaya KPR hingga 40 Juta.",
-  keywords: [
-    // Primary Keywords
-    "Rumah dijual di Pondok Cabe",
-
-    // Long-Tail / High Conversion
-    "perumahan KPR Pondok Cabe",
-    "rumah 3 kamar tidur pondok cabe",
-    "perumahan cluster pondok cabe",
-    "beli rumah di pondok cabe DP 0",
-    "Rumah KPR di pondok cabe",
-    "Rumah 10 juta all in di pondok cabe",
-    "Rumah sertifikat aman di pondok cabe",
-    "Rumah siap huni pondok cabe",
-    "Rumah KPR siap huni pondok cabe",
-    "Rumah di pondok cabe fasilitas kolam renang",
-
-    // Location-Based
-    "perumahan dekat tol",
-    "perumahan dekat halte transjakarta",
-
-    // Commercial / Shophouse
-    "ruko dijual di Pondok Cabe",
-    "shophouse Pondok Cabe Tangerang Selatan",
-    "investasi properti pondok cabe",
-    "Ruko siap huni pondok cabe",
-
-    // Feature-Based
-    "perumahan dengan kolam renang di pondok cabe",
-    "rumah dengan clubhouse di pondok cabe",
-    "perumahan dekat sekolah dan rumah sakit pondok cabe",
-    "perumahan elit di tangerang selatan",
-  ],
+    "Hunian minimalis modern di Pondok Cabe. Harga mulai Rp 1,3M, DP 0%, Free PPN & BPHTB. Nikmati privasi dan keamanan eksklusif untuk keluarga Anda.",
+  alternates: {
+    canonical: "https://privehillsresidence.id",
+  },
   robots: {
     index: true,
     follow: true,
@@ -52,8 +23,7 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
     },
   },
-  // keywords:
-  //   "rumah pamulang, privé hills residence, perumahan tangerang selatan, hunian modern",
+
   openGraph: {
     title: "Prive Hills Residence",
     description:
