@@ -1,36 +1,133 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { trackEvent } from "../lib/analytics";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const handleNavClick = (link: NavLink) => {
+    // Track the event
+    if (link.onClick) {
+      link.onClick();
+    }
 
-  const navLinks = [
-    { label: "Promo", href: "#promo" },
+    // For anchor links, ensure smooth scrolling works
+    if (link.href.startsWith("#")) {
+      const element = document.querySelector(link.href);
+      if (element) {
+        const offset = 120; // Account for fixed navbar
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
+
+  const navLinks: NavLink[] = [
+    {
+      label: "Promo",
+      href: "#promo",
+      onClick: () => {
+        trackEvent("navbar_click", {
+          event_category: "navigation",
+          event_label: "Promo",
+          link_text: "Promo",
+        });
+      },
+    },
     {
       label: "Tipe Unit",
       href: "#",
       submenu: [
-        { label: "Hunian", href: "#units-hunian" },
-        { label: "Komersial", href: "#units-komersial" },
-        { label: "Desain Mendatang", href: "#upcoming-design" },
+        {
+          label: "Hunian",
+          href: "#units-hunian",
+          onClick: () => {
+            trackEvent("navbar_click", {
+              event_category: "navigation",
+              event_label: "Unit Hunian",
+              link_text: "units-hunian",
+            });
+          },
+        },
+        {
+          label: "Komersial",
+          href: "#units-komersial",
+          onClick: () => {
+            trackEvent("navbar_click", {
+              event_category: "navigation",
+              event_label: "Unit Komersial",
+              link_text: "units-komersial",
+            });
+          },
+        },
+        {
+          label: "Desain Mendatang",
+          href: "#upcoming-design",
+          onClick: () => {
+            trackEvent("navbar_click", {
+              event_category: "navigation",
+              event_label: "Desain Mendatang",
+              link_text: "upcoming-design",
+            });
+          },
+        },
       ],
     },
-    { label: "Testimonial", href: "#testimonials" },
-    { label: "Fasilitas", href: "#facilities" },
-    { label: "Lokasi", href: "#location" },
-    { label: "Kontak", href: "#contact" },
+    {
+      label: "Testimonial",
+      href: "#testimonials",
+      onClick: () => {
+        trackEvent("navbar_click", {
+          event_category: "navigation",
+          event_label: "Testimonial",
+          link_text: "Testimonial",
+        });
+      },
+    },
+    {
+      label: "Fasilitas",
+      href: "#facilities",
+      onClick: () => {
+        trackEvent("navbar_click", {
+          event_category: "navigation",
+          event_label: "Fasilitas",
+          link_text: "Fasilitas",
+        });
+      },
+    },
+    {
+      label: "Lokasi",
+      href: "#location",
+      onClick: () => {
+        trackEvent("navbar_click", {
+          event_category: "navigation",
+          event_label: "Lokasi",
+          link_text: "Lokasi",
+        });
+      },
+    },
+    {
+      label: "Kontak",
+      href: "#contact",
+      onClick: () => {
+        trackEvent("navbar_click", {
+          event_category: "navigation",
+          event_label: "Kontak",
+          link_text: "Kontak",
+        });
+      },
+    },
     {
       label: "Kalkulator KPR",
-      href: "#",
+      href: "#kalkulator-kpr",
       onClick: () => {
         if (typeof window !== "undefined") {
           window.dispatchEvent(new CustomEvent("openKprCalculator"));
@@ -69,7 +166,10 @@ export default function Navbar() {
             <li key={link.label} className="relative group">
               <a
                 href={link.href}
-                onClick={link.onClick}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(link);
+                }}
                 aria-label={link.label}
                 className="text-white hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light transition-colors duration-300 relative"
               >
@@ -99,6 +199,11 @@ export default function Navbar() {
                     <li key={sublink.label}>
                       <a
                         href={sublink.href}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setMenuOpen(false);
+                          handleNavClick(sublink);
+                        }}
                         className="block text-white/70 hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light px-4 py-2"
                       >
                         {sublink.label}
@@ -171,7 +276,11 @@ export default function Navbar() {
                         <a
                           key={sublink.label}
                           href={sublink.href}
-                          onClick={() => setMenuOpen(false)}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setMenuOpen(false);
+                            handleNavClick(sublink);
+                          }}
                           className="block text-white/70 hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light"
                         >
                           {sublink.label}
@@ -184,11 +293,9 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   onClick={(e) => {
+                    e.preventDefault();
                     setMenuOpen(false);
-                    if (link.onClick) {
-                      e.preventDefault();
-                      link.onClick();
-                    }
+                    handleNavClick(link);
                   }}
                   className="block text-white/70 hover:text-[#c8a96e] text-sm tracking-widest uppercase font-light"
                 >

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { trackEvent } from "../lib/analytics";
 
 const unitPrices = [
   {
@@ -95,6 +96,18 @@ Saya ingin mendapatkan informasi lebih lanjut.`;
 
     setMonthlyPayment(Math.round(monthlyPaymentCalc));
     setError("");
+
+    const selectedUnitLabel =
+      unitPrices.find((unit) => unit.id === selectedUnit)?.label || "";
+
+    trackEvent("hitung_cicilan", {
+      event_category: "engagement",
+      event_label: "Hitung Cicilan Button",
+      currency: "IDR",
+      cicilan_per_bulan: monthlyPaymentCalc.toLocaleString("id-ID"),
+      selected_unit: selectedUnitLabel,
+      tenor: tenorNum,
+    });
   };
 
   const formatCurrency = (value: string) => {
