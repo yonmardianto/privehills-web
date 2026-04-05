@@ -81,7 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-MHFZFVM6');`}
         </Script>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-M63024MPB0"
+          src="https://www.googletagmanager.com/gtag/js?id=G-4Q1LZK0JJG"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -89,9 +89,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-M63024MPB0');
+            gtag('config', 'G-4Q1LZK0JJG');
           `}
         </Script>
+
         {/* <link rel="preconnect" href="https://fonts.googleapis.com" /> */}
         {/* <link
           rel="preconnect"
